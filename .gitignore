@@ -162,12 +162,12 @@ cython_debug/
 .idea/
 
 # We don't need magento files to be versioned.
-/ecommerce/.git
-/ecommerce/.gitignore
-/ecommerce/.vscode/
-/ecommerce/bin/
-/ecommerce/env
-/ecommerce/src
-/ecommerce/template/
-/ecommerce/compose.*
-/ecommerce/Makefile
+ecommerce/.git
+ecommerce/.gitignore
+ecommerce/.vscode/
+ecommerce/bin/
+ecommerce/env
+ecommerce/src
+ecommerce/template/
+ecommerce/compose.*
+ecommerce/Makefile
