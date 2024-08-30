@@ -1,0 +1,26 @@
+{
+  "version": "3",
+  "services": {
+    "kafka": {
+      "image": "debezium/kafka:latest",
+      "ports": [
+        "9092:9092"
+      ],
+      "env_file": [
+        "kafka.env"
+      ]
+    },
+    "connect": {
+      "image": "debezium/connect:latest",
+      "ports": [
+        "8083:8083"
+      ],
+      "env_file": [
+        "connect.env"
+      ],
+      "depends_on": [
+        "kafka"
+      ]
+    }
+  }
+}

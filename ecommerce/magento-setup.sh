@@ -5,8 +5,5 @@ DOMAIN=${1:-magento.test}
 VERSION=${2:-2.4.7}
 EDITION=${3:-community}
 
-curl -s https://raw.githubusercontent.com/edwinflopez/docker-magento/master/lib/template | bash
-
-# &&'s are used below otherwise onelinesetup script fails/errors after bin/download
-bin/download "${VERSION}" "${EDITION}" \
-  && bin/setup "${DOMAIN}"
+echo "Installing: Magento $DOMAIN $VERSION $EDITION"
+curl -s https://raw.githubusercontent.com/edwinflopez/docker-magento/master/lib/template | bash -s -- "$DOMAIN" "$VERSION" "$EDITION"
