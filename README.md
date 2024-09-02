@@ -1,4 +1,7 @@
-# mbd-tfm
-Master Big Data - Trabajo Final de Master
+# Master Big Data - TFM
 
-Ripo's World
+## Introduction
+This work is intended to define an architecture for a recommendation system
+in almost real time adapted for an ecommerce, by using CDC and streaming.
+
+![](./docs/images/overview.png)
