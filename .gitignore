@@ -122,12 +122,8 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
 .venv
-env/
 venv/
-ENV/
-env.bak/
 venv.bak/
 
 # Spyder project settings
@@ -159,7 +155,8 @@ cython_debug/
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-/.idea/
+**/.idea/
+**/.vscode/
 **/.DS_Store
 
 # We don't need magento files to be versioned.
@@ -167,8 +164,10 @@ ecommerce/bin/
 ecommerce/env/
 ecommerce/src/
 ecommerce/template/
-ecommerce/.vscode/
 ecommerce/.git/
 ecommerce/.gitignore
 ecommerce/compose.*
 ecommerce/Makefile
+
+# Mongodb storage data
+storage/mongodb/data/

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -o errexit
 
 echo "Creating MySQL source connector..."
 curl -X POST http://localhost:8083/connectors -H "Content-Type: application/json" -d @- << EOF
