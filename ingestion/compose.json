@@ -1,13 +1,42 @@
 {
-  "version": "3",
   "services": {
-    "kafka": {
+    "kn1": {
       "image": "debezium/kafka:latest",
       "ports": [
-        "9092:9092"
+        "19092:9092",
+        "19093:9093"
       ],
+      "environment": {
+        "BROKER_ID": 1
+      },
       "env_file": [
-        "kafka.env"
+        "./env/kafka-common.env"
+      ]
+    },
+    "kn2": {
+      "image": "debezium/kafka:latest",
+      "ports": [
+        "29092:9092",
+        "29093:9093"
+      ],
+      "environment": {
+        "BROKER_ID": 2
+      },
+      "env_file": [
+        "./env/kafka-common.env"
+      ]
+    },
+    "kn3": {
+      "image": "debezium/kafka:latest",
+      "ports": [
+        "39092:9092",
+        "39093:9093"
+      ],
+      "environment": {
+        "BROKER_ID": 3
+      },
+      "env_file": [
+        "./env/kafka-common.env"
       ]
     },
     "connect": {
@@ -16,10 +45,12 @@
         "8083:8083"
       ],
       "env_file": [
-        "connect.env"
+        "./env/dbz-connect.env"
       ],
       "depends_on": [
-        "kafka"
+        "kn1",
+        "kn2",
+        "kn3"
       ]
     }
   }

@@ -1,0 +1,65 @@
+#!/usr/bin/env python
+import requests
+from pymongo import MongoClient
+
+def get_mongo_client_with_auth() -> MongoClient:
+    """Create a MongoDB client using authentication data for the admin user"""
+    mdb = {
+        "usr"       : 'mbdtfm_admin',
+        "pwd"       : 'mbdtfm_pwd$$',
+        "db"        : 'mbdtfm_db',
+        "authSource": 'admin',
+        "host"      : 'localhost',
+        "port"      : 27017
+    }
+    mongodb_uri = "mongodb://{usr}:{pwd}@{host}:{port}/{db}?authSource={authSource}".format(**mdb)
+    return MongoClient(mongodb_uri)
+
+def get_mongo_client() -> MongoClient:
+    """Create a MongoDB client"""
+    mdb = {
+        "db"        : 'mbdtfm_db',
+        "host"      : 'localhost',
+        "port"      : 27017
+    }
+    mongodb_uri = "mongodb://{host}:{port}/{db}".format(**mdb)
+    return MongoClient(mongodb_uri)
+
+def test_mongodb_connection(with_auth : bool = False):
+    """Test if MongoDB connection is up and working"""
+    try:
+        client = get_mongo_client_with_auth() if with_auth else get_mongo_client()
+        # Send a ping to the server to check if the connection is successful
+        client.admin.command('ping')
+        print(f"Connection to MongoDB {'with auth' if with_auth else ''} Ok")
+
+    except Exception as e:
+        print(f"Failed to connect to MongoDB: {str(e)}")
+
+
+def test_url_is_working(url: str) -> str:
+    """Test if a given URL is working"""
+    try:
+        response = requests.get(url)
+        # Check if the response status code is 200 (OK)
+        return "Ok" if response.status_code == 200  else f"Failed with status {response.status_code}"
+    except requests.exceptions.RequestException as e:
+        return f"Failed with error Error: {str(e)}"
+
+
+def test_spark_cluster_connections():
+    """Test if all nodes of a spark cluster are working"""
+    spark_nodes = {
+        "Spark History": "http://localhost:18080",
+        "Spark Master": "http://localhost:9080",
+        "Spark Connect": "http://localhost:4040",
+        "Spark Worker": "http://localhost:9081",
+    }
+    for key in spark_nodes.keys():
+        print(f"Connection to {key}: {test_url_is_working(spark_nodes[key])}")
+
+
+if __name__ == "__main__":
+    test_mongodb_connection(with_auth=True)
+    test_mongodb_connection(with_auth=False)
+    test_spark_cluster_connections()

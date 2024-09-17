@@ -1,0 +1,14 @@
+# Ignore git folders
+**/.git
+**/.gitignore
+
+# Ignore python virtual environments files
+**/.venv
+**/pyvenv.cfg
+
+# Ignore containers configuration files
+**/*.env
+
+# Ignore IDE specific
+**/.idea
+**/.vscode

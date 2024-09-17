@@ -1,0 +1,23 @@
+{
+  "services": {
+    "api-app": {
+      "build": {
+        "context": ".",
+        "dockerfile": "Dockerfile"
+      },
+      "container_name": "api-app",
+      "hostname" : "api-app",
+      "env_file": [
+        "./env/api.env"
+      ],
+      "restart": "always",
+      "ports": [
+        "8000:8000"
+      ],
+      "volumes": [
+        "./src:/opt/app:rw"
+      ],
+      "command" : "tail -f"
+    }
+  }
+}

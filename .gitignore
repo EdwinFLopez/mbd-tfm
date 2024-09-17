@@ -170,4 +170,7 @@ ecommerce/compose.*
 ecommerce/Makefile
 
 # Mongodb storage data
-storage/mongodb/data/
+storage/mongodb-data/**
+
+# Spark volume logs
+analytics/spark-data/**

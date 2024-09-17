@@ -1,0 +1,108 @@
+{
+  "services": {
+    "spark-master": {
+      "container_name": "spark-master",
+      "hostname": "spark-master",
+      "image": "spark:python3-java17",
+      "env_file": "./env/spark-master.env",
+      "ports": [
+        "9080:8080",
+        "7077:7077",
+        "6066:6066"
+      ],
+      "volumes": [
+        "./bin/launch-spark-master.sh:/opt/spark/bin/launch-spark-master.sh",
+        "./spark-data:/opt/spark/work-dir/data:rw",
+        "./spark-data/logs:/opt/spark/logs/spark"
+      ],
+      "command": "/opt/spark/bin/launch-spark-master.sh",
+      "restart": "always",
+      "healthcheck": {
+        "test": "curl -f http://127.0.0.1:8080",
+        "interval": "5s",
+        "timeout": "3s",
+        "retries": 3
+      }
+    },
+
+    "spark-history" : {
+      "container_name": "spark-history",
+      "hostname": "spark-history",
+      "image": "spark:python3-java17",
+      "env_file": "./env/spark-history.env",
+      "ports" : [
+        "18080:18080"
+      ],
+      "volumes": [
+        "./bin/launch-spark-history.sh:/opt/spark/bin/launch-spark-history.sh",
+        "./spark-data:/opt/spark/work-dir/data:rw",
+        "./spark-data/logs:/opt/spark/logs/spark",
+        "./spark-data/events:/tmp/spark-events:rw"
+      ],
+      "command": "/opt/spark/bin/launch-spark-history.sh",
+      "depends_on": [
+        "spark-master",
+        "spark-worker"
+      ],
+      "restart": "always",
+      "healthcheck": {
+        "test": "curl -f http://127.0.0.1:18080",
+        "interval": "5s",
+        "timeout": "3s",
+        "retries": 3
+      }
+    },
+
+    "spark-connect": {
+      "container_name": "spark-connect",
+      "hostname": "spark-connect",
+      "image": "spark:python3-java17",
+      "env_file": "./env/spark-connect.env",
+      "ports": [
+        "4040:4040",
+        "15002:15002"
+      ],
+      "volumes": [
+        "./bin/launch-spark-connect.sh:/opt/spark/bin/launch-spark-connect.sh",
+        "./spark-data:/opt/spark/work-dir/data:rw",
+        "./spark-data/logs:/opt/spark/logs/spark"
+      ],
+      "command": "/opt/spark/bin/launch-spark-connect.sh",
+      "depends_on": [
+        "spark-master"
+      ],
+      "healthcheck": {
+        "test": "curl -f http://127.0.0.1:4040",
+        "interval": "5s",
+        "timeout": "3s",
+        "retries": 3
+      }
+    },
+
+    "spark-worker": {
+      "container_name": "spark-worker",
+      "hostname": "spark-worker",
+      "image": "spark:python3-java17",
+      "env_file": "./env/spark-worker.env",
+      "ports": [
+        "9081:8081",
+        "7178:7178"
+      ],
+      "volumes": [
+        "./bin/launch-spark-worker.sh:/opt/spark/bin/launch-spark-worker.sh",
+        "./spark-data/logs:/opt/spark/logs/spark",
+        "./spark-data:/opt/spark/work-dir/data:rw"
+      ],
+      "command": "/opt/spark/bin/launch-spark-worker.sh",
+      "depends_on": [
+        "spark-master"
+      ],
+      "healthcheck": {
+        "test": "curl -f http://127.0.0.1:8081",
+        "interval": "5s",
+        "timeout": "3s",
+        "retries": 3
+      }
+    }
+  }
+}
