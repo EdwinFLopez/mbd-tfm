@@ -11,7 +11,7 @@
         "27017:27017"
       ],
       "volumes": [
-        "./mongodb/data/:/data/db"
+        "./mongodb-data/:/data/"
       ],
       "command": "mongod",
       "restart": "always",
