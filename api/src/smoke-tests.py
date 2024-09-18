@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import requests
+import os
 from pymongo import MongoClient
 
 def get_mongo_client_with_auth() -> MongoClient:
@@ -17,12 +18,15 @@ def get_mongo_client_with_auth() -> MongoClient:
 
 def get_mongo_client() -> MongoClient:
     """Create a MongoDB client"""
-    mdb = {
-        "db"        : 'mbdtfm_db',
-        "host"      : 'localhost',
-        "port"      : 27017
-    }
-    mongodb_uri = "mongodb://{host}:{port}/{db}".format(**mdb)
+    if "MONGO_DB_URL" in os.environ.keys():
+        mongodb_uri = os.environ['MONGO_DB_URL']
+    else:
+        mdb = {
+            "db"        : 'mbdtfm_db',
+            "host"      : 'localhost',
+            "port"      : 27017
+        }
+        mongodb_uri = "mongodb://{host}:{port}/{db}".format(**mdb)
     return MongoClient(mongodb_uri)
 
 def test_mongodb_connection(with_auth : bool = False):
@@ -55,11 +59,18 @@ def test_spark_cluster_connections():
         "Spark Connect": "http://localhost:4040",
         "Spark Worker": "http://localhost:9081",
     }
+    spark_vars = ["SPARK_MASTER_URL", "SPARK_WORKER_URL", "SPARK_HISTORY_URL", "SPARK_CONNECT_URL"]
+    if all(key in os.environ.keys() for key in spark_vars):
+        spark_nodes = {
+            "Spark Master": os.environ.get("SPARK_MASTER_URL"),
+            "Spark Worker": os.environ.get("SPARK_WORKER_URL"),
+            "Spark History": os.environ["SPARK_HISTORY_URL"],
+            "Spark Connect": os.environ["SPARK_CONNECT_URL"]
+        }
     for key in spark_nodes.keys():
         print(f"Connection to {key}: {test_url_is_working(spark_nodes[key])}")
 
 
 if __name__ == "__main__":
-    test_mongodb_connection(with_auth=True)
     test_mongodb_connection(with_auth=False)
     test_spark_cluster_connections()

@@ -1,9 +1,9 @@
 {
   "services": {
-    "mongodb": {
-      "container_name": "mongodb",
-      "hostname" : "mongo-database",
-      "image": "mongo:latest",
+    "mongodb-atlas": {
+      "container_name": "mongodb-atlas",
+      "hostname" : "mongodb-atlas",
+      "image": "mongodb/mongodb-atlas-local:latest",
       "env_file": [
         "./env/mongodb.env"
       ],
@@ -13,7 +13,6 @@
       "volumes": [
         "./mongodb-data/:/data/"
       ],
-      "command": "mongod",
       "restart": "always",
       "healthcheck" : {
         "test": "mongo --eval { db.adminCommand('ping') }",

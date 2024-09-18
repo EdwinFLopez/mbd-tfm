@@ -53,4 +53,7 @@ ENV PATH=$VIRTUAL_ENV_DIR/bin:$PATH
 
 # Command to run the application
 # Directly use Python to run the app
-CMD ["/bin/bash", "-c", "source $VIRTUAL_ENV_DIR/bin/activate && exec python main.py"]
+CMD [
+    "/bin/bash", "-c",
+    "source $VIRTUAL_ENV_DIR/bin/activate && exec ./smoke-tests.py && exec python main.py"
+]
