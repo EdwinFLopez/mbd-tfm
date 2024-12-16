@@ -1,56 +1,29 @@
 {
   "services": {
-    "kn1": {
-      "image": "debezium/kafka:latest",
-      "ports": [
-        "19092:9092",
-        "19093:9093"
-      ],
-      "environment": {
-        "BROKER_ID": 1
-      },
+    "kafka-standalone": {
+      "container_name": "kafka-standalone",
+      "hostname": "kafka-standalone",
+      "image": "apache/kafka:3.9.0",
       "env_file": [
-        "./env/kafka-common.env"
+        "./env/kafka.env"
+      ],
+      "ports": [
+        "9092:9092",
+        "9093:9093"
       ]
     },
-    "kn2": {
-      "image": "debezium/kafka:latest",
-      "ports": [
-        "29092:9092",
-        "29093:9093"
-      ],
-      "environment": {
-        "BROKER_ID": 2
-      },
-      "env_file": [
-        "./env/kafka-common.env"
-      ]
-    },
-    "kn3": {
-      "image": "debezium/kafka:latest",
-      "ports": [
-        "39092:9092",
-        "39093:9093"
-      ],
-      "environment": {
-        "BROKER_ID": 3
-      },
-      "env_file": [
-        "./env/kafka-common.env"
-      ]
-    },
-    "connect": {
-      "image": "debezium/connect:latest",
-      "ports": [
-        "8083:8083"
-      ],
+    "debezium-connect": {
+      "container_name": "debezium-connect",
+      "hostname": "debezium-connect",
+      "image": "quay.io/debezium/connect:3.0.4.Final",
       "env_file": [
         "./env/dbz-connect.env"
       ],
+      "ports": [
+        "8083:8083"
+      ],
       "depends_on": [
-        "kn1",
-        "kn2",
-        "kn3"
+        "kafka-standalone"
       ]
     }
   }

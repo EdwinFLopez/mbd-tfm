@@ -13,6 +13,6 @@ setup:
 setup-mac: env-mac setup
 
 # Enable once api docker env is ready
-#run-smoke-tests:
-#	@echo "Running smoke tests on local mbd-tfm environment"
-#	docker run -it api ./app/smoke-tests.py
+run-smoke-tests:
+	@echo "Running smoke tests on local mbd-tfm environment"
+	docker run -it mbd-tfm-api-app exec ./app/smoke-tests.py

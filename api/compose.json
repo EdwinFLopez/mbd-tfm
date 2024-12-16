@@ -6,7 +6,7 @@
         "dockerfile": "Dockerfile"
       },
       "container_name": "api-app",
-      "hostname" : "api-app",
+      "hostname": "api-app",
       "env_file": [
         "./env/api.env"
       ],
@@ -17,7 +17,7 @@
       "volumes": [
         "./src:/app:rw"
       ],
-      "command" : "tail -f"
+      "command": "tail -f"
     }
   }
 }

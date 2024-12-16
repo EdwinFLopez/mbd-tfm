@@ -24,13 +24,12 @@
         "retries": 3
       }
     },
-
-    "spark-history" : {
+    "spark-history": {
       "container_name": "spark-history",
       "hostname": "spark-history",
       "image": "spark:python3-java17",
       "env_file": "./env/spark-history.env",
-      "ports" : [
+      "ports": [
         "18080:18080"
       ],
       "volumes": [
@@ -52,7 +51,6 @@
         "retries": 3
       }
     },
-
     "spark-connect": {
       "container_name": "spark-connect",
       "hostname": "spark-connect",
@@ -78,7 +76,6 @@
         "retries": 3
       }
     },
-
     "spark-worker": {
       "container_name": "spark-worker",
       "hostname": "spark-worker",

@@ -17,8 +17,8 @@ curl -X POST http://localhost:8083/connectors -H "Content-Type: application/json
       "database.whitelist": "testdb",
       "table.whitelist": "testdb.your_table_name",
       "key.converter": "org.apache.kafka.connect.json.JsonConverter",
-      "key.converter.schemas.enable": "false",
       "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+      "key.converter.schemas.enable": "false",
       "value.converter.schemas.enable": "false"
   }
 }

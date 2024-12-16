@@ -16,13 +16,15 @@ COPY ./src/requirements.txt .
 
 # Install system dependencies and Python dependencies
 # This combines the installation steps to minimize layers
-RUN apt-get update && apt-get install -y --no-install-recommends gcc && \
-    python -m pip install --no-cache-dir --upgrade pip && \
-    python -m venv $VIRTUAL_ENV_DIR && \
-    $VIRTUAL_ENV_DIR/bin/pip install --no-cache-dir -r requirements.txt && \
-    apt-get remove --purge -y gcc && \
-    apt-get autoremove -y && \
+RUN <<EOF
+    apt-get update && apt-get install -y --no-install-recommends gcc
+    python -m pip install --no-cache-dir --upgrade pip
+    python -m venv $VIRTUAL_ENV_DIR
+    $VIRTUAL_ENV_DIR/bin/pip install --no-cache-dir -r requirements.txt
+    apt-get remove --purge -y gcc
+    apt-get autoremove -y
     rm -rf /var/lib/apt/lists/*
+EOF
 
 # Application Stage
 FROM base AS runtime
@@ -54,6 +56,5 @@ ENV PATH=$VIRTUAL_ENV_DIR/bin:$PATH
 # Command to run the application
 # Directly use Python to run the app
 CMD [
-    "/bin/bash", "-c",
-    "source $VIRTUAL_ENV_DIR/bin/activate && exec ./smoke-tests.py && exec python main.py"
+    "/bin/bash", "-c", "source $VIRTUAL_ENV_DIR/bin/activate && python smoke-tests.py"
 ]

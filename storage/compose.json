@@ -2,7 +2,7 @@
   "services": {
     "mongodb-atlas": {
       "container_name": "mongodb-atlas",
-      "hostname" : "mongodb-atlas",
+      "hostname": "mongodb-atlas",
       "image": "mongodb/mongodb-atlas-local:latest",
       "env_file": [
         "./env/mongodb.env"
@@ -13,8 +13,8 @@
       "volumes": [
         "./mongodb-data/:/data/"
       ],
-      "restart": "always",
-      "healthcheck" : {
+      "restart": "on-failure",
+      "healthcheck": {
         "test": "mongo --eval { db.adminCommand('ping') }",
         "interval": "30s",
         "timeout": "10s",
