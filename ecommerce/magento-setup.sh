@@ -2,7 +2,7 @@
 set -o errexit
 
 DOMAIN=${1:-magento.test}
-VERSION=${2:-2.4.7}
+VERSION=${2:-2.4.8}
 EDITION=${3:-community}
 
 echo "Installing: Magento @$DOMAIN $EDITION v$VERSION"
