@@ -5,10 +5,8 @@ DOMAIN=${1:-magento.test}
 VERSION=${2:-2.4.8}
 EDITION=${3:-community}
 
-echo "######################################################################"
 echo "Installing: Magento @$DOMAIN $EDITION v$VERSION"
 curl -s https://raw.githubusercontent.com/edwinflopez/docker-magento/master/lib/onelinesetup | bash -s -- "$DOMAIN" "$VERSION" "$EDITION"
-echo "######################################################################"
 
 # #####################################################################
 # TODO: Test using wget + unzip to download directly,

@@ -17,23 +17,22 @@ setup-backoffice:
 	@echo "======================================="
 	@echo "Starting up local mbd-tfm environment"
 	@echo "======================================="
-	docker compose --remove-orphans -f compose.json up -d
+	docker compose -p "mbd-tfm" -f compose.json up -d
 	@echo "======================================="
 	@echo "Backoffice is up and running... hopefully."
 
 # Setup backoffice including backoffice utils.
-setup-with-utils:
+setup-utils:
 	@echo "======================================="
 	@echo "Starting up local mbd-tfm environment"
 	@echo "======================================="
-	docker compose -f compose.json -f ./utils/compose.json up -d
+	docker compose -p "mbd-tfm" -f ./utils/compose.json up -d
 	@echo "======================================="
-	@echo "Backoffice is up and running... hopefully."
-
-# Force setting up images for m1/m2 chips, if available
-setup-mac: env-mac setup
+	@echo "Backoffice utils are up and running... hopefully."
 
 # Enable once api docker env is ready
 run-smoke-tests:
-	@echo "Running smoke tests on local mbd-tfm environment"
+	@echo "======================================="
+	@echo "Running smoke tests for API"
 	docker run -it mbd-tfm-api-app exec ./app/smoke-tests.py
+	@echo "======================================="

@@ -1,21 +1,5 @@
 {
   "services": {
-    "debezium-ui": {
-      "platform": "linux/amd64",
-      "container_name": "debezium-ui",
-      "hostname": "debezium-ui",
-      "image": "quay.io/debezium/debezium-ui:2.4",
-      "ports": [
-        "8080:8080"
-      ],
-      "env_file": [
-        "./env/debezium-ui.env"
-      ],
-      "depends_on": [
-        "kafka-standalone",
-        "debezium-connect"
-      ]
-    },
     "kafka-ui": {
       "container_name": "kafka-ui",
       "hostname": "kafka-ui",
@@ -28,9 +12,6 @@
       ],
       "volumes": [
         "./kafka-ui/config.yml:/etc/kafkaui/dynamic_config.yaml"
-      ],
-      "depends_on": [
-        "kafka-standalone"
       ]
     }
   }

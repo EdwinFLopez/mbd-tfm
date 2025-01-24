@@ -15,7 +15,7 @@
     "debezium-connect": {
       "container_name": "debezium-connect",
       "hostname": "debezium-connect",
-      "image": "quay.io/debezium/connect:3.0.4.Final",
+      "image": "quay.io/debezium/connect:3.0.7.Final",
       "env_file": [
         "./env/dbz-connect.env"
       ],

@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 set -o errexit
 
+echo "######################################################################"
 echo 'Creating MongoDB sink connector...'
 curl -X POST http://localhost:8083/connectors -H 'Content-Type: application/json' -d @- << EOF
 {
   "name": "mongodb-sink",
   "config": {
-      "connector.class": "com.mongodb.kafka.connect.MongoSinkConnector",
-      "connection.uri": "mongodb://mongodb:27017",
+      "connector.class": "io.debezium.connector.mongodb.MongoDbSinkConnector",
+      "mongodb.connection.string": "mongodb://mongodb-atlas:27017/mbdtfmdb",
       "tasks.max": "1",
-      "topics": "ecommerce.magento.*",
-      "database": "mbdtfm_db",
+      "topics.regex": "mbdtfm.magento.*",
+      "sink.database": "mbdtfmdb",
       "collection": "*",
       "key.converter": "org.apache.kafka.connect.json.JsonConverter",
       "value.converter": "org.apache.kafka.connect.json.JsonConverter",

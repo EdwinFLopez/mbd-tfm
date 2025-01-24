@@ -15,7 +15,7 @@
       ],
       "restart": "on-failure",
       "healthcheck": {
-        "test": "mongo --eval { db.adminCommand('ping') }",
+        "test": "mongo --eval '{ db.adminCommand(\"ping\") }'",
         "interval": "30s",
         "timeout": "10s",
         "retries": 5
