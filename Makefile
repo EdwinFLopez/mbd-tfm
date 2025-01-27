@@ -1,6 +1,9 @@
 SHELL := /usr/bin/env bash
 
-# ENV variable for docker compose to search for m1/m2 images if available
+# Default target
+all: setup-ecommerce setup-backoffice configure-connectors
+
+# ENV variable for docker compose to search for m1/m2 images if required
 env-mac:
 	$(eval DOCKER_DEFAULT_PLATFORM="linux/arm64")
 
@@ -8,7 +11,7 @@ setup-ecommerce:
 	@echo "======================================="
 	@echo "Downloading magento ecommerce"
 	@echo "======================================="
-	@cd ecommerce && ./magento-setup.sh
+	@cd ecommerce && ./magento-setup.sh && ./update-permissions.sh
 	@echo "======================================="
 	@echo "Magento is up and running... hopefully."
 
@@ -17,22 +20,14 @@ setup-backoffice:
 	@echo "======================================="
 	@echo "Starting up local mbd-tfm environment"
 	@echo "======================================="
-	docker compose -p "mbd-tfm" -f compose.json up -d
+	@docker compose -p "mbdtfm" -f compose.json up -d
 	@echo "======================================="
 	@echo "Backoffice is up and running... hopefully."
 
-# Setup backoffice including backoffice utils.
-setup-utils:
+configure-connectors:
 	@echo "======================================="
-	@echo "Starting up local mbd-tfm environment"
+	@echo "Configuring debezium connectors"
 	@echo "======================================="
-	docker compose -p "mbd-tfm" -f ./utils/compose.json up -d
+	@cd ingestion && ./register-source.sh && ./register-sink.sh
 	@echo "======================================="
-	@echo "Backoffice utils are up and running... hopefully."
-
-# Enable once api docker env is ready
-run-smoke-tests:
-	@echo "======================================="
-	@echo "Running smoke tests for API"
-	docker run -it mbd-tfm-api-app exec ./app/smoke-tests.py
-	@echo "======================================="
+	@echo "Debezium connectors configured"

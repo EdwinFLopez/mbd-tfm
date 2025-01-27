@@ -1,23 +1,21 @@
 {
   "services": {
-    "api-app": {
+    "webapi": {
       "build": {
         "context": ".",
         "dockerfile": "Dockerfile"
       },
-      "container_name": "api-app",
-      "hostname": "api-app",
+      "container_name": "webapi",
+      "hostname": "webapi",
       "env_file": [
         "./env/api.env"
       ],
-      "restart": "always",
       "ports": [
         "8000:8000"
       ],
       "volumes": [
         "./src:/app:rw"
-      ],
-      "command": "tail -f"
+      ]
     }
   }
 }

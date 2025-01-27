@@ -2,7 +2,7 @@
 set -o errexit
 
 echo "######################################################################"
-echo 'Creating MongoDB sink connector...'
+echo "Configuring MongoDB sink connector..."
 curl -X POST http://localhost:8083/connectors -H 'Content-Type: application/json' -d @- << EOF
 {
   "name": "mongodb-sink",

@@ -54,7 +54,5 @@ USER mbdtfm
 ENV PATH=$VIRTUAL_ENV_DIR/bin:$PATH
 
 # Command to run the application
-# Directly use Python to run the app
-CMD [
-    "/bin/bash", "-c", "source $VIRTUAL_ENV_DIR/bin/activate && python smoke-tests.py"
-]
+# Directly use Python to run the app when ready
+CMD ["./main.py"]

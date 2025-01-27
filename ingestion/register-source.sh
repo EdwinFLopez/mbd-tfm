@@ -2,8 +2,8 @@
 set -o errexit
 
 echo "######################################################################"
-echo "Creating MySQL source connector..."
-curl -X POST http://localhost:8083/connectors -H "Content-Type: application/json" -d @- << EOF
+echo "Configuring MySQL source connector..."
+curl -X POST http://localhost:8083/connectors -H 'Content-Type: application/json' -d @- << EOF
 {
   "name": "mysql-source",
   "config": {
