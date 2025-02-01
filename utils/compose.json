@@ -11,7 +11,7 @@
         "./env/kafka-ui.env"
       ],
       "volumes": [
-        "./kafka-ui/:/etc/kafkaui/"
+        "./kui/config.yaml:/etc/kafkaui/dynamic_config.yaml"
       ]
     }
   }

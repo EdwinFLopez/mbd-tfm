@@ -20,9 +20,12 @@ curl -X POST http://localhost:8083/connectors -H 'Content-Type: application/json
       "max.num.retries": 5,
       "errors.tolerance": "all",
       "mongo.errors.tolerance": "all",
-      "mongo.errors.log.enable": true,
-      "errors.log.include.messages": true,
-      "writemodel.strategy": "com.mongodb.kafka.connect.sink.writemodel.strategy.InsertOneDefaultStrategy",
+      "mongo.errors.log.enable": "true",
+      "errors.log.include.messages": "true",
+      "document.id.strategy": "com.mongodb.kafka.connect.sink.processor.id.strategy.BsonOidStrategy",
+      "post.processor.chain": "com.mongodb.kafka.connect.sink.processor.DocumentIdAdder",
+      "delete.on.null.values": "false",
+      "writemodel.strategy": "com.mongodb.kafka.connect.sink.writemodel.strategy.UpdateOneBusinessKeyTimestampStrategy",
       "change.data.capture.handler": "com.mongodb.kafka.connect.sink.cdc.debezium.rdbms.mysql.MysqlHandler"
   }
 }

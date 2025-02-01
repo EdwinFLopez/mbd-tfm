@@ -11,7 +11,7 @@ setup-ecommerce:
 	@echo "======================================="
 	@echo "Downloading magento ecommerce"
 	@echo "======================================="
-	@cd ecommerce && ./magento-setup.sh && ./update-permissions.sh
+	@cd ecommerce && ./magento-setup.sh && ./update-permissions.sh && ./sample-data.sh
 	@echo "======================================="
 	@echo "Magento is up and running... hopefully."
 
@@ -28,6 +28,7 @@ configure-connectors:
 	@echo "======================================="
 	@echo "Configuring debezium connectors"
 	@echo "======================================="
+	@sleep 2
 	@cd ingestion && ./register-source.sh && ./register-sink.sh
 	@echo "======================================="
 	@echo "Debezium connectors configured"
