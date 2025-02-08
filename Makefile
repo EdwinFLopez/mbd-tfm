@@ -1,11 +1,15 @@
 SHELL := /usr/bin/env bash
 
 # Default target
-all: setup-ecommerce setup-backoffice configure-connectors
+all: setup-ecommerce setup-backoffice wait configure-connectors
 
 # ENV variable for docker compose to search for m1/m2 images if required
 env-mac:
 	$(eval DOCKER_DEFAULT_PLATFORM="linux/arm64")
+
+# Used before configuring connectors, only when using default target.
+wait:
+	@sleep 5
 
 setup-ecommerce:
 	@echo "======================================="
@@ -28,7 +32,6 @@ configure-connectors:
 	@echo "======================================="
 	@echo "Configuring debezium connectors"
 	@echo "======================================="
-	@sleep 2
 	@cd ingestion && ./register-source.sh && ./register-sink.sh
 	@echo "======================================="
 	@echo "Debezium connectors configured"

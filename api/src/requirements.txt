@@ -1,4 +1,6 @@
-requests~=2.32.3
-dnspython==2.6.1
-pymongo==4.8.0
-pyspark==3.5.2
+requests
+dnspython
+pymongo
+pyspark
+pyspark[connect]
+setuptools
