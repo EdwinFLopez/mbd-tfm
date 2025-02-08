@@ -16,10 +16,9 @@
         "7178:7178"
       ],
       "volumes": [
-        "./bin/launch-cluster.sh:/opt/spark/bin/launch-cluster.sh",
-        "./spark-data:/opt/spark/work-dir/data:rw",
-        "./spark-data/logs:/opt/spark/work-dir/data/logs:rw",
-        "./spark-data/events:/tmp/spark-events:rw"
+        "./bin/launch-cluster.sh:/opt/spark/bin/launch-cluster.sh:ro",
+        "./spark-data/logs/:/opt/spark/work-dir/data/logs/:rw",
+        "./spark-data/spark-events/:/opt/spark/work-dir/data/spark-events/:rw"
       ],
       "command": [
         "sh", "-c", "/opt/spark/bin/launch-cluster.sh"
