@@ -1,15 +1,16 @@
 #!/usr/bin/env python
 import os
-
 from pyspark.sql import SparkSession
 
-def get_spark_session(sc_url: str) -> SparkSession:
-    return SparkSession.builder.remote(sc_url).appName("MBDTFM").getOrCreate()
-
 if __name__ == "__main__":
-    sc_url = os.environ["SPARK_CONNECT_URL"].replace("http:", "sc:")
-    with get_spark_session(sc_url) as session:
-        type(session)
-        print(session)
-        session.stop()
-    print("Running!")
+    sc_url = "sc://localhost:15002"
+    session = SparkSession.builder \
+            .appName("MBDTFM") \
+            .remote(sc_url) \
+            .config("spark.mongodb.read.connection.uri", "mongodb://localhost:27017/mbdtfmdb?directConnection=true") \
+            .config("spark.mongodb.write.connection.uri", "mongodb://localhost:27017/mbdtfmdb?directConnection=true") \
+            .getOrCreate()
+    session.read.format("mongo").load()
+    type(session)
+    print(session)
+    session.stop()

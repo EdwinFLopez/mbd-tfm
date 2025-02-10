@@ -3,4 +3,5 @@ dnspython
 pymongo
 pyspark
 pyspark[connect]
+pyspark[sql]
 setuptools
