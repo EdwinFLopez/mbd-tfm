@@ -2,7 +2,7 @@
 set -o errexit
 
 DOMAIN=${1:-magento.test}
-VERSION=${2:-2.4.7-p3}
+VERSION=${2:-2.4.7-p4}
 EDITION=${3:-community}
 
 echo "######################################################################"
