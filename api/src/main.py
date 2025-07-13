@@ -10,6 +10,7 @@ if __name__ == "__main__":
             .config("spark.mongodb.write.connection.uri", mongo_url) \
             .getOrCreate()
     session.read.format("mongo").load()
+
     type(session)
     print(session)
     session.stop()
