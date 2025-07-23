@@ -180,12 +180,12 @@ with category_entity as (
             msp.option_value,
             msa.rest_options
         from expanded_multiselect_attributes msa
-                 left join multiselect_options msp
-                           on msa.attribute_id=msp.attribute_id
-                               and msa.option_id = msp.option_id
-                 right join catalog_product_entity_text cpt
-                            on cpt.entity_id = msa.entity_id
-                                and cpt.attribute_id = msa.attribute_id
+        left join multiselect_options msp
+           on msa.attribute_id=msp.attribute_id
+           and msa.option_id = msp.option_id
+        right join catalog_product_entity_text cpt
+            on cpt.entity_id = msa.entity_id
+            and cpt.attribute_id = msa.attribute_id
 
     )
     select
@@ -208,7 +208,7 @@ with category_entity as (
            pwa.attribute_id,
            pwa.attribute_code,
            pwa.backend_type,
-           pwa.default_value,
+           pwa.attribute_input,
            pwa.attribute_label,
            pwa.is_visible,
            pwa.is_searchable,
@@ -216,6 +216,7 @@ with category_entity as (
            pwa.apply_to,
            pwa.additional_data,
            pwa.attribute_note,
+           pwa.default_value,
            txt.store_id,
            txt.txt_values as vtx_value,
            var.store_id as var_store_id,
@@ -227,24 +228,22 @@ with category_entity as (
            vin.store_id as vin_store_id,
            vin.value as vin_value
     from product_attributes pwa
-             left join catalog_product_entity_multiselect txt
-                       on  pwa.product_id = txt.entity_id
-                           and pwa.attribute_id = txt.attribute_id
-             left join catalog_product_entity_varchar var
-                       on  pwa.product_id = var.entity_id
-                           and pwa.attribute_id = var.attribute_id
-             left join catalog_product_entity_datetime vdt
-                       on  pwa.product_id = vdt.entity_id
-                           and pwa.attribute_id = vdt.attribute_id
-             left join catalog_product_entity_decimal vdc
-                       on  pwa.product_id = vdc.entity_id
-                           and pwa.attribute_id = vdc.attribute_id
-             left join catalog_product_entity_int vin
-                       on  pwa.product_id = vin.entity_id
-                           and pwa.attribute_id = vin.attribute_id
-    where
-        -- pwa.backend_type <> 'static' and
-        pwa.sku like '24-MB06%'
+    left join catalog_product_entity_multiselect txt
+           on  pwa.product_id = txt.entity_id
+           and pwa.attribute_id = txt.attribute_id
+    left join catalog_product_entity_varchar var
+           on  pwa.product_id = var.entity_id
+           and pwa.attribute_id = var.attribute_id
+    left join catalog_product_entity_datetime vdt
+           on  pwa.product_id = vdt.entity_id
+           and pwa.attribute_id = vdt.attribute_id
+    left join catalog_product_entity_decimal vdc
+           on  pwa.product_id = vdc.entity_id
+           and pwa.attribute_id = vdc.attribute_id
+    left join catalog_product_entity_int vin
+           on  pwa.product_id = vin.entity_id
+           and pwa.attribute_id = vin.attribute_id
+    where pwa.sku like '24-MB06%'
 
 ), final_query as (
 
@@ -252,24 +251,22 @@ with category_entity as (
            pcv.type_id,
            pcv.attribute_set_name,
            JSON_OBJECTAGG(
-                   pcv.attribute_code,
-                   case backend_type
-                       when "varchar" then pcv.var_value
-                       when "decimal" then pcv.vdc_value
-                       when "int" then pcv.vin_value
-                       when "text" then pcv.vtx_value
-                       when "datetime" then pcv.vdt_value
-                       else pcv.default_value
-                       end
+                pcv.attribute_code,
+                case backend_type
+                   when "varchar" then json_array(pcv.var_value)
+                   when "decimal" then json_array(pcv.vdc_value)
+                   when "int" then json_array(pcv.vin_value)
+                   when "text" then pcv.vtx_value
+                   when "datetime" then json_array(pcv.vdt_value)
+                   else json_array(pcv.default_value)
+                end
            ) as product_attributes
     From product_catalog_view pcv
     group by pcv.sku, pcv.type_id, pcv.attribute_set_name
 
 )
-select *
-from final_query
+select * from final_query
 ;
-
 
 with recursive expanded_multiselect_attributes as (
     with multiselect_attributes as (
