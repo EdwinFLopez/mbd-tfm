@@ -2,8 +2,6 @@
   "include" : [
       "./storage/compose.json",
       "./ingestion/compose.json",
-      "./utils/compose.json",
-      "./analytics/compose.json",
-      "./api/compose.json"
+      "./utils/compose.json"
   ]
 }
