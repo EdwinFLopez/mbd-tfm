@@ -2,9 +2,11 @@
 set -o errexit
 
 echo "######################################################################"
-echo "Defining mysql PRODUCTS_WITH_ATTRS_JSON_VIEW"
+echo "Defining MysqlDb Products_With_Attrs_Json_View"
 
 ./bin/mysql -uroot -pmagento << EOF
+USE magento;
+
 CREATE OR REPLACE VIEW PRODUCTS_WITH_ATTRS_JSON_VIEW AS
 with cte_product_entity as (
 
@@ -278,4 +280,5 @@ left join cte_products_with_attrs_view att
 ;
 EOF
 echo "######################################################################"
-echo "PRODUCTS_WITH_ATTRS_JSON_VIEW have been defined correctly...."
+echo "Products_With_Attrs_Json_View have been defined correctly...."
+echo ""

@@ -11,3 +11,4 @@ FLUSH PRIVILEGES;
 EOF
 echo "######################################################################"
 echo "Permissions for using debezium connector have been setup correctly...."
+echo ""

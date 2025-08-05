@@ -35,3 +35,4 @@ mkdir -p ~/.composer ~/.ssh
 # Proceed to install magento
 bin/download "${VERSION}" "${EDITION}" && bin/setup "${DOMAIN}"
 echo "######################################################################"
+echo ""

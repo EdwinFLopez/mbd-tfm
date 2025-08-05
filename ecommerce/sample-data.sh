@@ -12,3 +12,4 @@ bin/magento module:disable Magento_TwoFactorAuth Magento_AdminAdobeImsTwoFactorA
 bin/magento setup:di:compile
 echo "######################################################################"
 echo "Sample data deployed..."
+echo ""
