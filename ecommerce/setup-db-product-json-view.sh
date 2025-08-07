@@ -2,12 +2,12 @@
 set -o errexit
 
 echo "######################################################################"
-echo "Defining MysqlDb Products_With_Attrs_Json_View"
+echo "Defining MysqlDb View: Products_With_Attrs_Json_View..."
 
-./bin/mysql -uroot -pmagento << EOF
+bin/mysql -umagento -pmagento << EOF
 USE magento;
 
-CREATE OR REPLACE VIEW PRODUCTS_WITH_ATTRS_JSON_VIEW AS
+create or replace view products_with_attrs_json_view as
 with cte_product_entity as (
 
     select
@@ -244,7 +244,7 @@ with cte_product_entity as (
                 'attribute_note', pwa.attribute_note,
                 'default_value', pwa.default_value,
                 'value', if (
-                    json_length(attr_value)>1, attr_value, json_extract(attr_value, '$[0]')
+                    json_length(attr_value)>1, attr_value, json_extract(attr_value, '\$[0]')
                 )
             )
         ) as prod_attr_values
@@ -256,6 +256,7 @@ with cte_product_entity as (
 select
     prd.entity_id as product_id,
     prd.sku as product_sku,
+    cast(json_unquote(json_extract(att.prod_attr_values, '\$.name.value')) as char(64)) as product_name,
     json_object(
         'product_sku', prd.sku,
         'product_type', prd.type_id,
@@ -265,9 +266,8 @@ select
         'product_ratings_pct', coalesce(rnk.rating_pct, 0),
         'product_attributes', att.prod_attr_values
     ) as product_properties,
-    prd.created_at,
-    prd.updated_at,
-    cast(null as datetime) as deleted_at
+    prd.created_at as product_created_at,
+    prd.updated_at as product_updated_at
 from catalog_product_entity prd
 join cte_attribute_sets ast
   using (attribute_set_id)
@@ -279,6 +279,7 @@ left join cte_products_with_attrs_view att
    on prd.entity_id = att.product_id
 ;
 EOF
+
+echo "MysqlDb View has been correctly defined..."
 echo "######################################################################"
-echo "Products_With_Attrs_Json_View have been defined correctly...."
 echo ""
