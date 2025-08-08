@@ -22,8 +22,8 @@ setup-ecommerce: wait
 		&& ./setup-db-product-json-view.sh \
 		&& ./setup-db-mview-table.sh \
 		&& ./setup-db-mview-sp.sh \
-		&& ./setup-db-mview-event
-	@echo "Magento is up and running... hopefully."
+		&& ./setup-db-mview-event.sh
+	@echo "Magento is up and running..."
 	@echo "======================================="
 
 # Setup backoffice serving ecommerce
