@@ -8,7 +8,7 @@ curl -X POST http://localhost:8083/connectors -H 'Content-Type: application/json
   "name": "mongodb-sink",
   "config": {
       "connector.class": "io.debezium.connector.mongodb.MongoDbSinkConnector",
-      "mongodb.connection.string": "mongodb://mongodb-atlas:27017/mbdtfmdb",
+      "mongodb.connection.string": "mongodb://mongodb-atlas:27017",
       "tasks.max": "1",
       "topics.regex": "mbdtfm.magento.*",
       "sink.database": "mbdtfmdb",

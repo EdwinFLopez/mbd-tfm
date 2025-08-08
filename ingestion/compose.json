@@ -3,7 +3,7 @@
     "kafka-standalone": {
       "container_name": "kafka-standalone",
       "hostname": "kafka-standalone",
-      "image": "apache/kafka:3.9.0",
+      "image": "apache/kafka:4.0.0",
       "env_file": [
         "./env/kafka.env"
       ],
@@ -15,7 +15,7 @@
     "debezium-connect": {
       "container_name": "debezium-connect",
       "hostname": "debezium-connect",
-      "image": "quay.io/debezium/connect:3.0.7.Final",
+      "image": "quay.io/debezium/connect:3.2.0.Final",
       "env_file": [
         "./env/dbz-connect.env"
       ],

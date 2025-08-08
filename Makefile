@@ -1,7 +1,7 @@
 SHELL := /usr/bin/env bash
 
 # Default target
-all: setup-ecommerce setup-backoffice wait configure-connectors
+all: setup-ecommerce setup-backoffice configure-connectors
 
 # ENV variable for docker compose to search for m1/m2 images if required
 env-mac:
@@ -11,27 +11,36 @@ env-mac:
 wait:
 	@sleep 5
 
-setup-ecommerce:
+setup-ecommerce: wait
 	@echo "======================================="
-	@echo "Downloading magento ecommerce"
+	@echo "Downloading Magento and sample data"
 	@echo "======================================="
-	@cd ecommerce && ./magento-setup.sh && ./update-permissions.sh && ./sample-data.sh
-	@echo "======================================="
+	@cd ecommerce \
+		&& ./setup-magento-ecommerce.sh \
+		&& ./setup-magento-sample-data.sh \
+		&& ./setup-db-permissions.sh \
+		&& ./setup-db-product-json-view.sh \
+		&& ./setup-db-mview-table.sh \
+		&& ./setup-db-mview-sp.sh \
+		&& ./setup-db-mview-event
 	@echo "Magento is up and running... hopefully."
+	@echo "======================================="
 
 # Setup backoffice serving ecommerce
-setup-backoffice:
+setup-backoffice: wait
 	@echo "======================================="
 	@echo "Starting up local mbd-tfm environment"
 	@echo "======================================="
 	@docker compose -p "mbdtfm" -f compose.json up -d
+	@echo "Backoffice is up and running"
 	@echo "======================================="
-	@echo "Backoffice is up and running... hopefully."
 
-configure-connectors:
+configure-connectors: wait
 	@echo "======================================="
 	@echo "Configuring debezium connectors"
 	@echo "======================================="
-	@cd ingestion && ./register-source.sh && ./register-sink.sh
-	@echo "======================================="
+	@cd ingestion \
+		&& ./register-source.sh \
+		&& ./register-sink.sh
 	@echo "Debezium connectors configured"
+	@echo "======================================="
