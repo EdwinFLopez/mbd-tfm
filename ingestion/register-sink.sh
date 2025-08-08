@@ -3,12 +3,13 @@ set -o errexit
 
 echo "######################################################################"
 echo "Configuring MongoDB sink connector..."
+curl -s -X DELETE http://localhost:8083/connectors/mongodb-sink > /dev/null
 curl -X POST http://localhost:8083/connectors -H 'Content-Type: application/json' -d @- << EOF
 {
   "name": "mongodb-sink",
   "config": {
       "connector.class": "io.debezium.connector.mongodb.MongoDbSinkConnector",
-      "mongodb.connection.string": "mongodb://mongodb-atlas:27017",
+      "mongodb.connection.string": "mongodb://mongodb-atlas:27017/mbdtfmdb",
       "tasks.max": "1",
       "topics.regex": "mbdtfm.magento.*",
       "sink.database": "mbdtfmdb",
