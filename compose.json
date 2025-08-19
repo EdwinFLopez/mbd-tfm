@@ -1,5 +1,6 @@
 {
   "include" : [
+      "./analytics/compose.json",
       "./storage/compose.json",
       "./ingestion/compose.json",
       "./utils/compose.json"
