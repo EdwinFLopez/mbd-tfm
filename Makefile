@@ -1,7 +1,7 @@
 SHELL := /usr/bin/env bash
 
 # Default target
-all: setup-ecommerce setup-backoffice configure-connectors
+all: setup-ecommerce setup-backoffice setup-dbz-connectors setup-embeddings-collection
 
 # ENV variable for docker compose to search for m1/m2 images if required
 env-mac:
@@ -35,7 +35,15 @@ setup-backoffice: wait
 	@echo "Backoffice is up and running"
 	@echo "======================================="
 
-configure-connectors: wait
+setup-embeddings-collection: wait
+	$(eval EMBEDDINGS_COLLECTION_SCRIPT="/data/scripts/create-embeddings-collection.sh")
+	@echo "======================================="
+	@echo "Creating embeddings collection in storage"
+	@echo "======================================="
+	@docker exec -it mongodb-atlas /bin/bash -c "$(EMBEDDINGS_COLLECTION_SCRIPT)"
+	@echo "======================================="
+
+setup-dbz-connectors: wait
 	@echo "======================================="
 	@echo "Configuring debezium connectors"
 	@echo "======================================="

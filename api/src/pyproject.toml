@@ -1,0 +1,84 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "MBD_TFM_APP"
+description = "Master in Big Data, TFM Application"
+authors = [
+    {name = "Edwin Lopez", email = "edwinfernando.lopez@students.salle.url.edu"},
+    {name = "Albert Ripoll", email = "a.ripoll@students.salle.url.edu"},
+]
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = [
+    "big-data", "spark", "spark-connect",
+    "mongodb", "recommendation-system"
+]
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+dependencies = [
+    "requests",
+    "dnspython",
+    "pymongo",
+    "pyspark",
+    "pyspark[connect]",
+    "pyspark[mllib]",
+    "pyspark[sql]",
+    "pyspark[ml]",
+    "setuptools",
+    "streamlit",
+    "numpy",
+    "watchdog"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",           # For unit and integration tests
+    "coverage",         # Coverage reporting
+    "black",            # Code formatting
+    "ruff",             # Linting
+    "mypy"              # Type checks
+]
+test = [
+    "pytest"
+]
+lint = [
+    "ruff"
+]
+format = [
+    "black"
+]
+typecheck = [
+    "mypy"
+]
+
+[tool.black]
+line-length = 120
+target-version = ['py312']
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.mypy]
+python_version = 3.10
+ignore_missing_imports = true
+
+[tool.coverage.run]
+branch = true
+source = ["MBD_TFM_APP"]
+
+[tool.coverage.report]
+fail_under = 80
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests/unit",
+    "tests/integration"
+]

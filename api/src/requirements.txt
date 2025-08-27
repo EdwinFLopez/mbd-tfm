@@ -3,5 +3,10 @@ dnspython
 pymongo
 pyspark
 pyspark[connect]
+pyspark[mllib]
 pyspark[sql]
+pyspark[ml]
 setuptools
+streamlit
+numpy
+watchdog

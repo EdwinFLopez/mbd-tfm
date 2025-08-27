@@ -3,12 +3,13 @@
     "spark-cluster": {
       "container_name": "spark-cluster",
       "hostname": "spark-cluster",
-      "image": "spark:python3-java17",
+      "image": "apache/spark:4.0.0-scala2.13-java21-python3-r-ubuntu",
       "env_file": "./env/spark-cluster.env",
       "ports": [
         "18080:18080",
         "6066:6066",
         "7077:7077",
+        "7178:7178",
         "8080:8080",
         "8081:8081"
       ],
@@ -29,7 +30,7 @@
     "spark-connect": {
       "container_name": "spark-connect",
       "hostname": "spark-connect",
-      "image": "spark:python3-java17",
+      "image": "apache/spark:4.0.0-scala2.13-java21-python3-r-ubuntu",
       "env_file": "./env/spark-connect.env",
       "ports": [
         "4040:4040",

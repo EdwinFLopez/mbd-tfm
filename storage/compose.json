@@ -11,6 +11,7 @@
         "27017:27017"
       ],
       "volumes": [
+        "./scripts/:/data/scripts/:rw",
         "./mongodb-data/:/data/"
       ],
       "restart": "on-failure",
