@@ -59,7 +59,7 @@ echo "======================================="
   });
 EOF
 )"
-echo "Full-Text search index '${TARGET_COLLECTION}_product_flat_properties_idx' created"
+echo "Full-Text search index '${TARGET_COLLECTION}_product_flat_properties_idx' created."
 echo "======================================="
 
 /usr/bin/mongosh "$MONGO_URI" --eval "$(cat << EOF
