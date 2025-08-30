@@ -20,17 +20,20 @@ def render_ui() -> None:
         __ui_page_welcome__,
         title="Product Recommendations for Magento eCommerce > Home",
         icon=":material/home:",
+        url_path="/home",
         default=True
     )
     recommendations_page = st.Page(
         __ui_page_recommendations__,
         title="Recommendations",
-        icon=":material/editor_choice:"
+        icon=":material/editor_choice:",
+        url_path = "/recommendations"
     )
     embeddings_page = st.Page(
         __ui_page_calculate_embeddings__,
         title="Calculate Embeddings",
-        icon=":material/function:"
+        icon=":material/function:",
+        url_path = "/embeddings"
     )
 
     st.navigation(
