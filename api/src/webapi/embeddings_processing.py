@@ -3,29 +3,39 @@ import time
 import uuid
 from enum import Enum
 from threading import Thread
-from typing import Dict
+from typing import Dict, Optional, List
 
 
 class EmbeddingsPipelineStatus(str, Enum):
-    """
-    Enumeration of the possible status of the embeddings processing job.
-    """
+    """Enumeration of possible statuses of the embeddings processing job."""
     READY = "ready"
     RUNNING = "running"
     COMPLETED = "completed"
     FAILED = "failed"
 
 
-class PipelineProcessor:
+class EmbeddingsPipelineProcessor:
     """
     Helper class to manage embeddings processing job status.
+    Thread-safe implementation with error tracking.
     """
 
-    def __init__(self):
-        self.process_lock = threading.Lock()
+    def __init__(self) -> None:
+        self._lock = threading.Lock()
         self._current_job: str = str(uuid.uuid4())
-        self._errors: dict[str, str | None] = { self._current_job: None }
-        self._processes: dict[str, EmbeddingsPipelineStatus] = { self._current_job: EmbeddingsPipelineStatus.READY }
+        self._errors: Dict[str, Optional[str]] = {
+            self._current_job: None
+        }
+        self._processes: Dict[str, EmbeddingsPipelineStatus] = {
+            self._current_job: EmbeddingsPipelineStatus.READY
+        }
+
+    # ---------------- Status helpers ---------------- #
+    def release(self) -> None:
+        if self._lock.locked():
+            self._lock.release()
+
+    # ---------------- Status helpers ---------------- #
 
     def is_ready(self) -> bool:
         return self._processes[self._current_job] == EmbeddingsPipelineStatus.READY
@@ -40,53 +50,60 @@ class PipelineProcessor:
         return self._processes[self._current_job] == EmbeddingsPipelineStatus.FAILED
 
     def is_idle(self) -> bool:
-        return self._processes[self._current_job] in [
+        return self._processes[self._current_job] in {
+            EmbeddingsPipelineStatus.READY,
             EmbeddingsPipelineStatus.COMPLETED,
             EmbeddingsPipelineStatus.FAILED,
-            EmbeddingsPipelineStatus.READY
-        ]
+        }
+
+    # ---------------- Job queries ---------------- #
 
     def has_job(self, job_id: str) -> bool:
-        return job_id in self._processes.keys()
+        return job_id in self._processes
 
-    def get_error(self, p_id: str) -> str | None:
-        if p_id in self._errors.keys():
-            return self._errors[p_id]
-        return None
+    def get_error(self, job_id: str) -> Optional[str]:
+        return self._errors.get(job_id)
 
-    def get_jobs_list(self) -> list[dict[str, object]]:
-        return [ self.get_status(job_id) for job_id in self._processes.keys()]
+    def get_jobs_list(self) -> List[Dict[str, object]]:
+        return [self.get_status(job_id) for job_id in self._processes]
 
-    def get_current_status(self) -> dict[str, str | EmbeddingsPipelineStatus | None] | None:
-        return self.get_status(self._current_job)
+    def get_current_status(self) -> Dict[str, object]:
+        with self._lock:
+            return self.get_status(self._current_job)
 
-    def get_status(self, p_id: str) -> dict[str, str | EmbeddingsPipelineStatus | None] | None:
-        if p_id in self._processes.keys():
-            return {
-                'job_id': p_id,
-                'job_status': self._processes[p_id],
-                'job_last_error': self.get_error(p_id)
-            }
-        return None
+    def get_status(self, job_id: str) -> Dict[str, object]:
+        return {
+            "job_id": job_id,
+            "job_status": self._processes.get(job_id, "unknown"),
+            "job_last_error": self._errors.get(job_id),
+        }
 
-    def start(self) -> bool | None:
-        if self.is_idle():
-            thread: Thread = Thread(target=self.__run_embeddings_process__, daemon=True)
-            thread.start()
-            return True
-        return False
+    # ---------------- Execution control ---------------- #
+
+    def start(self) -> bool:
+        """Start a new embeddings job in a background thread."""
+        if not self.is_idle():
+            return False
+
+        Thread(target=self.__run_embeddings_process__, daemon=True).start()
+        return True
 
     def __run_embeddings_process__(self) -> None:
         try:
-            with self.process_lock:
-                self._current_job = self._current_job if self.is_ready() else str(uuid.uuid4())
+            with self._lock:
+                # Only reuse job if it’s still in READY
+                if not self.is_ready():
+                    self._current_job = str(uuid.uuid4())
                 self._processes[self._current_job] = EmbeddingsPipelineStatus.RUNNING
+                self._errors[self._current_job] = None
 
-            time.sleep(40)  # call spark embeddings processor
+            # Simulate long-running task (replace with actual logic)
+            time.sleep(40)
 
-            with self.process_lock:
+            with self._lock:
                 self._processes[self._current_job] = EmbeddingsPipelineStatus.COMPLETED
+
         except Exception as e:
-            with self.process_lock:
+            with self._lock:
                 self._errors[self._current_job] = str(e)
                 self._processes[self._current_job] = EmbeddingsPipelineStatus.FAILED
