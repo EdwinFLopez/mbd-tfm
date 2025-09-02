@@ -15,8 +15,7 @@
       ],
       "volumes": [
         "./bin/launch-spark-cluster.sh:/opt/spark/bin/launch-spark-cluster.sh",
-        "./spark-data/logs/:/opt/spark/work-dir/logs/:rw",
-        "./spark-data/spark-events/:/opt/spark/work-dir/data/spark-events/:rw"
+        "./spark-venv/cluster:/usr/local/lib/python3.10/dist-packages:rw"
       ],
       "command": ["sh", "-c", "/opt/spark/bin/launch-spark-cluster.sh"],
       "healthcheck": {
@@ -38,8 +37,7 @@
       ],
       "volumes": [
         "./bin/launch-spark-connect.sh:/opt/spark/bin/launch-spark-connect.sh",
-        "./spark-data/logs/:/opt/spark/work-dir/logs/:rw",
-        "./spark-data/data/:/opt/spark/work-dir/data/:rw"
+        "./spark-venv/connect:/usr/local/lib/python3.10/dist-packages:rw"
       ],
       "command": ["sh", "-c", "/opt/spark/bin/launch-spark-connect.sh"],
       "depends_on": ["spark-cluster"],

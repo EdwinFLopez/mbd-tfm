@@ -1,4 +1,4 @@
-from commons.constants import MONGO_PRODUCTS_COLLECTION_URL
+from commons.constants import MDB_PRODUCTS_COLLECTION_URL
 import json
 from pyspark.ml.feature import Tokenizer, HashingTF, IDF
 from pyspark.sql import DataFrame
@@ -22,7 +22,7 @@ def create_product_embeddings(df: DataFrame, properties_column: str = "product_p
     # Note: dataframe `df` must be open in R/W mode
     source_column = f"{properties_column}_flat"
     df = __compute_embeddings(df_flat, embeddings_column, source_column)
-    df.write.format("mongo").option("uri", MONGO_PRODUCTS_COLLECTION_URL).mode("overwrite").save()
+    df.write.format("mongo").option("uri", MDB_PRODUCTS_COLLECTION_URL).mode("overwrite").save()
 
 
 def __compute_embeddings(df: DataFrame, target_column: str, source_column: str) -> DataFrame:

@@ -1,40 +1,38 @@
 from pyspark.sql import SparkSession, DataFrame
-from commons.constants import *
+from commons.constants import MONGO_URL, MONGO_DATABASE
 
 
-def load_products_collection(session: SparkSession) -> DataFrame:
+def save_collection(df: DataFrame, collection: str, mode: str = "overwrite") -> None:
     """
-    Loads the MongoDB collection `mbdtfm_magento_catalog_products_mview` in r/w mode.
-    :param session: Spark-Connect session instance
-    :return: DataFrame
-    """
-    return __load_collection(session, MONGO_DATABASE, MONGO_PRODUCTS_COLLECTION)
+    Saves data to a mongodb collection through a Spark-Connect session in write mode,
+    overwriting the stored data.
 
+    :param df: DataFrame to save
+    :param collection: MongoDB collection name
+    :param mode: Save mode, default is "overwrite"
+    """
+    (   df.write
+            .format("mongodb")
+            .option("spark.mongodb.write.connection.uri", MONGO_URL)
+            .option("database", MONGO_DATABASE)
+            .option("collection", collection)
+            .mode(mode)
+            .save()
+    )
 
 def load_collection(session: SparkSession, collection: str) -> DataFrame:
     """
-    Loads a given MongoDB collection in r/w mode.
+    Loads a given MongoDB collection in read-only mode.
+
     :param session: Spark-Connect session instance
     :param collection: MongoDB collection name
     :return: DataFrame
     """
-    return __load_collection(session, MONGO_DATABASE, collection)
-
-
-def __load_collection(session: SparkSession, database: str, collection: str) -> DataFrame:
-    """
-    Loads data from a mongodb collection through a Spark-Connect session in read/write mode.
-    :param session: Spark-Connect session instance
-    :param database: MongoDB database name
-    :param collection: MongoDB collection name
-    :return: DataFrame
-    """
-    df = (
-        session.read.format("mongodb")
+    return (
+        session.read
+            .format("mongodb")
             .option("spark.mongodb.read.connection.uri", MONGO_URL)
-            .option("spark.mongodb.write.connection.uri", MONGO_URL)
-            .option("database", database)
+            .option("database", MONGO_DATABASE)
             .option("collection", collection)
             .load()
     )
-    return df

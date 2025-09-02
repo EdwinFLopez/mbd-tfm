@@ -15,8 +15,10 @@ MONGO_PORT = int(os.getenv("MONGO_HOST", 27017))
 MONGO_URL = f"mongodb://{MONGO_HOST}:{MONGO_PORT}"
 
 # ###############################################################
-# Some mongodb constants for the materialized view and its url.
+# Some mongodb constants for the views and their url.
 # ###############################################################
 MONGO_DATABASE = "mbdtfmdb"
-MONGO_PRODUCTS_COLLECTION = "mbdtfm_magento_catalog_products_mview"
-MONGO_PRODUCTS_COLLECTION_URL = f"{MONGO_URL}/{MONGO_DATABASE}.{MONGO_PRODUCTS_COLLECTION}"
+MDB_PRODUCTS_COLLECTION = "mbdtfm_magento_catalog_products_mview"
+MDB_EMBEDDINGS_COLLECTION = "mbdtfm_magento_catalog_products_embeddings"
+MDB_PRODUCTS_COLLECTION_URL = f"{MONGO_URL}/{MONGO_DATABASE}.{MDB_PRODUCTS_COLLECTION}"
+MDB_EMBEDDINGS_COLLECTION_URL = f"{MONGO_URL}/{MONGO_DATABASE}.{MDB_EMBEDDINGS_COLLECTION}"
