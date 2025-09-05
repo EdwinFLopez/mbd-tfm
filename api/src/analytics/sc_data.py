@@ -32,6 +32,7 @@ def load_collection(session: SparkSession, collection: str) -> DataFrame:
         session.read
             .format("mongodb")
             .option("spark.mongodb.read.connection.uri", MONGO_URL)
+            .option("spark.mongodb.write.connection.uri", MONGO_URL)
             .option("database", MONGO_DATABASE)
             .option("collection", collection)
             .load()

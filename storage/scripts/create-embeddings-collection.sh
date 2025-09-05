@@ -65,11 +65,11 @@ echo "======================================="
 
 /usr/bin/mongosh "$MONGO_URI" --eval "$(cat << EOF
   db.getSiblingDB('$DB_NAME').${TARGET_COLLECTION}.createSearchIndex(
-    '${TARGET_COLLECTION}_product_flat_properties_idx', {
+    '${TARGET_COLLECTION}_product_flat_props_idx', {
       mappings: {
         dynamic: false,
         fields: {
-          product_flat_properties: {
+          product_flat_props: {
             type: 'string'
           }
         }

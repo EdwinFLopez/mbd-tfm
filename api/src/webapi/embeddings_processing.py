@@ -97,8 +97,12 @@ class EmbeddingsPipelineProcessor:
                 self._processes[self._current_job] = EmbeddingsPipelineStatus.RUNNING
                 self._errors[self._current_job] = None
 
-            # Simulate long-running task (replace with actual logic)
+            # ###############################################################
+            # Call the actual embeddings processing logic here.
+            # This is a placeholder for the real implementation.
+            # ###############################################################
             time.sleep(40)
+            # ###############################################################
 
             with self._lock:
                 self._processes[self._current_job] = EmbeddingsPipelineStatus.COMPLETED
