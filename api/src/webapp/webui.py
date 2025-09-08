@@ -175,8 +175,54 @@ def _ui_page_calculate_embeddings() -> None:
     )
     st.markdown("🟢 Running" if st.session_state[__STATUS_PIPELINE_RUNNING__] else "🔴 Stopped")
     st.markdown("---")
-    st.dataframe()
+
+    response = requests.get(f"{WEBAPI_URL}/embeddings/status/jobs")
+    if response.ok:
+        data = response.json()
+    else:
+        data = {}
+        st.error(f"Error fetching status for embeddings jobs: {response.text}")
+
+    columns_config = {
+        "job_id": st.column_config.TextColumn(label="Job Id", width="large"),
+        "job_status": st.column_config.TextColumn(label="Job Status", width="medium"),
+        "job_last_error": st.column_config.TextColumn(label="Last Error", width="large")
+    }
+    st.dataframe(
+        data=data,
+        hide_index=True,
+        width='stretch',
+        column_config=columns_config,
+        column_order=columns_config.keys(),
+    )
 
 
 def __on_start_embeddings_calculation_callback() -> None:
-    st.session_state[__STATUS_PIPELINE_RUNNING__] = not st.session_state[__STATUS_PIPELINE_RUNNING__]
+    is_running = st.session_state[__STATUS_PIPELINE_RUNNING__]
+    if is_running:
+        return
+
+    response = requests.post(f"{WEBAPI_URL}/embeddings/start")
+    if not response.ok:
+        st.session_state[__STATUS_PIPELINE_RUNNING__] = True
+        st.error(f"Error starting embeddings job: {response.text}")
+        return
+
+    # {
+    #   "job_id": "913fc681-2d98-4ac6-bcc4-4eb5d2b882f2",
+    #   "job_status": "running" | "completed" | "failed",
+    #   "job_last_error": null | str
+    # }
+    is_complete = False
+    data = response.json()
+    if data and data['job_status'] == 'running':
+        st.info(f"Embeddings job {data['job_id']} is still running.")
+    elif data and data['job_status'] == 'completed':
+        is_complete = True
+        st.info(f"Embeddings job {data['job_id']} is complete.")
+    elif data and data['job_status'] == 'failed':
+        is_complete = True
+        st.warning(f"Embeddings job {data['job_id']} failed due {data['job_last_error']}.")
+    else:
+        st.error(f"Embeddings job didn't return a status..")
+    st.session_state[__STATUS_PIPELINE_RUNNING__] = is_complete

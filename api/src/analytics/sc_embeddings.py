@@ -1,5 +1,6 @@
 import json
 import re
+import logging
 from pyspark.ml import Pipeline
 from pyspark.ml.feature import Word2Vec, Normalizer
 from pyspark.sql import DataFrame, SparkSession
@@ -95,7 +96,7 @@ def create_product_embeddings_w2v(session: SparkSession) -> None:
             pairs = [f'{k}="{v}"' for k, v in flat.items() if v]
             return WORD_SEPARATOR.join(pairs)
         except (json.JSONDecodeError, TypeError, AttributeError) as e:
-            print(f"Error flattening JSON: {e}")
+            logging.error(f"Error flattening JSON: {e}")
         return ''
 
     try:
@@ -132,7 +133,7 @@ def create_product_embeddings_w2v(session: SparkSession) -> None:
 
         # Check if there are candidates to process ------------------------------*
         if len(candidates_df.select("_id.product_id").limit(1).collect()) == 0:
-            print("No products found for updating embeddings.")
+            logging.info("No products found for updating embeddings.")
             return
 
         # UDF to Flatten JSON properties: transforms json to escaped -----------*
@@ -168,9 +169,9 @@ def create_product_embeddings_w2v(session: SparkSession) -> None:
 
         # Write back to MongoDB ------------------------------------------------*
         save_collection(final_products_with_embeddings_df, MDB_EMBEDDINGS_COLLECTION)
-        print(f"Successfully wrote embeddings to MongoDB into {MDB_EMBEDDINGS_COLLECTION}")
+        logging.info(f"Successfully wrote embeddings to MongoDB into {MDB_EMBEDDINGS_COLLECTION}")
     except Exception as edb:
-        print(f"Error writing embeddings: {edb}")
+        logging.error(f"Error writing embeddings: {edb}")
         raise Exception(f"Could not write embeddings to MongoDB: {str(edb)}") from edb
     finally:
         # Release cached DataFrames --------------------------------------------*
@@ -187,7 +188,7 @@ def create_product_embeddings_w2v(session: SparkSession) -> None:
             try:
                 df.unpersist()
             except Exception as eps:
-                print(f"Error unpersisting DataFrame: {eps}")
+                logging.error(f"Error unpersisting DataFrame: {eps}")
             finally:
                 session.catalog.clearCache()
 
