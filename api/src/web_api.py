@@ -30,7 +30,11 @@ app = FastAPI(lifespan=lifespan)
 # Api Endpoints
 # -----------------------------
 
-@app.post("/embeddings/start", status_code=201)
+@app.post(
+    path="/embeddings/start",
+    status_code=201,
+    summary="Starts an embeddings calculation pipeline job",
+)
 async def start_embeddings_processing(rq: Request) -> dict[str, Any]:
     processor = get_processor(rq)
     if processor.is_running():
@@ -54,12 +58,26 @@ async def start_embeddings_processing(rq: Request) -> dict[str, Any]:
     return processor.get_current_status()
 
 
-@app.get("/embeddings/status/jobs")
-async def get_embeddings_jobs_status(rq: Request) -> dict[str, object]:
+@app.post(
+    path="/embeddings/reindex",
+    summary="Reindex search indexes in embeddings collection"
+)
+async def reindex_embeddings_indexes(rq: Request) -> list[dict[str, Any]]:
+    return get_processor(rq).reindex().to_dict(orient="records")
+
+
+@app.get(
+    path="/embeddings/status/jobs",
+    summary="Get status of all embeddings calculation jobs",
+)
+async def get_embeddings_jobs_status(rq: Request) -> list[dict[str, Any]]:
     return get_processor(rq).get_jobs_list()
 
-@app.get("/embeddings/status/{job_id}")
-async def get_embeddings_job_status(job_id: str, rq: Request) -> dict[str, object]:
+@app.get(
+    path="/embeddings/status/{job_id}",
+    summary="Get status of a given embeddings calculation job",
+)
+async def get_embeddings_job_status(job_id: str, rq: Request) -> dict[str, Any]:
     processor = get_processor(rq)
     if not job_id or job_id.isspace():
         raise HTTPException(
@@ -80,7 +98,10 @@ async def get_embeddings_job_status(job_id: str, rq: Request) -> dict[str, objec
     return processor.get_status(job_id)
 
 
-@app.get("/data/search/{query}")
+@app.get(
+    path="/data/search/{query}",
+    summary="Search for products by a given query using a full-text search index",
+)
 async def search_fulltext_query(query: str) -> list[dict[str, Any]]:
     if not query or query.isspace():
         raise HTTPException(
@@ -93,7 +114,10 @@ async def search_fulltext_query(query: str) -> list[dict[str, Any]]:
     return get_data(query).to_dict(orient="records")
 
 
-@app.get("/data/recommendations/{sku}")
+@app.get(
+    path="/data/recommendations/{sku}",
+    summary="Get recommendations for a given sku using similarity vectors"
+)
 async def search_recommendations_sku(sku: str) -> list[dict[str, Any]]:
     if not sku or sku.isspace():
         raise HTTPException(

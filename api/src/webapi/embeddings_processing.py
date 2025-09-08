@@ -1,9 +1,11 @@
 import threading
-import time
 import uuid
 from enum import Enum
 from threading import Thread
-from typing import Dict, Optional, List
+from typing import Dict, Optional, List, Any
+from webapi.data_management import (
+    reindex_search_indexes, list_search_indexes
+)
 
 
 class EmbeddingsPipelineStatus(str, Enum):
@@ -21,7 +23,7 @@ class EmbeddingsPipelineProcessor:
     """
 
     def __init__(self) -> None:
-        self._lock = threading.Lock()
+        self._lock = threading.RLock()
         self._current_job: str = str(uuid.uuid4())
         self._errors: Dict[str, Optional[str]] = {
             self._current_job: None
@@ -32,51 +34,62 @@ class EmbeddingsPipelineProcessor:
 
     # ---------------- Status helpers ---------------- #
     def release(self) -> None:
-        if self._lock.locked():
+        if self._lock.acquire():
             self._lock.release()
 
-    # ---------------- Status helpers ---------------- #
-
     def is_ready(self) -> bool:
-        return self._processes[self._current_job] == EmbeddingsPipelineStatus.READY
+        with self._lock:
+            return self._processes[self._current_job] == EmbeddingsPipelineStatus.READY
 
     def is_running(self) -> bool:
-        return self._processes[self._current_job] == EmbeddingsPipelineStatus.RUNNING
+        with self._lock:
+            return self._processes[self._current_job] == EmbeddingsPipelineStatus.RUNNING
 
     def is_completed(self) -> bool:
-        return self._processes[self._current_job] == EmbeddingsPipelineStatus.COMPLETED
+        with self._lock:
+            return self._processes[self._current_job] == EmbeddingsPipelineStatus.COMPLETED
 
     def is_failed(self) -> bool:
-        return self._processes[self._current_job] == EmbeddingsPipelineStatus.FAILED
+        with self._lock:
+            return self._processes[self._current_job] == EmbeddingsPipelineStatus.FAILED
 
     def is_idle(self) -> bool:
-        return self._processes[self._current_job] in {
-            EmbeddingsPipelineStatus.READY,
-            EmbeddingsPipelineStatus.COMPLETED,
-            EmbeddingsPipelineStatus.FAILED,
-        }
+        with self._lock:
+            return self._processes[self._current_job] in {
+                EmbeddingsPipelineStatus.READY,
+                EmbeddingsPipelineStatus.COMPLETED,
+                EmbeddingsPipelineStatus.FAILED,
+            }
 
     # ---------------- Job queries ---------------- #
 
     def has_job(self, job_id: str) -> bool:
-        return job_id in self._processes
+        with self._lock:
+            return job_id in self._processes
 
     def get_error(self, job_id: str) -> Optional[str]:
-        return self._errors.get(job_id)
+        with self._lock:
+            return self._errors.get(job_id)
 
-    def get_jobs_list(self) -> List[Dict[str, object]]:
-        return [self.get_status(job_id) for job_id in self._processes]
+    def get_jobs_list(self) -> List[Dict[str, Any]]:
+        with self._lock:
+            return [self.get_status(job_id) for job_id in self._processes]
 
-    def get_current_status(self) -> Dict[str, object]:
+    def get_current_status(self) -> Dict[str, Any]:
         with self._lock:
             return self.get_status(self._current_job)
 
     def get_status(self, job_id: str) -> Dict[str, object]:
-        return {
-            "job_id": job_id,
-            "job_status": self._processes.get(job_id, "unknown"),
-            "job_last_error": self._errors.get(job_id),
-        }
+        with self._lock:
+            return {
+                "job_id": job_id,
+                "job_status": self._processes.get(job_id, "unknown"),
+                "job_last_error": self._errors.get(job_id)
+            }
+
+    # ---------------- Reindex launcher ----------------- #
+    def reindex(self) -> List[Dict[str, Any]]:
+        return reindex_search_indexes()
 
     # ---------------- Execution control ---------------- #
 
@@ -85,10 +98,10 @@ class EmbeddingsPipelineProcessor:
         if not self.is_idle():
             return False
 
-        Thread(target=self.__run_embeddings_process__, daemon=True).start()
+        Thread(target=self._run_embeddings_process, daemon=True).start()
         return True
 
-    def __run_embeddings_process__(self) -> None:
+    def _run_embeddings_process(self) -> None:
         try:
             with self._lock:
                 # Only reuse job if it’s still in READY
@@ -101,7 +114,15 @@ class EmbeddingsPipelineProcessor:
             # Call the actual embeddings processing logic here.
             # This is a placeholder for the real implementation.
             # ###############################################################
-            time.sleep(40)
+            from analytics.sc_embeddings import create_product_embeddings_w2v
+            from analytics.sc_session import get_session
+            session = get_session()
+            try:
+                create_product_embeddings_w2v(session)
+            except Exception as e:
+                raise e from e
+            finally:
+                session.stop()
             # ###############################################################
 
             with self._lock:
