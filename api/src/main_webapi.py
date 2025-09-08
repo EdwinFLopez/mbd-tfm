@@ -8,7 +8,6 @@ from webapi.embeddings_processing import EmbeddingsPipelineProcessor
 # -----------------------------
 # App Lifecycle Setup
 # -----------------------------
-
 @asynccontextmanager
 async def lifespan(api_app: FastAPI):
     # Startup: initialize the pipeline manager
@@ -29,7 +28,6 @@ app = FastAPI(lifespan=lifespan)
 # -----------------------------
 # Api Endpoints
 # -----------------------------
-
 @app.post(
     path="/embeddings/start",
     status_code=201,
@@ -72,6 +70,7 @@ async def reindex_embeddings_indexes(rq: Request) -> list[dict[str, Any]]:
 )
 async def get_embeddings_jobs_status(rq: Request) -> list[dict[str, Any]]:
     return get_processor(rq).get_jobs_list()
+
 
 @app.get(
     path="/embeddings/status/{job_id}",

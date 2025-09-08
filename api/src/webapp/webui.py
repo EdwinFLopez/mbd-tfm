@@ -1,14 +1,9 @@
+from commons.constants import WEBAPI_URL, STATUS_PIPELINE_RUNNING
 from urllib.parse import quote
-
+from streamlit.elements.lib.column_types import ColumnConfig
 import requests
 import streamlit as st
 import pandas as pd
-
-__STATUS_PIPELINE_RUNNING__ = "embeddings_pipeline_running"
-
-from streamlit.elements.lib.column_types import ColumnConfig
-
-from commons.constants import WEBAPI_URL
 
 
 def render_ui() -> None:
@@ -21,8 +16,8 @@ def render_ui() -> None:
     )
 
     # Initial state (could also be persisted in session_state)
-    if __STATUS_PIPELINE_RUNNING__ not in st.session_state:
-        st.session_state[__STATUS_PIPELINE_RUNNING__] = False
+    if STATUS_PIPELINE_RUNNING not in st.session_state:
+        st.session_state[STATUS_PIPELINE_RUNNING] = False
 
     landing_page = st.Page(
         _ui_page_welcome,
@@ -161,19 +156,19 @@ def _ui_page_recommendations() -> None:
 
 def _ui_page_calculate_embeddings() -> None:
     st.subheader("Calculate embeddings")
-    if __STATUS_PIPELINE_RUNNING__ not in st.session_state or not st.session_state[__STATUS_PIPELINE_RUNNING__]:
+    if STATUS_PIPELINE_RUNNING not in st.session_state or not st.session_state[STATUS_PIPELINE_RUNNING]:
         btn_label = "🔴 Start Embeddings Creation Process"
     else:
         btn_label = "🟢 Stop Processing Embeddings......."
 
     st.button(
         label=btn_label,
-        type=f"{'primary' if not st.session_state[__STATUS_PIPELINE_RUNNING__] else 'secondary'}",
+        type=f"{'primary' if not st.session_state[STATUS_PIPELINE_RUNNING] else 'secondary'}",
         icon=":material/engineering:",
         on_click=__on_start_embeddings_calculation_callback,
         width=500,
     )
-    st.markdown("🟢 Running" if st.session_state[__STATUS_PIPELINE_RUNNING__] else "🔴 Stopped")
+    st.markdown("🟢 Running" if st.session_state[STATUS_PIPELINE_RUNNING] else "🔴 Stopped")
     st.markdown("---")
 
     response = requests.get(f"{WEBAPI_URL}/embeddings/status/jobs")
@@ -198,13 +193,13 @@ def _ui_page_calculate_embeddings() -> None:
 
 
 def __on_start_embeddings_calculation_callback() -> None:
-    is_running = st.session_state[__STATUS_PIPELINE_RUNNING__]
+    is_running = st.session_state[STATUS_PIPELINE_RUNNING]
     if is_running:
         return
 
     response = requests.post(f"{WEBAPI_URL}/embeddings/start")
     if not response.ok:
-        st.session_state[__STATUS_PIPELINE_RUNNING__] = True
+        st.session_state[STATUS_PIPELINE_RUNNING] = True
         st.error(f"Error starting embeddings job: {response.text}")
         return
 
@@ -225,4 +220,4 @@ def __on_start_embeddings_calculation_callback() -> None:
         st.warning(f"Embeddings job {data['job_id']} failed due {data['job_last_error']}.")
     else:
         st.error(f"Embeddings job didn't return a status..")
-    st.session_state[__STATUS_PIPELINE_RUNNING__] = is_complete
+    st.session_state[STATUS_PIPELINE_RUNNING] = is_complete

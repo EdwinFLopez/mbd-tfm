@@ -35,3 +35,8 @@ WEBAPI_HOST = os.getenv("WEBAPI_HOST", "127.0.0.1")
 WEBAPI_PORT = int(os.getenv("WEBAPI_PORT", 8000))
 WEBAPI_URL = f"http://{WEBAPI_HOST}:{WEBAPI_PORT}"
 # ###############################################################
+
+# ###############################################################
+# Webapp global state key
+STATUS_PIPELINE_RUNNING = "embeddings_pipeline_running"
+# ###############################################################
