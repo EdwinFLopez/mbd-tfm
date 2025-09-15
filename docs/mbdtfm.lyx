@@ -1,0 +1,1826 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass extbook
+\begin_preamble
+\usepackage{tocbibind}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\end_preamble
+\use_default_options true
+\begin_modules
+customHeadersFooters
+landscape
+fix-cm
+\end_modules
+\maintain_unincluded_children no
+\language spanish
+\language_package auto
+\inputencoding utf8
+\fontencoding auto
+\font_roman "NotoSerifRegular" "default"
+\font_sans "FiraSans" "default"
+\font_typewriter "beramono" "default"
+\font_math "auto" "auto"
+\font_default_family sfdefault
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype true
+\use_dash_ligatures false
+\graphics pdftex
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command makeindex
+\float_placement class
+\float_alignment class
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref true
+\pdf_title "Arquitectura de integración de datos basada en captura de eventos de cambio (CDC) aplicado a un sistema de recomendaciones para “Magento”"
+\pdf_author "Edwin Fernando López Arias"
+\pdf_subject "Big Data"
+\pdf_keywords "“Recommendation Systems”; “Magento”; “Open Source”; “Big Data”; “ETL”; “ELT”; “Data Integration”; “Data Migration”; “Kafka”; “Debezium”; “Mongo”; “MySQL”; “API”; “Apache Spark”; “Data Pipeline”; “Relational Databases”; “Non-Relational Databases”;"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref page
+\pdf_pdfusetitle true
+\papersize a4
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style apalike
+\use_bibtopic false
+\use_indices true
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\spellchecker_ignore spanish minimización
+\leftmargin 3cm
+\topmargin 4cm
+\rightmargin 3cm
+\bottommargin 2.5cm
+\headheight 2cm
+\headsep 1.5cm
+\footskip 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip bigskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tablestyle default
+\bullet 1 0 9 -1
+\bullet 2 0 15 -1
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\begin_inset Graphics
+	filename __images/salle_es.png
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\size normal
+Trabajo Final del Master en Big Data
+\size default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Arquitectura de integración de datos basada en captura de eventos de cambio
+\begin_inset space ~
+\end_inset
+
+(CDC) aplicado a un sistema de recomendaciones para 
+\begin_inset Quotes eld
+\end_inset
+
+Magento
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Por
+\begin_inset Newline newline
+\end_inset
+
+Edwin F.
+ López A.
+ | Albert Ripoll Batlló
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Supervisor
+\begin_inset Newline newline
+\end_inset
+
+Dr.
+ Joan Navarro
+\end_layout
+
+\begin_layout Date
+Septiembre,
+ 2025
+\end_layout
+
+\begin_layout Left Header
+
+\family sans
+\size scriptsize
+ARQUITECTURA DE INTEGRACIÓN DE DATOS BASADA EN CAPTURA DE EVENTOS DE 
+\begin_inset Newline newline
+\end_inset
+
+CAMBIO
+\begin_inset space ~
+\end_inset
+
+(CDC) APLICADO A UN SISTEMA DE RECOMENDACIONES PARA 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family default
+\series bold
+MAGENTO
+\family sans
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Header
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align right
+\begin_inset Graphics
+	filename __images/salle_es.png
+	width 3cm
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList table
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter*
+Resumen
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{Resumen}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Resumen
+\end_layout
+
+\begin_layout Standard
+La 
+\begin_inset Quotes eld
+\end_inset
+
+
+\shape italic
+captura de eventos de cambios de datos (Change Data Capture - CDC)
+\shape default
+
+\begin_inset Quotes erd
+\end_inset
+
+ es una técnica en integración de información en casi tiempo real,
+ que permite propagar modificaciones incrementales desde bases de datos fuente hacia sistemas destino,
+ minimizando latencia y carga computacional.
+ Este proyecto propone el diseño de una arquitectura centrada en CDC como base para aplicaciones de datos masivos (Big Data) que requieran una alternativa a los enfoques tradicionales de procesamiento de archivos en lotes y complejos procesos ETL/ELT.
+ Se presenta,
+ como una aplicación,
+ un sistema de recomendaciones para la plataforma de comercio electrónico “
+\shape italic
+Magento
+\shape default
+”,
+ que utiliza 
+\shape italic
+Debezium
+\shape default
+ y 
+\shape italic
+Kafka
+\shape default
+ como capa de ingestión y 
+\shape italic
+Apache Spark
+\shape default
+ como capa analítica,
+ con una 
+\shape italic
+api
+\shape default
+ y una aplicación web en 
+\shape italic
+python
+\shape default
+ como capa de presentación,
+ y 
+\shape italic
+Mongo
+\shape default
+ como base de datos central en la capa de almacenamiento.
+ La metodología incluye:
+ (1)
+\begin_inset space ~
+\end_inset
+
+selección de tecnología de CDC a usar,
+ (2)
+\begin_inset space ~
+\end_inset
+
+diseño de un canal de datos (pipeline) de ingesta para datos de productos del e-commerce,
+ y (3)
+\begin_inset space ~
+\end_inset
+
+implementación de un sistema de recomendaciones de productos como aplicación de dicho diseño.
+ Los resultados preliminares destacan la escalabilidad y la flexibilidad de la solución frente a métodos de replicación tradicionales.
+ Este trabajo ofrece un marco aplicable en entornos donde la personalización en tiempo real es clave,
+ como comercio electrónico,
+ auditoría y migraciones de datos.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Palabras clave
+\series default
+:
+ 
+\shape italic
+“Sistemas de Recomendación”;
+ “Magento”;
+ “Open Source”;
+ “Big Data / Datos Masivos”;
+ “ETL”;
+ “ELT”;
+ “Integración de datos”;
+ “Migración de datos”;
+ “Kafka”;
+ “Debezium”;
+ “Mongo”;
+ “MySQL”;
+ “API”;
+ “Apache Spark”;
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Tuberia/Canal de datos”;
+ “Bases de datos relacionales”;
+ “Bases de datos no relacionales”;
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Abstract
+\end_layout
+
+\begin_layout Standard
+“Change Data Capture (CDC)” is a near-real-time data integration technique that propagates incremental modifications from source databases to target systems,
+ minimizing latency and computational load.
+ This project proposes the design of a CDC-centric architecture as a foundation for big data applications requiring an alternative to traditional batch file processing and complex ETL/ELT approaches.
+ As a use case,
+ the design is applied to a recommendation system for the “Magento” e-commerce platform,
+ which uses 
+\shape italic
+Debezium
+\shape default
+ and 
+\shape italic
+Kafka
+\shape default
+ as ingestion layer,
+ 
+\shape italic
+Apache Spark
+\shape default
+ as analytical layer,
+ an api and a web application in python as presentation layer,
+ and finally,
+ 
+\shape italic
+Mongo
+\shape default
+ database as the central storage layer.
+ The methodology includes:
+ (1)
+\begin_inset space ~
+\end_inset
+
+selection of CDC technology,
+ (2)
+\begin_inset space ~
+\end_inset
+
+design of a data ingestion pipeline for product data,
+ and (3)
+\begin_inset space ~
+\end_inset
+
+implementation of a product recommendation system based on this design.
+ Preliminary results highlight the solution’s scalability and flexibility compared to traditional replication methods.
+ This work provides a framework applicable in environments where real-time personalization is critical,
+ such as e-commerce,
+ auditing,
+ and data migrations.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Keywords
+\series default
+:
+ 
+\shape italic
+“Recommendation Systems”;
+ “Magento”;
+ “Open Source”;
+ “Big Data”;
+ “ETL”;
+ “ELT”;
+ “Data Integration”;
+ “Data Migration”;
+ “Kafka”;
+ “Debezium”;
+ “Mongo”;
+ “MySQL”;
+ “API”;
+ “Apache Spark”;
+ “Data Pipeline”;
+ “Relational Databases”;
+ “Non-Relational Databases”;
+\end_layout
+
+\begin_layout Chapter*
+Agradecimientos
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{Agradecimientos}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+A
+\begin_inset space ~
+\end_inset
+
+mi
+\begin_inset space ~
+\end_inset
+
+esposa,
+ Angélica,
+ quien siempre ha estado a mi lado por los últimos 21 años,
+ y cuya paciencia para conmigo no conoce igual.
+ Quiera el creador que su risa,
+ paciencia y cariño me acompañen por todos más.
+\end_layout
+
+\begin_layout Description
+A
+\begin_inset space ~
+\end_inset
+
+mi
+\begin_inset space ~
+\end_inset
+
+familia,
+ por sus oraciones,
+ afecto,
+ apoyo y buenos deseos.
+ Siempre.
+\end_layout
+
+\begin_layout Description
+A
+\begin_inset space ~
+\end_inset
+
+mi
+\begin_inset space ~
+\end_inset
+
+compañero
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+tesis,
+ 
+\shape italic
+Albert Ripoll Batlló
+\shape default
+.
+ Muchas gracias por persistir y hacer posible este proyecto:
+ 
+\shape italic
+¡lo logramos compi!
+\shape default
+.
+\end_layout
+
+\begin_layout Description
+A
+\begin_inset space ~
+\end_inset
+
+mis
+\begin_inset space ~
+\end_inset
+
+compañeros
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+clase,
+ por su buena energía durante todo el tiempo que compartimos juntos;
+\end_layout
+
+\begin_layout Description
+A
+\begin_inset space ~
+\end_inset
+
+los
+\begin_inset space ~
+\end_inset
+
+profesores
+\begin_inset space ~
+\end_inset
+
+del
+\begin_inset space ~
+\end_inset
+
+Máster,
+ 
+\series bold
+especialmente
+\series default
+ al 
+\shape italic
+Dr.
+ Joan Navarro Martín
+\shape default
+,
+ supervisor de este trabajo,
+ cuyos consejos siempre fueron acertados y direccionadores.
+\end_layout
+
+\begin_layout Description
+Dedicado
+\begin_inset space ~
+\end_inset
+
+a
+\begin_inset space ~
+\end_inset
+
+Claudia
+\begin_inset space ~
+\end_inset
+
+Andrea
+\begin_inset space ~
+\end_inset
+
+Lopera:
+ 
+\shape italic
+que el cielo sea bueno contigo,
+ ya que la tierra te fue leve
+\shape default
+.
+\end_layout
+
+\begin_layout Chapter*
+Declaración
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{Declaración}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Declaro,
+ bajo gravedad de juramento,
+ que ésta tesis,
+ titulada 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family roman
+\shape italic
+Arquitectura de integración de datos basada en captura de eventos de cambio
+\begin_inset space ~
+\end_inset
+
+(CDC) aplicado a un sistema de recomendaciones para 'Magento
+\family default
+\shape default
+'
+\begin_inset Quotes erd
+\end_inset
+
+,
+ es un trabajo original,
+ realizado enteramente por los titulares,
+ que no ha sido presentado en ninguna otra universidad,
+ colegio,
+ o institución educativa bajo ningún propósito,
+ ni académico o comercial,
+ ni de ninguna otra índole.
+\end_layout
+
+\begin_layout Chapter
+Presentación
+\end_layout
+
+\begin_layout Section
+Introducción
+\end_layout
+
+\begin_layout Standard
+La captura de eventos de cambios de datos o 
+\begin_inset Quotes eld
+\end_inset
+
+
+\shape italic
+Change Data Capture (CDC)
+\shape default
+
+\begin_inset Quotes erd
+\end_inset
+
+ en Inglés,
+ es una técnica de integración de información,
+ operando en tiempo real o casi real.
+ Su función principal es capturar y propagar eficientemente modificaciones en las fuentes de datos,
+ tales como inserciones,
+ actualizaciones y eliminaciones,
+ hacia diversos sistemas destino,
+ tales como bodegas,
+ lagos de datos,
+ y/o servicios asociados,
+ eludiendo la necesidad de replicar conjuntos de datos completos,
+ y hacerlo a medida que el sistema evoluciona,
+ logrando con esto una minimización significativa de la latencia y de la carga computacional impuesta sobre los sistemas fuente.
+\end_layout
+
+\begin_layout Standard
+Los mecanismos comúnmente empleados para la implementación del CDC incluyen la utilización de la bitácora de transacciones,
+ disparadores o “
+\shape italic
+triggers
+\shape default
+”,
+ procedimientos almacenados,
+ o una combinación estratégica de estas metodologías.
+\end_layout
+
+\begin_layout Standard
+Las aplicaciones del CDC son extensas y abarcan desde procesos ETL/ELT modernos y la migración de infraestructuras a la nube,
+ hasta arquitecturas de microservicios,
+ sistemas de auditoría,
+ comercio electrónico,
+ y la sincronización de bases de datos.
+\end_layout
+
+\begin_layout Standard
+Un sistema de recomendaciones ofrece la capacidad de proponer nuevas alternativas que se ajusten a los gustos o las costumbres de consumo de las personas a partir de los datos recolectados por sus interacciones con los sistemas en observación.
+ Esto es una habilidad muy apreciada,
+ por ejemplo,
+ en las plataformas de comercio electrónico,
+ con el objetivo de ampliar sus ventas y ofrecer valor a sus clientes.
+\end_layout
+
+\begin_layout Standard
+“
+\series bold
+Magento
+\series default
+” es un aplicativo de comercio electrónico de código abierto cuya versión comercial de software como servicio (
+\shape italic
+SaaS
+\shape default
+),
+ llamada “
+\shape italic
+Adobe Commerce
+\shape default
+”,
+ ofrece un sistema de recomendaciones propietario basado en filtrado colaborativo (
+\shape italic
+Collaborative Filtering
+\shape default
+) del cual no hay mucho detalle en la documentación propia.
+ La solución trabaja con niveles suficientes de calidad,
+ como se espera de un producto comercial.
+\end_layout
+
+\begin_layout Standard
+Habiendo descrito los componentes anteriores,
+ el presente proyecto presenta una propuesta de diseño de una arquitectura de integración utilizando CDC como estructura de ingestión;
+ dicho diseño es aplicado para construir un sistema de recomendaciones de productos para “
+\series bold
+Magento
+\series default
+”.
+\end_layout
+
+\begin_layout Section
+Contexto y Problemática
+\end_layout
+
+\begin_layout Subsection*
+Sobre Datos Masivos o 
+\begin_inset Quotes eld
+\end_inset
+
+Big Data
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cuando se habla de datos masivos o 
+\begin_inset Quotes eld
+\end_inset
+
+
+\shape italic
+Big Data
+\shape default
+
+\begin_inset Quotes erd
+\end_inset
+
+ es comúnmente aceptado que se refiera a conjuntos de datos extremadamente grandes,
+ complejos y variados,
+ que superan las capacidades de las herramientas de software tradicionales para su captura,
+ gestión y procesamiento en un tiempo casi inmediato o razonable.
+ Estos datos provienen de una multitud de fuentes según el dominio de solución,
+ incluyendo redes sociales,
+ sensores,
+ transacciones en línea,
+ y/o dispositivos móviles,
+ entre otros.
+ Se representan comúnmente por las 
+\begin_inset Quotes eld
+\end_inset
+
+3V
+\begin_inset Quotes erd
+\end_inset
+
+:
+ 1)
+\begin_inset space ~
+\end_inset
+
+
+\shape italic
+volumen
+\shape default
+,
+ o gran cantidad de datos;
+ 2)
+\begin_inset space ~
+\end_inset
+
+
+\shape italic
+velocidad
+\shape default
+,
+ o datos generados y procesados rápidamente;
+ y 3)
+\begin_inset space ~
+\end_inset
+
+
+\shape italic
+variedad
+\shape default
+,
+ o diversos tipos y orígenes de datos,
+ sean estructurados,
+ semi-estructurados y/o no estructurados.
+\end_layout
+
+\begin_layout Standard
+La importancia del procesamiento de datos masivos radica en el potencial latente para descubrir patrones ocultos,
+ tendencias,
+ preferencias,
+ y otra información valiosa que puede mejorar la toma de decisiones estratégicas y operativas por parte de las organizaciones,
+ con beneficios como:
+ optimizar sus operaciones,
+ mejorar la experiencia del cliente,
+ desarrollar nuevos productos y servicios,
+ y obtener ventajas en comparación con aquellas competidoras que no tienen la posibilidad o el conocimiento para explotarlos.
+ La clave está en descubrir esta información adyacente que no se detectaría de otra forma.
+\end_layout
+
+\begin_layout Subsection*
+Sobre Datos en Tiempo Real
+\end_layout
+
+\begin_layout Standard
+Para los propósitos de este proyecto adoptaremos una definición concisa de 
+\begin_inset Quotes eld
+\end_inset
+
+
+\shape italic
+datos en tiempo real
+\shape default
+
+\begin_inset Quotes erd
+\end_inset
+
+,
+ tomada de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PDEU2022"
+literal "false"
+
+\end_inset
+
+:
+ 
+\shape italic
+son aquellos que se actualizan con frecuencia y se entregan inmediatamente después de su recopilación
+\shape default
+.
+\end_layout
+
+\begin_layout Standard
+La naturaleza de los datos en tiempo real es intrínsecamente heterogénea.
+ Entre los tipos típicos se incluyen:
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Mediciones estacionarias
+\shape default
+:
+ Como las series temporales,
+ que registran datos en puntos fijos a lo largo del tiempo.
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Datos de seguimiento
+\shape default
+:
+ Por ejemplo,
+ el seguimiento de la ubicación de paquetes o vehículos.
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Datos medidos a lo largo de trayectorias
+\shape default
+:
+ Como los datos de vehículos en movimiento,
+ que capturan información mientras el vehículo se desplaza.
+\end_layout
+
+\begin_layout Subsection*
+Sobre procesamiento en lotes y en flujo de datos
+\end_layout
+
+\begin_layout Standard
+Los métodos tradicionales de ETL/ELT han sido fundamentales para la integración de datos en procesos por lotes entre sistemas heterogéneos.
+ Sin embargo,
+ estos enfoques inherentemente introducen una latencia considerable,
+ que puede extenderse desde horas hasta días.
+ Esta demora en la disponibilidad de los datos limita significativamente la capacidad de las organizaciones para tomar decisiones de manera oportuna y ágil,
+ como señalan en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KR2013"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En contraste,
+ los enfoques basados en flujo continuo de datos (
+\shape italic
+streaming
+\shape default
+) ofrecen una mejora sustancial.
+ Estos permiten un procesamiento de datos en tiempo real o casi real,
+ reduciendo la latencia por debajo de segundos;
+ esta celeridad habilita la realización de análisis de datos más rápidamente y la implementación de respuestas automatizadas 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "K2017"
+literal "false"
+
+\end_inset
+
+.
+ La capacidad de procesar grandes cantidades datos,
+ de orígenes variados,
+ y a alta velocidad,
+ es de vital importancia en el contexto actual de datos masivos (Big Data),
+ donde estos atributos son determinantes del valor empresarial y la ventaja competitiva.
+\end_layout
+
+\begin_layout Standard
+Ya hemos mencionado que la captura de eventos de cambio o 
+\begin_inset Quotes eld
+\end_inset
+
+
+\shape italic
+Change Data Capture (CDC)
+\shape default
+
+\begin_inset Quotes erd
+\end_inset
+
+,
+ en lo sucesivo 
+\series bold
+\shape italic
+CDC
+\series default
+\shape default
+,
+ es una técnica de integración que detecta,
+ captura y propaga cambios incrementales en sistemas de bases de datos en tiempo real o cerca,
+ evitando latencia y grandes transferencias en períodos cortos de tiempo 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DBZ2023"
+literal "false"
+
+\end_inset
+
+.
+ CDC opera leyendo los registros o bitácoras de transacciones (ej.,
+ 
+\series bold
+WAL
+\series default
+ en 
+\shape italic
+PostgreSQL
+\shape default
+,
+ 
+\series bold
+binlog
+\series default
+ en 
+\shape italic
+MySQL
+\shape default
+),
+ garantizando baja latencia y consistencia,
+ sin impactar el rendimiento de las fuentes de datos origen.
+ Se usa en arquitecturas modernas para replicación,
+ ETL/ELT en streaming y sincronización de datos entre sistemas heterogéneos 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "K2017"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Resumen de la problemática
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Históricamente,
+ la integración de datos entre diversas fuentes,
+ tanto transaccionales como no transaccionales y sistemas de procesamiento,
+ ha representado un proceso costoso,
+ susceptible a errores y caracterizado por una alta latencia.
+ Este enfoque,
+ principalmente basado en tareas por lotes,
+ suele ser insuficiente para satisfacer las necesidades actuales de análisis de datos masivos y operaciones en tiempo real,
+ imprescindibles para que las organizaciones tomen decisiones ágiles y eficientes en un mercado en constante evolución.
+ El principal desafío que aborda este proyecto es garantizar la coherencia y actualización de los datos distribuidos en un entorno tecnológico cada vez más complejo.
+\end_layout
+
+\begin_layout Section
+Objetivos del proyecto
+\end_layout
+
+\begin_layout Standard
+Con el desarrollo de este trabajo se pretende lograr la materialización de los siguientes objetivos.
+\end_layout
+
+\begin_layout Subsection*
+General
+\end_layout
+
+\begin_layout Standard
+El objetivo del proyecto es diseñar y validar una arquitectura de integración de datos basada en la captura de eventos de cambio (CDC),
+ que permita la ingestión casi en tiempo real hacia un repositorio centralizado o base de datos destino.
+ Este repositorio funcionará como el sistema principal de alimentación para soluciones informáticas que requieren la integración masiva de datos,
+ ofreciendo una alternativa y/o complemento escalable a los tradicionales procesos de carga por lotes y a las arquitecturas ETL/ELT complejas.
+ La validación de la propuesta se realizará a través de la implementación de un caso de uso de comercio electrónico enfocado en una solución de recomendaciones para el sistema 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+\shape italic
+Magento
+\series default
+\shape default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Específicos
+\end_layout
+
+\begin_layout Itemize
+En un plazo máximo de 2 semanas,
+ recopilar los resultados del trabajo de tesis 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ripoll2025"
+literal "false"
+
+\end_inset
+
+,
+ en cuanto a las tecnologías recomendadas para el diseño de la arquitectura de integración de datos masivos y elaborar una síntesis clara de las conclusiones obtenidas para fundamentar la selección tecnológica central de la arquitectura propuesta.
+\end_layout
+
+\begin_layout Itemize
+Verificar el proceso funcional de ingestión y almacenamiento implementado en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ripoll2025"
+literal "false"
+
+\end_inset
+
+,
+ asegurando que se cumpla con los requisitos de integración central definidos.
+ Esta es el inicio de fase técnica.
+ Su ejecución no debe demorar más de 8 semanas.
+\end_layout
+
+\begin_layout Itemize
+Definir e implementar,
+ en el plazo de 14 a 16 semanas,
+ un caso práctico de comercio electrónico que utilice la arquitectura de integración resultante para recomendaciones personalizadas.
+ Con esta actividad finaliza la fase técnica.
+\end_layout
+
+\begin_layout Subsection*
+Entregables
+\end_layout
+
+\begin_layout Itemize
+El resultado del primer objetivo específico es una sección en el presente trabajo donde se describa la selección tecnológica y el diseño de la arquitectura de ingestión y almacenamiento.
+\end_layout
+
+\begin_layout Itemize
+El entregable resultado del segundo objetivo específico,
+ es la replicación de la arquitectura como se menciona en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ripoll2025"
+literal "false"
+
+\end_inset
+
+,
+ haciendo uso del código fuente e instaladores.
+ Se realizarán pruebas y se compilarán los resultados en un apartado del presente trabajo.
+\end_layout
+
+\begin_layout Itemize
+El entregable último consistirá en la implementación del sistema de recomendaciones para 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+Magento
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+ sobre la implementación anterior,
+ expandiendo la arquitectura a una capa analítica y una capa de presentación.
+ Se adjuntará el código fuente y así mismo,
+ un apartado en la presente monografía donde se especifica y documenta.
+\end_layout
+
+\begin_layout Section
+Alcances y Limitaciones
+\end_layout
+
+\begin_layout Standard
+Debido a la naturaleza del dominio del problema y las restricciones de recursos y tiempo para el desarrollo del proyecto,
+ se entienden las siguientes condiciones para completarlo:
+\end_layout
+
+\begin_layout Standard
+Los datos de pruebas deberán ser generados artificialmente con base en plantillas existentes para la plataforma del caso de uso.
+ En el caso de 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+Magento
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+,
+ se utilizará el conjunto de datos del sitio demo 
+\begin_inset Quotes eld
+\end_inset
+
+
+\shape italic
+LUMA
+\shape default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Debido a la falta de recursos financieros que impiden el uso de alguna de las plataformas de computación en la nube,
+ los componentes mínimos necesarios para armar un sistema que se aproxime razonablemente al caso de estudio,
+ deben ser instalables en una máquina sin afectar el rendimiento del sistema y permitir la ejecución del mismo.
+\end_layout
+
+\begin_layout Standard
+Con respecto a la asignación de tareas,
+ el equipo de trabajo dividirá las actividades del proyecto de acuerdo a sus fortalezas individuales.
+ Este proyecto es la continuación de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ripoll2025"
+literal "false"
+
+\end_inset
+
+ de Albert Ripoll Batlló,
+ así que se incluirá el código fuente como bloque de construcción inicial para la validación del sistema en el caso de uso definido.
+\end_layout
+
+\begin_layout Standard
+El resultado de este proyecto,
+ así como las recomendaciones a la solución actual,
+ se verán reflejadas en el documento final.
+\end_layout
+
+\begin_layout Section
+Justificación
+\end_layout
+
+\begin_layout Standard
+Implementar un canal de integración de datos (pipeline) utilizando CDC y envío en flujo de datos (streaming),
+ es una estrategia para dotar a sistemas con grandes volúmenes de datos de capacidades de procesamiento en tiempo real o cercano a éste.
+ CDC permite la captura eficiente de cambios directamente desde la base de datos origen,
+ registrando cada modificación relevante (creación,
+ actualización y eliminación de datos,
+ así como de metadata).
+ Estas transformaciones se transmiten en tiempo real a través del canal de datos programado,
+ desacoplando el flujo de información entre el origen y los posibles destinos.
+ Un sistema de colas actúa como canal de distribución y protección,
+ permitiendo la integración simultánea de múltiples consumidores,
+ además de garantizar tolerancia a picos de carga y reenvío seguro de los datos.
+ Finalmente,
+ un almacenamiento distribuido como destino,
+ aporta flexibilidad para guardar y analizar datos históricos y operativos,
+ integrando sistemas de analítica avanzada para dar soporte a las organizaciones.
+ Este enfoque supera las limitaciones de sincronizaciones por lotes y arquitecturas ETL convencionales.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Explorar este diseño y validarlo con un caso de uso aplicado,
+ para continuar el trabajo de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ripoll2025"
+literal "false"
+
+\end_inset
+
+,
+ es un esfuerzo que traerá grandes aportes a los interesados en ver esta arquitectura en acción,
+ si bien no tanto teóricos,
+ si técnicos,
+ ya que tendrán la posibilidad de replicarla en un entorno local y controlado.
+\end_layout
+
+\begin_layout Section
+Estructura del Documento
+\end_layout
+
+\begin_layout Standard
+El presente documento está segmentado de la siguiente forma:
+\end_layout
+
+\begin_layout Itemize
+El preámbulo está compuesto por la sección de agradecimientos y dedicatoria,
+ donde el autor reconoce las contribuciones de sus círculos personales;
+ la declaración de originalidad donde a modo de compromiso se asegura al lector que este trabajo es de construcción propia del autor;
+ y el resumen,
+ donde se introducen los puntos relevantes del proyecto a quien pueda estar interesado.
+\end_layout
+
+\begin_layout Itemize
+A partir del primer capítulo,
+ después del preámbulo,
+ comienza el desarrollo del proyecto en los siguientes grandes capítulos:
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Presentación
+\series default
+.
+ Donde se contextualiza la situación a explorar,
+ se trazan los objetivos del proyecto y se acotan los lineamientos de ejecución,
+ todo con el propósito de hacer de este proyecto una realidad tangible,
+ tanto por recursos como por alcance.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Marco
+\begin_inset space ~
+\end_inset
+
+teórico
+\begin_inset space ~
+\end_inset
+
+y
+\begin_inset space ~
+\end_inset
+
+estado
+\begin_inset space ~
+\end_inset
+
+del
+\begin_inset space ~
+\end_inset
+
+arte
+\series default
+.
+ En este extenso capítulo se recogen las bases teóricas y prácticas para comprender la magnitud de la tarea a realizar y fundamentar las decisiones de diseño e implementación.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Diseño
+\series default
+.
+ Este capítulo recoge los aprendizajes de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ripoll2025"
+literal "false"
+
+\end_inset
+
+ en cuanto al diseño de la arquitectura y la expande para incluir el caso de uso del sistema de recomendaciones para 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+Magento
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+,
+ describiendo los componentes,
+ su interacción y posibles alternativas según la escalabilidad y disponibilidad esperada en un escenario real.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Implementación
+\series default
+.
+ En este capítulo se describe la metodología de implementación,
+ las herramientas a utilizar y su configuración.
+ Se realiza paso a paso para explicar el proceso de ejecución.
+ Igualmente,
+ cada uno de los componentes de la arquitectura son descritos según su rol.
+ Desde la instalación de 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+Magento
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+,
+ hasta el sistema de recomendaciones resultado de la integración de datos y el procesamiento por las herramientas analíticas.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Validación y resultados.
+
+\series default
+ Este capítulo presenta una discusión sobre los resultados obtenidos de la implementación,
+ lo que se esperaba y lo que se obtuvo.
+\end_layout
+
+\begin_layout Enumerate
+Conclusiones y trabajo futuro.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Bibliografía
+\end_layout
+
+\begin_layout Enumerate
+Apéndices y Anexos
+\end_layout
+
+\end_deeper
+\begin_layout Chapter
+Marco teórico y estado del arte
+\end_layout
+
+\begin_layout Section
+Fundamentos de datos masivos (
+\shape italic
+Big Data
+\shape default
+)
+\end_layout
+
+\begin_layout Section
+Arquitecturas de integración de datos
+\end_layout
+
+\begin_layout Subsection
+Procesos por lotes (Batch)
+\end_layout
+
+\begin_layout Subsection
+Procesos por flujo de datos (Streaming)
+\end_layout
+
+\begin_layout Subsection
+Captura de eventos de cambio (
+\shape italic
+CDC
+\shape default
+)
+\end_layout
+
+\begin_layout Section
+Plataformas de integración de datos
+\end_layout
+
+\begin_layout Section
+Herramientas de procesamiento analítico
+\end_layout
+
+\begin_layout Section
+Sistemas de recomendaciones
+\end_layout
+
+\begin_layout Chapter
+Diseño
+\end_layout
+
+\begin_layout Section
+Caso de aplicación
+\end_layout
+
+\begin_layout Section
+Componentes y Tecnologías
+\end_layout
+
+\begin_layout Section
+Diseño de la Arquitectura
+\end_layout
+
+\begin_layout Section
+Consideraciones de Escalabilidad
+\end_layout
+
+\begin_layout Chapter
+Implementación
+\end_layout
+
+\begin_layout Section
+Metodología
+\end_layout
+
+\begin_layout Section
+Configuración de Magento
+\end_layout
+
+\begin_layout Section
+Entorno experimental (Docker)
+\end_layout
+
+\begin_layout Section
+Configuración de Debezium
+\end_layout
+
+\begin_layout Section
+Configuración de Kafka Connect
+\end_layout
+
+\begin_layout Section
+Procesamiento con Apache Spark
+\end_layout
+
+\begin_layout Section
+Presentación con FastAPI y StreamLit
+\end_layout
+
+\begin_layout Chapter
+Validación y Resultados
+\end_layout
+
+\begin_layout Section
+=== Performance del Sistema CDC
+\end_layout
+
+\begin_layout Section
+=== Latencia y Throughput
+\end_layout
+
+\begin_layout Section
+=== Consistencia de Datos
+\end_layout
+
+\begin_layout Section
+=== Escalabilidad Horizontal
+\end_layout
+
+\begin_layout Section
+=== Comparativa con ETL Tradicional
+\end_layout
+
+\begin_layout Section
+=== Análisis de Costos
+\end_layout
+
+\begin_layout Section
+=== Interpretación de Resultados
+\end_layout
+
+\begin_layout Section
+=== Limitaciones Encontradas
+\end_layout
+
+\begin_layout Section
+=== Implicaciones Prácticas
+\end_layout
+
+\begin_layout Section
+=== Contribuciones a la Investigación
+\end_layout
+
+\begin_layout Section
+=== Comparación con Trabajos Relacionados
+\end_layout
+
+\begin_layout Chapter
+Conclusiones y trabajo futuro
+\end_layout
+
+\begin_layout Section
+=== Conclusiones Principales
+\end_layout
+
+\begin_layout Section
+=== Logros Obtenidos
+\end_layout
+
+\begin_layout Section
+=== Recomendaciones
+\end_layout
+
+\begin_layout Section
+=== Líneas de Investigación Futura
+\end_layout
+
+\begin_layout Section
+=== Impacto en la Industria
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Kimball & Ross, 2013"
+key "KR2013"
+literal "false"
+
+\end_inset
+
+ Kimball,
+ R.,
+ & Ross,
+ M.
+ (2013).
+ 
+\shape italic
+The Data Warehouse Toolkit:
+ The Definitive Guide to Dimensional Modeling (3rd ed.)
+\shape default
+.
+ John Wiley & Sons.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Kleppmann, 2017"
+key "K2017"
+literal "false"
+
+\end_inset
+
+
+\shape italic
+ 
+\shape default
+Kleppmann,
+ (2017).
+ 
+\shape italic
+Designing Data-Intensive Applications
+\shape default
+.
+ O'Reilly Media.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Morling, Gunnar, 2020"
+key "MG2020"
+literal "false"
+
+\end_inset
+
+ Morling,
+ Gunnar.
+ (2020).
+ Practical Change Data Streaming Use Cases with Apache Kafka & Debezium.
+ URL:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "data-streaming-kafka-debezium"
+target "https://www.infoq.com/presentations/data-streaming-kafka-debezium"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Portal de Datos Europeo, 2022"
+key "PDEU2022"
+literal "false"
+
+\end_inset
+
+ Portal de Datos Europeo.
+ (2024). Datos en tiempo real:
+ Enfoques para integrar fuentes de datos en tiempo real en data.europa.eu.
+ URL:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "datos-en-tiempo-real-enfoques-para-integrar-fuentes-de-datos"
+target "https://datos.gob.es/es/documentacion/datos-en-tiempo-real-enfoques-para-integrar-fuentes-de-datos-en-tiempo-real-en"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Debezium Community, 2023"
+key "DBZ2023"
+literal "false"
+
+\end_inset
+
+ Debezium Community.
+ (2023).
+ 
+\shape italic
+What is Change Data Capture?
+\shape default
+.
+ Debezium Documentation.
+ URL:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "what-is-change-data-capture"
+target "https://debezium.io/documentation/faq/#what_is_change_data_capture"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Ripoll, A.,2025"
+key "Ripoll2025"
+literal "false"
+
+\end_inset
+
+ Ripoll,
+ Albert.
+ (2025).
+ 
+\emph on
+Desarrollo de Sistemas de Recomendación en Big Data:
+ Aplicaciones en E-Commerce y Finanzas Personales
+\emph default
+.
+ Tesis Master.
+ Universidad Ramón Llull - La Salle.
+ Barcelona.
+\end_layout
+
+\end_body
+\end_document

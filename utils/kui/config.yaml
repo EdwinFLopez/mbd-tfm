@@ -1,0 +1,14 @@
+auth:
+  type: DISABLED
+kafka:
+  clusters:
+  - bootstrapServers: kafka-standalone:9092
+    metrics:
+      port: 9180
+      type: PROMETHEUS
+    name: dbz-kafka-mongo
+    properties: {}
+    readOnly: false
+rbac:
+  roles: []
+webclient: {}

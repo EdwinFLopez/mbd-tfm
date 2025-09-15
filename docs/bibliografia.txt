@@ -1,0 +1,19 @@
+(Kimball & Ross,2013):
+    Kimball, R., & Ross, M. (2013). The Data Warehouse Toolkit: The Definitive Guide to Dimensional Modeling (3rd ed.). John Wiley & Sons.
+
+(Kleppmann,2017):
+    Kleppmann, M. (2017). Designing Data-Intensive Applications. O'Reilly Media.
+
+(Debezium Community,2023):
+    Debezium Community. (2023). What is Change Data Capture?. Debezium Documentation.
+    URL: https://debezium.io/documentation/faq/#what_is_change_data_capture
+
+(Morling, Gunnar,2020):
+    Morling, Gunnar. (2020). Practical Change Data Streaming Use Cases with Apache Kafka & Debezium
+    URL: https://www.infoq.com/presentations/data-streaming-kafka-debezium
+
+(Portal de Datos Europeo,2022):
+Portal de Datos Europeo. (2022). Datos en tiempo real: Enfoques para integrar fuentes de datos en tiempo real en data.europa.eu. https://datos.gob.es/es/documentacion/datos-en-tiempo-real-enfoques-para-integrar-fuentes-de-datos-en-tiempo-real-en
+
+(Ripoll, A.,2025)
+    Ripoll, Albert. (2025). Desarrollo de Sistemas de Recomendación en Big Data: Aplicaciones en E-Commerce y Finanzas Personales. Tesis Master. Universidad Ramón Llull - La Salle. Barcelona.

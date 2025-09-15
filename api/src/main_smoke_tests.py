@@ -22,7 +22,7 @@ def get_mongo_client() -> MongoClient:
         mongodb_uri = os.environ['MONGO_DB_URL']
     else:
         mdb = {
-            "db"        : 'mbdtfm_db',
+            "db"        : 'mbdtfmdb',
             "host"      : 'localhost',
             "port"      : 27017
         }
@@ -55,9 +55,9 @@ def test_spark_cluster_connections():
     """Test if all nodes of a spark cluster are working"""
     spark_nodes = {
         "Spark History": "http://localhost:18080",
-        "Spark Master": "http://localhost:9080",
+        "Spark Master": "http://localhost:8080",
         "Spark Connect": "http://localhost:4040",
-        "Spark Worker": "http://localhost:9081",
+        "Spark Worker": "http://localhost:8081",
     }
     spark_vars = ["SPARK_MASTER_URL", "SPARK_WORKER_URL", "SPARK_HISTORY_URL", "SPARK_CONNECT_URL"]
     if all(key in os.environ.keys() for key in spark_vars):
