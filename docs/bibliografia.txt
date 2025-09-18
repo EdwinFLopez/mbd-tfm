@@ -1,19 +1,99 @@
+(Inmon, W. H., 2005):
+    Inmon, W. H. (2005). Building the Data Warehouse (4th ed.). Wiley. https://www.wiley.com/en-us/Building+the+Data+Warehouse%2C+4th+Edition-p-9780764599446
+
+(Hewitt, E.,2010):
+    Hewitt, E. (2010). Cassandra: The Definitive Guide. O'Reilly Media.
+
+(George,L.,2011):
+    George, L. (2011). HBase: The Definitive Guide. O'Reilly Media.
+
 (Kimball & Ross,2013):
     Kimball, R., & Ross, M. (2013). The Data Warehouse Toolkit: The Definitive Guide to Dimensional Modeling (3rd ed.). John Wiley & Sons.
+
+(Chodorow, K.,2013):
+    Chodorow, K. (2013). MongoDB: The Definitive Guide (2nd ed.). O'Reilly Media.
+
+(White, T.,2015):
+    White, T. (2015). Hadoop: The Definitive Guide (4th ed.). O'Reilly Media.
+
+(Conesa,J., Curto Díaz, J., Gómez García, J. 2016):
+    Conesa, J., Curto Díaz, J., Gómez García, J. (2016). Fundamentos y usos del big data, septiembre 2016. Universitat Oberta de Catalunya (UOC). URL: https://hdl.handle.net/10609/136326
+
+(Friedman,E., Tzoumas, K.,2016):
+    Ellen Friedman & Kostas Tzoumas (2016). Introduction to Apache Flink. O'Reilly Media.
+
+(Dageville, B., et al.,2016):
+    Dageville, B., et al. (2016). The Snowflake Elastic Data Warehouse. SIGMOD'16.
+
+(Karau, H.;Warren, R.,2017):
+    Karau, H., & Warren, R. (2017). High Performance Spark. O'Reilly Media.
+
+(Narkhede, N., Shapira, G., & Palino, T.,2017):
+    Narkhede, N., Shapira, G., & Palino, T. (2017). Kafka: The Definitive Guide. O'Reilly Media.
 
 (Kleppmann,2017):
     Kleppmann, M. (2017). Designing Data-Intensive Applications. O'Reilly Media.
 
-(Debezium Community,2023):
-    Debezium Community. (2023). What is Change Data Capture?. Debezium Documentation.
-    URL: https://debezium.io/documentation/faq/#what_is_change_data_capture
+(Géron, A.,2019):
+    Géron, A. (2019). Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow (2nd ed.). O'Reilly Media.
 
 (Morling, Gunnar,2020):
     Morling, Gunnar. (2020). Practical Change Data Streaming Use Cases with Apache Kafka & Debezium
     URL: https://www.infoq.com/presentations/data-streaming-kafka-debezium
 
-(Portal de Datos Europeo,2022):
-Portal de Datos Europeo. (2022). Datos en tiempo real: Enfoques para integrar fuentes de datos en tiempo real en data.europa.eu. https://datos.gob.es/es/documentacion/datos-en-tiempo-real-enfoques-para-integrar-fuentes-de-datos-en-tiempo-real-en
+(Bas, H., & de Jonge, M.,2021):
+    Bas, H., & de Jonge, M. (2021). Data Pipelines with Apache Airflow. Manning Publications.
 
-(Ripoll, A.,2025)
+(Armbrust, M., et al., 2021):
+    Armbrust, M., et al. (2021). Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics. CIDR 2021. https://www.cidrdb.org/cidr2021/papers/cidr2021_paper17.pdf
+
+(Gartner., 2021):
+    Gartner. (2021). What Is a Data Fabric? https://www.gartner.com/en/information-technology/glossary/data-fabric
+
+(Kreps, J., 2021):
+    Kreps, J. (2021). The Stream-First Architecture. Confluent Blog. https://www.confluent.io/blog/stream-first-architecture-principles/
+
+(Portal de Datos Europeo,2022):
+    Portal de Datos Europeo. (2022). Datos en tiempo real: Enfoques para integrar fuentes de datos en tiempo real en data.europa.eu. https://datos.gob.es/es/documentacion/datos-en-tiempo-real-enfoques-para-integrar-fuentes-de-datos-en-tiempo-real-en
+
+(Dehghani, Z., 2022):
+    Dehghani, Z. (2022). Data Mesh: Delivering Data-Driven Value at Scale. O'Reilly Media. https://www.oreilly.com/library/view/data-mesh/9781492092384/
+
+(LinkedIn Eng., 2022):
+    LinkedIn Engineering. (2022). Data Product Platform: Building Data as a Product. https://engineering.linkedin.com/blog/2022/data-product-platform
+
+(Debezium Community,2023):
+    Debezium Community. (2023). What is Change Data Capture?. Debezium Documentation.
+    URL: https://debezium.io/documentation/faq/#what_is_change_data_capture
+
+(AWS, 2023):
+    AWS. (2023). Zero-ETL: The Future of Data Integration. https://aws.amazon.com/blogs/aws/zero-etl-the-future-of-data-integration/
+
+(Ripoll, A.,2025):
     Ripoll, Albert. (2025). Desarrollo de Sistemas de Recomendación en Big Data: Aplicaciones en E-Commerce y Finanzas Personales. Tesis Master. Universidad Ramón Llull - La Salle. Barcelona.
+
+
+(Oracle Corp., 2023):
+    Oracle Corporation. (2023). Oracle GoldenGate concepts and administration guide, Release 21c. Oracle Documentation. URL: https://docs.oracle.com/en/middleware/goldengate/core/21.3/admin/using-oracle-goldengate-real-time-data-distribution.html
+
+(Microsoft Corp., 2023):
+    Microsoft Corporation. (2023). Change data capture (CDC) in SQL Server. Microsoft Docs. URL: https://learn.microsoft.com/en-us/sql/relational-databases/track-changes/about-change-data-capture-sql-server
+
+(MongoDB Inc., 2023):
+    MongoDB, Inc. (2023). Change streams documentation. MongoDB Manual. URL: https://www.mongodb.com/docs/manual/changeStreams/
+
+(Salesforce, Inc., 2023):
+    Salesforce, Inc. (2023). Change Data Capture developer guide. Salesforce Developer Documentation. URL: https://developer.salesforce.com/docs/atlas.en-us.change_data_capture.meta/change_data_capture
+
+(SAP SE., 2023):
+    SAP SE. (2023). SAP LT replication server technical documentation. SAP Help Portal. URL: https://help.sap.com/docs/SAP_LANDSCAPE_TRANSFORMATION_REPLICATION_SERVER
+
+(AWS, DMS., 2023):
+    Amazon Web Services. (2023). AWS database migration service user guide. AWS Documentation. URL: https://docs.aws.amazon.com/dms/latest/userguide/
+
+(Google Cloud, 2023):
+    Google Cloud. (2023). Cloud SQL documentation. Google Cloud Documentation. URL: https://cloud.google.com/sql/docs
+
+(MSFT Azure DF., 2023):
+    Microsoft Azure. (2023). Azure data factory documentation. Microsoft Learn. URL: https://learn.microsoft.com/en-us/azure/data-factory/
+

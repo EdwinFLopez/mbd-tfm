@@ -1049,6 +1049,61 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement h
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename __images/ETL-STREAMING.png
+	lyxscale 60
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\family roman
+\size small
+Fuente:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "Apache Flink"
+target "https://flink.apache.org/what-is-flink/use-cases/#data-pipeline-applications-a-namepipelinesa"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ETL vs Streaming
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Ya hemos mencionado que la captura de eventos de cambio o 
 \begin_inset Quotes eld
 \end_inset
@@ -1363,24 +1418,19 @@ Estructura del Documento
 
 \begin_layout Standard
 El presente documento está segmentado de la siguiente forma:
-\end_layout
-
-\begin_layout Itemize
-El preámbulo está compuesto por la sección de agradecimientos y dedicatoria,
+ el preámbulo está compuesto por la sección de agradecimientos y dedicatoria,
  donde el autor reconoce las contribuciones de sus círculos personales;
  la declaración de originalidad donde a modo de compromiso se asegura al lector que este trabajo es de construcción propia del autor;
  y el resumen,
  donde se introducen los puntos relevantes del proyecto a quien pueda estar interesado.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 A partir del primer capítulo,
  después del preámbulo,
  comienza el desarrollo del proyecto en los siguientes grandes capítulos:
- 
 \end_layout
 
-\begin_deeper
 \begin_layout Enumerate
 
 \series bold
@@ -1396,27 +1446,7 @@ Presentación
 \begin_layout Enumerate
 
 \series bold
-Marco
-\begin_inset space ~
-\end_inset
-
-teórico
-\begin_inset space ~
-\end_inset
-
-y
-\begin_inset space ~
-\end_inset
-
-estado
-\begin_inset space ~
-\end_inset
-
-del
-\begin_inset space ~
-\end_inset
-
-arte
+Marco teórico y estado del arte
 \series default
 .
  En este extenso capítulo se recogen las bases teóricas y prácticas para comprender la magnitud de la tarea a realizar y fundamentar las decisiones de diseño e implementación.
@@ -1483,27 +1513,42 @@ Magento
 \begin_layout Enumerate
 
 \series bold
-Validación y resultados.
-
+Validación y resultados
 \series default
+.
  Este capítulo presenta una discusión sobre los resultados obtenidos de la implementación,
  lo que se esperaba y lo que se obtuvo.
 \end_layout
 
 \begin_layout Enumerate
-Conclusiones y trabajo futuro.
- 
+
+\series bold
+Conclusiones y trabajo futuro
+\series default
+.
+ Capítulo final del desarrollo del proyecto.
+ Se abarcarán los logros obtenidos,
+ recomendaciones y líneas de investigación para la continuación del proyecto.
 \end_layout
 
 \begin_layout Enumerate
+
+\series bold
 Bibliografía
+\series default
+.
+ Lista de referencias teóricas utilizadas a lo largo del desarrollo del proyecto.
 \end_layout
 
 \begin_layout Enumerate
+
+\series bold
 Apéndices y Anexos
+\series default
+.
+ Cualquier complemento documental necesario para comprender el proyecto y su implementación.
 \end_layout
 
-\end_deeper
 \begin_layout Chapter
 Marco teórico y estado del arte
 \end_layout
@@ -1516,24 +1561,4901 @@ Big Data
 )
 \end_layout
 
+\begin_layout Subsection*
+En la Industria
+\end_layout
+
+\begin_layout Standard
+Como se ha mencionado anteriormente,
+ la esencia del procesamiento de datos masivos,
+ en adelante 
+\begin_inset Quotes eld
+\end_inset
+
+
+\shape italic
+Big
+\begin_inset space ~
+\end_inset
+
+Data
+\shape default
+
+\begin_inset Quotes erd
+\end_inset
+
+ en el ámbito industrial reside en la gestión y procesamiento de ingentes volúmenes de información proveniente de fuentes diversas y caracterizada por su variabilidad en velocidad y formato.
+ El objetivo primordial es 
+\shape italic
+generar valor
+\shape default
+ a través de 
+\shape italic
+análisis sofisticados
+\shape default
+,
+ facilitando así la toma de decisiones estratégicas y fundamentadas.
+ Igualmente,
+ empodera a las organizaciones para identificar patrones ocultos,
+ prever tendencias emergentes y optimizar la eficiencia operativa,
+ incluso en contextos empresariales de alta volatilidad y cambio constante.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Pilares Tecnológicos
+\end_layout
+
+\begin_layout Standard
+La infraestructura de Big Data se edifica sobre pilares fundamentales:
+ 
+\shape italic
+la ingesta de datos
+\shape default
+,
+ su posterior 
+\shape italic
+transformación
+\shape default
+,
+ el 
+\shape italic
+almacenamiento eficiente
+\shape default
+,
+ el 
+\shape italic
+análisis distribuido
+\shape default
+,
+ y la 
+\shape italic
+visualización
+\shape default
+.
+ Para ello,
+ se emplean tecnologías escalables que se adaptan a las necesidades cambiantes del negocio,
+ asegurando al mismo tiempo la integridad,
+ disponibilidad y calidad de los datos 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CURTO2016"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En este ecosistema,
+ los canales de procesamiento y/o migración de datos (pipelines) actúan como el conducto técnico esencial para el traslado de información desde sistemas de origen a destinos específicos.
+ Su diseño garantiza que las operaciones de transformación,
+ normalización y validación se ejecuten de manera automatizada y reproducible.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement th
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename __images/BIGDATA.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Representación de un canal de datos (pipeline) en Big Data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La implementación del canal de datos adecuado es particularmente crítica durante los procesos de migración,
+ donde se requiere una fidelidad absoluta entre los sistemas heredados y las nuevas plataformas,
+ manteniendo la 
+\shape italic
+continuidad operativa sin interrupciones
+\shape default
+.
+ La industria los utiliza tanto para migraciones en lotes masivas y programadas,
+ como para la integración continua en tiempo real.
+ Esto permite la 
+\shape italic
+modernización de infraestructuras
+\shape default
+,
+ la explotación de la 
+\shape italic
+inteligencia artificial
+\shape default
+ y el 
+\shape italic
+cumplimiento de requisitos
+\shape default
+ regulatorios y de negocio actuales.
+\end_layout
+
+\begin_layout Subsection*
+Ecosistemas Big Data
+\end_layout
+
+\begin_layout Standard
+Un ecosistema de software es una colección de componentes tecnológicos que resuelven un problema específico de forma integrada,
+ generando valor según qué tecnologías se usen y qué tan confiable sea en la generación de resultados y sus costos asociados 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CURTO2016"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En el mercado,
+ actualmente se encuentran distintas alternativas de entornos de manejo y procesamiento de datos masivos.
+ Veamos algunos a continuación:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Google
+\begin_inset space ~
+\end_inset
+
+Cloud
+\begin_inset space ~
+\end_inset
+
+Platform
+\series default
+ ofrece una serie de componentes que permiten crear un canal de datos (pipeline) de big data desde el inicio hasta el final.
+ Veamos en la tabla a continuación:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="3">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ase del Pipeline
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Servicio de GCP
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Función Principal
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Ingesta
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Cloud Pub/Sub
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Colecta de eventos en streaming
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Almacenamiento
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Cloud Storage
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Data Lake (almacenamiento económico)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Procesamiento
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Dataflow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Transformación de datos (batch/streaming)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Análisis
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+BigQuery
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Data Warehouse (consultas SQL)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Orquestación
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Cloud Composer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Automatización y scheduling del pipeline
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Componentes básicos de un pipeline de Big Data en Google Cloud Platform 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ahora bien,
+ el flujo genérico del pipeline está representado por la figura 2.2.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename __images/pipeline-bigdata-googlecloud.png
+	lyxscale 30
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pipeline básico de Big Data en Google Cloud Platform
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Amazon Web Services (AWS)
+\series default
+,
+ también ofrece componentes para crear un canal de datos,
+ o pipeline,
+ de big data.
+ Unos componentes básicos de AWS para construir un canal de datos pueden ser los listados en la tabla 2.2.
+ La figura 2.3 nos muestra un flujo básico usando componentes de AWS.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="3">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" varwidth="true">
+<column alignment="left" valignment="top" varwidth="true">
+<column alignment="left" valignment="top" varwidth="true">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Fase del Pipeline
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Servicio de AWS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Función Principal
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Ingesta de Datos (Streaming)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Amazon Kinesis Data Streams 
+\begin_inset Newline newline
+\end_inset
+
+o Amazon SQS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Colecta y procesamiento de streams de datos en tiempo real.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Ingesta de Datos (BATCH)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Amazon S3 
+\begin_inset Newline newline
+\end_inset
+
+(Simple Storage Service)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Almacenamiento de objetos escalable y duradero para datos en bruto y procesados.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Procesamiento o Transformación
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+AWS Glue
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Servicio ETL totalmente gestionado para preparar y transformar datos.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Almacenamiento y Análisis (Data Warehouse)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Amazon Redshift
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Almacén de datos rápido,
+ escalable y completamente gestionado para análisis.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Orquestación y Automatización
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+AWS Step Functions o 
+\begin_inset Newline newline
+\end_inset
+
+Amazon Managed Workflows for Apache Airflow (MWAA)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Coordina los componentes del pipeline y automatiza flujos de trabajo.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Componentes básicos de un pipeline de Big Data en AWS
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/pipeline-bigdata-aws-simple.png
+	lyxscale 40
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pipeline básico de Big Data en AWS
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Microsoft también ofrece un ecosistema completo de procesamiento de big data,
+ un plan básico de componentes que permite crear un pipeline se puede resumir en la tabla 2.3,
+ y uno de sus flujos de datos está resumido en la imagen 2.4.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="3">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" varwidth="true">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" varwidth="true">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Fase del Pipeline
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Servicio de Azure
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Función Principal
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Ingesta de Datos
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Azure Event Hubs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Ingesta de datos de streaming a gran escala
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Almacenamiento
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Azure Data Lake Storage (ADLS) Gen2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Almacenamiento escalable para datos estructurados y no estructurados
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Procesamiento o Transformación
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Azure Databricks
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Procesamiento ETL y análisis de datos con Spark
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Almacenamiento Analítico
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Azure Synapse Analytics
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Almacén de datos para análisis y reporting
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Orquestación
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Azure Data Factory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Orquestación e integración de datos
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Componentes básicos de un pipeline de Big Data en Microsoft Azure 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/pipeline-bigdata-azure.png
+	lyxscale 30
+	width 14cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pipeline básico de Big Data en Microsoft Azure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Tecnologías utilizadas en gestión de datos masivos
+\end_layout
+
+\begin_layout Standard
+Cuando se habla de big data,
+ no es extraño encontrar mención de sistemas de gestión de flujos de datos,
+ almacenamiento distribuido y columnar,
+ orquestadores de procesos.
+ Entre los más conocidos y populares se pueden encontrar los listados en la tabla 2.4.
+ Ahora,
+ no es posible garantizar que sean,
+ efectivamente,
+ las tecnologías más utilizadas hoy en día,
+ sin embargo,
+ sus nombres no pasan por desconocidos,
+ y su uso no deja de ser evidencia anecdótica.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="11" columns="3">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="left" valignment="top" varwidth="true">
+<column alignment="left" valignment="top" varwidth="true">
+<column alignment="left" valignment="top" varwidth="true">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tecnología
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Categoría
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Descripción
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Apache Hadoop
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Procesamiento Distribuido
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Framework para procesamiento distribuido de grandes conjuntos de datos.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WhiteT2015"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Apache Spark
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Procesamiento en Memoria
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Motor de procesamiento rápido para análisis de datos a gran escala 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KarauHWarrenR2017"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Apache Kafka
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ingesta de Datos
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Plataforma de streaming distribuido para pipelines de datos en tiempo real 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NarkhedeNShapiraGPalinoT2017"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Apache HBase
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Base de Datos NoSQL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Base de datos NoSQL columnar distribuida 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GeorgeL2011"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cassandra
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Base de Datos NoSQL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Base de datos distribuida diseñada para manejar grandes cantidades de datos 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hewitt2010"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MongoDB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Base de Datos NoSQL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Base de datos orientada a documentos 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ChodorowK2013"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Apache Airflow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Orquestación
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Plataforma para programar y monitorear flujos de trabajo 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BasHJongeM2021"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Apache Flink
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Procesamiento Stream
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Framework para procesamiento de datos en streaming 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "FriedmanETzoumasK2016"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Snowflake
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Data Warehouse
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Plataforma de data warehouse en la nube 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DagevilleB2016"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TensorFlow
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Machine Learning
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Framework de código abierto para machine learning 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GéronA2019"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tecnologías más usadas en Big Data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Arquitecturas de integración de datos
 \end_layout
 
+\begin_layout Standard
+En 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "K2017"
+literal "false"
+
+\end_inset
+
+,
+ los autores afirman que:
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\shape italic
+...
+ el objetivo de la integración de datos es garantizar que los datos lleguen en la forma correcta a todos los lugares adecuados.
+ Lograr esto requiere consumir insumos,
+ transformar,
+ unir,
+ filtrar,
+ agregar,
+ entrenar modelos,
+ evaluar y,
+ eventualmente,
+ escribir en las salidas apropiadas.
+ Los procesamientos por lotes y de flujo continuo son las herramientas para alcanzar este objetivo
+\shape default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dicha afirmación,
+ puede parecer simplista,
+ pero es bastante acertada ya que cubre de forma implícita las distintas etapas por las que pasa la información a lo largo de un canal de integración.
+ Inclusive mencionan las dos formas posibles de lograr dicho objetivo,
+ por lotes,
+ y por flujo continuo de datos (
+\shape italic
+streaming
+\shape default
+).
+\end_layout
+
+\begin_layout Standard
+Se pueden sintetizar las actuales arquitecturas de integración en la siguiente tabla 2.5.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="4">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="left" valignment="top" varwidth="true">
+<column alignment="left" valignment="top" varwidth="true">
+<column alignment="left" valignment="top" varwidth="true">
+<column alignment="left" valignment="top" varwidth="true">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Arquitectura
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Categoría
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Descripción
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Criterios de Selección
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+ETL (Extract,
+ Transform,
+ Load)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Tradicional
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Extrae datos de fuentes,
+ transforma y carga en destino
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Volumen moderado,
+ transformaciones complejas,
+ data warehousing 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KR2013"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+ELT (Extract,
+ Load,
+ Transform)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Tradicional
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Extrae y carga datos primero,
+ luego transforma en destino
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Big data,
+ cloud platforms,
+ procesamiento escalable 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "InmonWH2005"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Data Mesh
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Moderna
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Arquitectura descentralizada orientada a dominios
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Organizaciones grandes,
+ descentralización,
+ propiedad de datos 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DehghaniZ2022"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Data Fabric
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Moderna
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Capa de integración unificada con metadata
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Entornos híbridos,
+ multicloud,
+ gobierno de datos unificado 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gartner2021"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Change Data Capture (CDC)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Tradicional
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Captura cambios incrementales en tiempo real
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Replicación real-time,
+ sincronización,
+ baja latencia 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "K2017"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Data Lakehouse
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Emergente
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Combina ETL/ELT con capacidades de data lake y warehouse
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Unificación de análisis,
+ AI/ML,
+ procesamiento flexible 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ArmbrustM2021"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Stream-First Architecture
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Emergente
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Procesamiento de datos en tiempo real como prioridad
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+IoT,
+ aplicaciones real-time,
+ baja latencia 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KrepsJ2021"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Zero-ETL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Emergente
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Minimización de transformaciones mediante integración nativa
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Silos de datos,
+ eficiencia operativa,
+ cloud-native 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AWS2023"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Data Product Platform
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Emergente
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Enfoque en productos de datos como bienes de valor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Monetización de datos,
+ ecosistemas de datos 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "LinkedInEng2022"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\size default
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algunas arquitecturas de integración
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ahora bien,
+ los criterios de selección de la arquitectura se podrían agrupar según la dimensión de calidad requerida,
+ tales como:
+\end_layout
+
+\begin_layout Enumerate
+Según el volumen de datos requerido:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Bajo/Moderado
+\series default
+:
+ ETL tradicional
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Alto/Muy Alto
+\series default
+:
+ ELT,
+ Data Lakehouse
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Extremo
+\series default
+:
+ Stream-First,
+ Zero-ETL
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Según la latencia requerida:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Batch (horas/días)
+\series default
+:
+ ETL,
+ ELT
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Casi real-time (minutos)
+\series default
+:
+ CDC,
+ Data Fabric
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Real-time (segundos)
+\series default
+:
+ Stream-First,
+ CDC
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Complejidad Organizacional:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Centralizada
+\series default
+:
+ ETL,
+ ELT
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Descentralizada
+\series default
+:
+ Data Mesh,
+ Data Product Platform
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Híbrida
+\series default
+:
+ Data Fabric,
+ Zero-ETL
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Madurez Tecnológica:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Establecida
+\series default
+:
+ ETL,
+ ELT,
+ CDC
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Emergente
+\series default
+:
+ Data Lakehouse,
+ Zero-ETL
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vanguardia
+\series default
+:
+ Stream-First,
+ Data Product Platform
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Requerimientos de Gobierno:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Estricto
+\series default
+:
+ Data Fabric,
+ Data Mesh
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Moderado
+\series default
+:
+ ETL,
+ ELT
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Flexible
+\series default
+:
+ Stream-First,
+ Zero-ETL
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 Procesos por lotes (Batch)
 \end_layout
 
+\begin_layout Standard
+La integración de datos mediante procesos por lotes (batch) representa un paradigma tradicional en la gestión de información,
+ caracterizado por la recopilación,
+ transformación y carga periódica de datos en unidades discretas.
+ El objetivo primordial de este enfoque es asegurar que volúmenes sustanciales de datos sean transferidos de manera precisa y consistente a sus destinos correspondientes,
+ manteniendo la integridad y el formato adecuado 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KR2013"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Este proceso involucra la ingesta de datos provenientes de diversas fuentes,
+ la aplicación de transformaciones de datos —
+tales como limpieza,
+ uniones y agregaciones—
+ y la posterior carga de los resultados en repositorios analíticos como data warehouses o data lakes para facilitar el análisis 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "InmonWH2005"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Si bien la integración por lotes introduce una latencia inherente,
+ se destaca por su eficiencia y confiabilidad en el procesamiento de grandes volúmenes de datos,
+ constituyendo la base de arquitecturas de datos como ETL (Extract,
+ Transform,
+ Load) y ELT (Extract,
+ Load,
+ Transform).
+ La selección entre ETL y ELT se determina en función del volumen de datos a procesar y las capacidades técnicas del sistema de destino 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "K2017"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename __images/batch-tipico.png
+	lyxscale 20
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Proceso típico de integración por lotes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nótense en la figura 2.5 las fases del proceso de integración por lotes y sus características:
+\end_layout
+
+\begin_layout Enumerate
+Fase:
+ Extracción
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fuentes heterogéneas:
+ Bases de datos transaccionales,
+ archivos planos,
+ sistemas legados
+\end_layout
+
+\begin_layout Itemize
+Métodos:
+ Extracción completa o incremental (CDC)
+\end_layout
+
+\begin_layout Itemize
+Frecuencia:
+ Nocturna,
+ horaria,
+ o según requisitos del negocio
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Fase:
+ Área de almacenamiento intermedio
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Propósito:
+ Almacenamiento temporal para validación inicial
+\end_layout
+
+\begin_layout Itemize
+Ventaja:
+ Aísla los sistemas fuentes de las transformaciones
+\end_layout
+
+\begin_layout Itemize
+Formato:
+ Generalmente estructura similar a la fuente
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Fase:
+ Transformación (ETL/ELT)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Limpieza:
+ Validación de tipos,
+ corrección de valores,
+ manejo de nulos
+\end_layout
+
+\begin_layout Itemize
+Enriquecimiento:
+ Integración con datos de referencia,
+ cálculos derivados
+\end_layout
+
+\begin_layout Itemize
+Agregación:
+ Resúmenes para análisis dimensional
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Fase:
+ Carga final
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Data Warehouse:
+ Modelo dimensional para reportes y visualización
+\end_layout
+
+\begin_layout Itemize
+Data Lake:
+ Almacenamiento de datos procesados para otros usos
+\end_layout
+
+\begin_layout Itemize
+Data Marts:
+ Vistas especializadas por área de negocio
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Fase:
+ Orquestación
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Programación:
+ Ejecución automatizada en ventanas específicas
+\end_layout
+
+\begin_layout Itemize
+Manejo de errores:
+ Reintentos automáticos y notificaciones
+\end_layout
+
+\begin_layout Itemize
+Auditoría:
+ Trazabilidad completa del proceso de integración
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 Procesos por flujo de datos (Streaming)
 \end_layout
 
+\begin_layout Standard
+La integración de datos mediante streaming se define como el procesamiento de flujos continuos de información en movimiento,
+ posibilitando la ingestión,
+ transformación y análisis con una latencia mínima,
+ típicamente en el rango de milisegundos a segundos.
+ A diferencia del procesamiento por lotes,
+ este paradigma opera sobre conjuntos de datos ilimitados y en tiempo real,
+ donde los eventos son consumidos,
+ procesados y entregados de manera inmediata a medida que llegan,
+ sin la necesidad de esperar a la culminación de un lote de procesamiento 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "K2017"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+El flujo de trabajo típico comprende 1)
+\begin_inset space ~
+\end_inset
+
+la ingesta de flujos de eventos desde fuentes de datos –por ejemplo,
+ sistemas de colas,
+ sensores,
+ otros aplicativos,
+ etc.– ,
+ 2)
+\begin_inset space ~
+\end_inset
+
+el procesamiento en tiempo real mediante operaciones de filtrado,
+ agregación continua y enriquecimiento de datos,
+ y 3)
+\begin_inset space ~
+\end_inset
+
+la posterior carga de los resultados en sistemas de destino de naturaleza analítica u operacional,
+ como bases de datos o paneles de control.
+\end_layout
+
+\begin_layout Standard
+Esta arquitectura resulta fundamental para casos de uso que demandan inmediatez en la respuesta,
+ tales como sistemas de monitoreo continuo,
+ detección de anomalías en tiempo real o la provisión de recomendaciones personalizadas 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KrepsJ2021"
+literal "false"
+
+\end_inset
+
+.
+ El diseño e implementación de estas arquitecturas deben considerar y abordar desafíos inherentes,
+ como la gestión del desorden temporal en los flujos de datos,
+ la definición y aplicación de ventanas de tiempo para el análisis,
+ y la garantía de la exactitud semántica de la información procesada.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename __images/streaming-tipico.png
+	lyxscale 20
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Proceso típico de integración usando flujo de datos (streaming)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Obsérvese cada una de las fases en la imagen 2.6,
+ y sus características:
+\end_layout
+
+\begin_layout Enumerate
+Fase:
+ Generación de Eventos
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fuentes:
+ IoT,
+ aplicaciones,
+ sistemas transaccionales
+\end_layout
+
+\begin_layout Itemize
+Salida:
+ Flujos de datos (Streams) de eventos continuos
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Fase:
+ Ingesta de Streams
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Componente:
+ Message Broker (Kafka,
+ Kinesis,
+ Pulsar,
+ etc.)
+\end_layout
+
+\begin_layout Itemize
+Objetivo:
+ Recolectar y encolar eventos
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Fase:
+ Procesamiento Tiempo Real
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Procesamiento:
+ Transformaciones,
+ enriquecimiento,
+ agregaciones
+\end_layout
+
+\begin_layout Itemize
+Tecnologías:
+ Apache Flink,
+ Apache Spark (Streaming),
+ Kafka Streams,
+ etc.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Fase:
+ Almacenamiento y Consumo
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Destinos:
+ Bases de datos,
+ data lakes,
+ paneles de control
+\end_layout
+
+\begin_layout Itemize
+Objetivo:
+ Consumo inmediato y análisis
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Fase:
+ Gobierno y Control
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Componentes:
+ Registro de esquemas,
+ APIs,
+ monitoreo
+\end_layout
+
+\begin_layout Itemize
+Objetivo:
+ Garantizar confiabilidad y calidad
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 Captura de eventos de cambio (
 \shape italic
 CDC
 \shape default
 )
+\end_layout
+
+\begin_layout Standard
+La captura de eventos de cambio,
+ o 
+\begin_inset Quotes eld
+\end_inset
+
+Change Data Capture (CDC)
+\begin_inset Quotes erd
+\end_inset
+
+,
+ es un patrón de integración que identifica y captura cambios incrementales en sistemas transaccionales en tiempo real,
+ propagándolos hacia otros sistemas.
+\end_layout
+
+\begin_layout Standard
+Su importancia radica en:
+ 1)
+\begin_inset space ~
+\end_inset
+
+permitir replicación de baja latencia,
+ 2)
+\begin_inset space ~
+\end_inset
+
+sincronización entre bases de datos,
+ y 3)
+\begin_inset space ~
+\end_inset
+
+habilitar canales de datos que usan flujos continuos –o streaming– sin impactar el rendimiento de sistemas fuentes 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "K2017"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Entre sus virtudes se destacan la eficiencia al evitar extracciones completas,
+ la minimización de la carga en sistemas origen y la capacidad de proporcionar datos actualizados para análisis inmediato 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KrepsJ2021"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sin embargo,
+ presenta algunas falencias importantes como:
+ 1)
+\begin_inset space ~
+\end_inset
+
+la complejidad en la implementación,
+ 2)
+\begin_inset space ~
+\end_inset
+
+la gestión del orden de eventos ante fallos y la potencial pérdida de datos si no se manejan adecuadamente los mecanismos de verificación,
+ 3)
+\begin_inset space ~
+\end_inset
+
+requiere monitoreo constante para garantizar la consistencia y el manejo de esquemas evolutivos 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KR2013"
+literal "false"
+
+\end_inset
+
+.
+ CDC es fundamental en arquitecturas modernas de datos para habilitar aplicaciones sensibles al tiempo y resulta particularmente valiosa cuando los cambios quedan disponibles como un flujo continuo,
+ propagándose inmediatamente después de su escritura.
+\end_layout
+
+\begin_layout Standard
+Durante décadas,
+ numerosas bases de datos carecieron de un método documentado para acceder al registro de los cambios que se efectuaban en ellas.
+ Dicha limitación dificultaba la replicación de todas las modificaciones realizadas en una base de datos a tecnologías de almacenamiento alternativas,
+ como índices de búsqueda,
+ cachés o almacenes de datos (data warehouses),
+ debido a que históricamente dicha funcionalidad ha sido considerada como un detalle de implementación interna,
+ y no como una interfaz de programación de aplicaciones (API) pública;
+ no se le vio valor más allá de la consistencia interna del motor de bases de datos.
+ La expectativa era que los clientes interactuaran con la base de datos a través de su modelo de datos y lenguaje de consulta establecidos,
+ en lugar de analizar los registros de replicación para extraer información.
+\end_layout
+
+\begin_layout Standard
+Esta tendencia ha ido cambiando a través del tiempo,
+ ya que numerosos sistemas transaccionales implementan,
+ de una forma u otra,
+ interfaces de captura de cambios.
+\end_layout
+
+\begin_layout Subsubsection*
+Sistemas Transaccionales con Soporte CDC
+\end_layout
+
+\begin_layout Standard
+Algunos ejemplos de sistemas transaccionales que ya incluyen soporte nativo para CDC.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="3">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="left" valignment="top" varwidth="true">
+<column alignment="left" valignment="top" varwidth="true">
+<column alignment="left" valignment="top" varwidth="true">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sistema Transaccional
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mecanismo CDC Nativo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Herramientas Comunes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Oracle Database
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+LogMiner,
+ Redo Logs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Oracle GoldenGate,
+ Debezium
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Microsoft SQL Server
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Transaction Log,
+ Change Tracking
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SQL Server CDC,
+ Debezium
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PostgreSQL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Write-Ahead Log (WAL)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Debezium,
+ Logical Replication
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MySQL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Binary Log (Binlog)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Debezium,
+ Maxwell
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IBM Db2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Transaction Log
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IBM InfoSphere CDC,
+ Debezium
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MariaDB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Binary Log (Binlog)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Debezium,
+ MaxScale
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Bases de datos relacionales con soporte CDC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="left" valignment="top" varwidth="true">
+<column alignment="left" valignment="top" varwidth="true">
+<column alignment="left" valignment="top" varwidth="true">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Sistema Transaccional
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Mecanismo CDC Nativo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Herramientas Comunes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+MongoDB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Oplog (Operations Log)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Debezium,
+ MongoDB Change Streams
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Amazon RDS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Depende del motor (Binlog,
+ WAL,
+ etc.)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+AWS DMS,
+ Debezium
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Google Cloud SQL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Depende del motor subyacente
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Dataflow,
+ Debezium
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Azure SQL Database
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Transaction Log
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Azure Data Factory,
+ Debezium
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sistemas NoSQL con soporte CDC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" varwidth="true">
+<column alignment="center" valignment="top" varwidth="true">
+<column alignment="center" valignment="top" varwidth="true">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Sistema Transaccional
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Mecanismo CDC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Herramientas Comunes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+SAP HANA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Replication Log
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+SAP LT Replication Server
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Salesforce
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Change Data Capture API
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Salesforce CDC,
+ MuleSoft
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Dynamics 365
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Change Tracking
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Azure Event Hub,
+ Data Factory
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sistemas ERP y CRM con soporte CDC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Mecanismos Técnicos de CDC
+\end_layout
+
+\begin_layout Standard
+Los mecanismos técnicos para implementar nativamente CDC sobre sistemas de transacciones se pueden agrupar en 3 tipos:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Basados en Log de Transacciones
+\series default
+:
+ Permite la conexión a cada transacción completada y dicho evento es propagado a una serie de conectores clientes,
+ donde se envía el estado anterior de cada registro al igual que el nuevo estado en el que se encuentran.
+ Ejemplos de mecanismo:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Oracle:
+ Redo Logs
+\end_layout
+
+\begin_layout Itemize
+PostgreSQL:
+ Write-Ahead Log (WAL)
+\end_layout
+
+\begin_layout Itemize
+MySQL:
+ Binary Log
+\end_layout
+
+\begin_layout Itemize
+SQL Server:
+ Transaction Log
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Basados en API
+\series default
+:
+ Estandarizan el acceso a los eventos de replicación o de cambio a través de una interfaz de progración que puede ser usada por distintos clientes.
+ Ejemplos:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Salesforce:
+ Change Data Capture API
+\end_layout
+
+\begin_layout Itemize
+MongoDB:
+ Change Streams API
+\end_layout
+
+\begin_layout Itemize
+SAP:
+ Operational Delta Queue (ODQ)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Basados en Disparadores (
+\shape italic
+Triggers
+\shape default
+)
+\series default
+:
+ Este mecanismo es el que tradicionalmente se ha usado cuando no están disponibles ninguno de los anteriores,
+ y consiste en definir un evento de cambio a través de disparadores –o 
+\shape italic
+trigger
+\shape default
+– de base de datos para cada tabla que requiere observación.
+ Este enfoque es más propenso a errores ya que es necesario que intervenga una persona con conocimientos suficientes sobre el sistema y que pueda materializar la propagación de forma adecuada.
+ Al contrario qué en los otros enfoques,
+ donde está automatizado este proceso.
+ Ejemplos:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sistemas Legados:
+ Disparadores en tablas (menos eficiente)
+\end_layout
+
+\begin_layout Itemize
+SQL Server:
+ Disparadores en Tablas y Tablas Temporales (usando versionamiento).
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection*
+Arquitectura típica de integración usando CDC
+\end_layout
+
+\begin_layout Standard
+Una arquitectura de integración usando CDC puede segmentarse en los siguientes componentes 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "K2017"
+literal "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+Sistemas Fuentes:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Base de datos transaccional:
+ Sistemas OLTP tradicionales.
+\end_layout
+
+\begin_layout Itemize
+Registro de trazas de transacciones:
+ Mecanismo nativo de cada BD para registro de cambios.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Captura de Cambios:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Conector CDC:
+ Herramientas especializadas en lectura de logs o API.
+\end_layout
+
+\begin_layout Itemize
+Registro de esquemas:
+ Gestión centralizada de esquemas de estructuras válidas de datos.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Distribución de mensajes de cambio:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Distribuidor de Mensajes (Broker):
+ Sistema intermediario para desacoplamiento.
+\end_layout
+
+\begin_layout Itemize
+Topicos / Flujos (Streams):
+ Canales organizados por tipo de dato o aplicación.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Procesamiento y transformaciones:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Procesamiento de flujos:
+ Motor de ejecución de transformaciones.
+\end_layout
+
+\begin_layout Itemize
+Transformaciones:
+ Lógica de negocio aplicada a los datos en movimiento.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Destinos de datos:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Data Warehouse:
+ Almacén estructurado para análisis.
+\end_layout
+
+\begin_layout Itemize
+Data Lake:
+ Repositorio para datos en diversos formatos.
+\end_layout
+
+\begin_layout Itemize
+Bases de datos de consulta:
+ Sistemas optimizados para acceso operacional.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Gobierno y Control
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Monitoreo:
+ Seguimiento de métricas de performance y calidad.
+\end_layout
+
+\begin_layout Itemize
+Manejo de errores:
+ Mecanismos de resiliencia y recuperación.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename __images/cdc-tipico.png
+	lyxscale 20
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Integración de datos usando CDC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Flujo de Datos Típico
+\end_layout
+
+\begin_layout Standard
+Se puede definir el ciclo de vida del dato en el siguiente flujo:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Captura
+\series default
+:
+ El conector CDC lee el log de transacciones o la API publicada.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Serialización
+\series default
+:
+ Los cambios se convierten a formatos de evento.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Distribución
+\series default
+:
+ Los eventos son publicados en distribuidor de mensajes (broker).
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Procesamiento
+\series default
+:
+ Se aplican transformaciones y se enriquece el dato en el flujo (streaming).
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Carga
+\series default
+:
+ Los datos son finalmente cargados a cada destino final configurado.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Monitoreo
+\series default
+:
+ Control continuo de estado,
+ calidad y rendimiento.
+\end_layout
+
+\begin_layout Subsubsection*
+Ventajas Clave
+\end_layout
+
+\begin_layout Standard
+Utilizar CDC como mecanismo de integración tiene las siguiente ventajas.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Baja latencia
+\series default
+:
+ Captura de cambios en tiempo real.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Bajo impacto
+\series default
+:
+ Sin sobrecarga en base de datos fuente.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Escalabilidad
+\series default
+:
+ El procesamiento es distribuido.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Confiabilidad
+\series default
+:
+ No hay pérdida de datos gracias a logs de transacciones.
 \end_layout
 
 \begin_layout Section
@@ -1675,6 +6597,69 @@ Conclusiones y trabajo futuro
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+label "Inmon, W. H., 2005"
+key "InmonWH2005"
+literal "false"
+
+\end_inset
+
+ Inmon,
+ W.
+ H.
+ (2005).
+ 
+\shape italic
+Building the Data Warehouse (4th ed.)
+\shape default
+.
+ Wiley.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Hewitt, E., 2010"
+key "Hewitt2010"
+literal "false"
+
+\end_inset
+
+ Hewitt,
+ E.
+ (2010).
+ 
+\shape italic
+Cassandra:
+ The Definitive Guide
+\shape default
+.
+ O'Reilly Media.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "George,L., 2011"
+key "GeorgeL2011"
+literal "false"
+
+\end_inset
+
+ George,
+ L.
+ (2011).
+ 
+\shape italic
+HBase:
+ The Definitive Guide
+\shape default
+.
+ O'Reilly Media.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 label "Kimball & Ross, 2013"
 key "KR2013"
 literal "false"
@@ -1698,6 +6683,144 @@ The Data Warehouse Toolkit:
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+label "Chodorow, K., 2013"
+key "ChodorowK2013"
+literal "false"
+
+\end_inset
+
+ Chodorow,
+ K.
+ (2013).
+ 
+\shape italic
+MongoDB:
+ The Definitive Guide (2nd ed.)
+\shape default
+.
+ O'Reilly Media.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "White, T., 2015"
+key "WhiteT2015"
+literal "false"
+
+\end_inset
+
+ White,
+ T.
+ (2015).
+ 
+\shape italic
+Hadoop:
+ The Definitive Guide (4th ed.)
+\shape default
+.
+ O'Reilly Media.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Conesa,J.; Curto D., J.; Gómez G., J.; 2016"
+key "CURTO2016"
+literal "false"
+
+\end_inset
+
+ Conesa,
+ J.,
+ Curto Díaz,
+ J.,
+ Gómez García,
+ J.
+ (2016).
+ 
+\shape italic
+Fundamentos y usos del big data
+\shape default
+.
+ Universitat Oberta de Catalunya (UOC).
+ URL:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "Fundamentos y usos del big data"
+target "https://hdl.handle.net/10609/136326"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Friedman,E., Tzoumas, K., 2016"
+key "FriedmanETzoumasK2016"
+literal "false"
+
+\end_inset
+
+ Ellen Friedman & Kostas Tzoumas (2016).
+ 
+\shape italic
+Introduction to Apache Flink
+\shape default
+.
+ O'Reilly Media.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Dageville, B., et al., 2016"
+key "DagevilleB2016"
+literal "false"
+
+\end_inset
+
+ Dageville,
+ B.,
+ et al.
+ (2016).
+ 
+\shape italic
+The Snowflake Elastic Data Warehouse
+\shape default
+.
+ SIGMOD'16.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Karau, H., Warren, R., 2017"
+key "KarauHWarrenR2017"
+literal "false"
+
+\end_inset
+
+ Karau,
+ H.,
+ & Warren,
+ R.
+ (2017).
+ 
+\shape italic
+High Performance Spark
+\shape default
+.
+ O'Reilly Media.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 label "Kleppmann, 2017"
 key "K2017"
 literal "false"
@@ -1713,6 +6836,53 @@ Kleppmann,
  
 \shape italic
 Designing Data-Intensive Applications
+\shape default
+.
+ O'Reilly Media.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Narkhede, N., el al, 2017"
+key "NarkhedeNShapiraGPalinoT2017"
+literal "false"
+
+\end_inset
+
+ Narkhede,
+ N.,
+ Shapira,
+ G.,
+ & Palino,
+ T.
+ (2017).
+ 
+\shape italic
+Kafka:
+ The Definitive Guide
+\shape default
+.
+ O'Reilly Media.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Géron, A., 2019"
+key "GéronA2019"
+literal "false"
+
+\end_inset
+
+ Géron,
+ A.
+ (2019).
+ 
+\shape italic
+Hands-On Machine Learning with Scikit-Learn,
+ Keras,
+ and TensorFlow (2nd ed.)
 \shape default
 .
  O'Reilly Media.
@@ -1747,6 +6917,94 @@ literal "true"
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+label "Bas, H., & de Jonge, M., 2021"
+key "BasHJongeM2021"
+literal "false"
+
+\end_inset
+
+ Bas,
+ H.,
+ & de Jonge,
+ M.
+ (2021).
+ 
+\shape italic
+Data Pipelines with Apache Airflow
+\shape default
+.
+ Manning Publications.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Gartner., 2021"
+key "Gartner2021"
+literal "false"
+
+\end_inset
+
+ Gartner.
+ (2021).
+ 
+\shape italic
+What Is a Data Fabric?
+
+\shape default
+ URL:
+ https://www.gartner.com/en/information-technology/glossary/data-fabric
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Armbrust, M., et al., 2021"
+key "ArmbrustM2021"
+literal "false"
+
+\end_inset
+
+ Armbrust,
+ M.,
+ et al.
+ (2021).
+ 
+\shape italic
+Lakehouse:
+ A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics
+\shape default
+.
+ CIDR 2021.
+ URL:
+ https://www.cidrdb.org/cidr2021/papers/cidr2021_paper17.pdf
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Kreps, J., 2021"
+key "KrepsJ2021"
+literal "false"
+
+\end_inset
+
+ Kreps,
+ J.
+ (2021).
+ 
+\shape italic
+The Stream-First Architecture
+\shape default
+.
+ Confluent Blog.
+ URL:
+ https://www.confluent.io/blog/stream-first-architecture-principles/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 label "Portal de Datos Europeo, 2022"
 key "PDEU2022"
 literal "false"
@@ -1754,8 +7012,12 @@ literal "false"
 \end_inset
 
  Portal de Datos Europeo.
- (2024). Datos en tiempo real:
- Enfoques para integrar fuentes de datos en tiempo real en data.europa.eu.
+ (2024). 
+\shape italic
+Datos en tiempo real:
+ Enfoques para integrar fuentes de datos en tiempo real en data.europa.eu
+\shape default
+.
  URL:
  
 \begin_inset CommandInset href
@@ -1767,6 +7029,50 @@ literal "true"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Dehghani, Z., 2022"
+key "DehghaniZ2022"
+literal "false"
+
+\end_inset
+
+ Dehghani,
+ Z.
+ (2022).
+ 
+\shape italic
+Data Mesh:
+ Delivering Data-Driven Value at Scale
+\shape default
+.
+ O'Reilly Media.
+ URL:
+ https://www.oreilly.com/library/view/data-mesh/9781492092384/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "LinkedIn Eng., 2022"
+key "LinkedInEng2022"
+literal "false"
+
+\end_inset
+
+ LinkedIn Engineering.
+ (2022).
+ 
+\shape italic
+Data Product Platform:
+ Building Data as a Product
+\shape default
+.
+ URL:
+ https://engineering.linkedin.com/blog/2022/data-product-platform
 \end_layout
 
 \begin_layout Bibliography
@@ -1802,7 +7108,28 @@ literal "true"
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-label "Ripoll, A.,2025"
+label "AWS., 2023"
+key "AWS2023"
+literal "false"
+
+\end_inset
+
+ AWS.
+ (2023).
+ 
+\shape italic
+Zero-ETL:
+ The Future of Data Integration
+\shape default
+.
+ URL:
+ https://aws.amazon.com/blogs/aws/zero-etl-the-future-of-data-integration/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Ripoll, A., 2025"
 key "Ripoll2025"
 literal "false"
 
