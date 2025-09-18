@@ -819,11 +819,7 @@ SaaS
 Adobe Commerce
 \shape default
 ”,
- ofrece un sistema de recomendaciones propietario basado en filtrado colaborativo (
-\shape italic
-Collaborative Filtering
-\shape default
-) del cual no hay mucho detalle en la documentación propia.
+ ofrece un sistema de recomendaciones propietario del cual no hay mucho detalle en la documentación propia.
  La solución trabaja con niveles suficientes de calidad,
  como se espera de un producto comercial.
 \end_layout
@@ -5127,6 +5123,15 @@ Sistemas Transaccionales con Soporte CDC
 
 \begin_layout Standard
 Algunos ejemplos de sistemas transaccionales que ya incluyen soporte nativo para CDC.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AWS2023,DBZ2023,LinkedInEng2022,SalesforceInc2023,AWSDMS2023,MicrosoftCorp2023,MongoDBInc2023,MSFTAzure2023,OracleCorp2023,KarauHWarrenR2017"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5135,7 +5140,7 @@ placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -5382,7 +5387,7 @@ placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -5779,7 +5784,7 @@ placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -6106,7 +6111,7 @@ Los mecanismos técnicos para implementar nativamente CDC sobre sistemas de tran
 \begin_layout Enumerate
 
 \series bold
-Basados en Log de Transacciones
+Basados en registros de transacciones
 \series default
 :
  Permite la conexión a cada transacción completada y dicho evento es propagado a una serie de conectores clientes,
@@ -6166,7 +6171,7 @@ SAP:
 \begin_layout Enumerate
 
 \series bold
-Basados en Disparadores (
+Basados en disparadores (
 \shape italic
 Triggers
 \shape default
@@ -6320,7 +6325,7 @@ placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -6462,12 +6467,1141 @@ Confiabilidad
 Plataformas de integración de datos
 \end_layout
 
+\begin_layout Standard
+Las arquitecturas de integración de datos contemporáneas han migrado hacia modelos nativos en la nube (cloud-native),
+ integrando de manera nativa patrones de procesamiento de datos como ETL,
+ ELT y Flujo de datos (streaming),
+ todos en tiempo real.
+ Estas plataformas se distinguen por su capacidad de escalabilidad elástica,
+ una amplia gama de conectores disponibles y configurados para uso casi que inmediato,
+ y funcionalidades robustas de gobierno de datos 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DehghaniZ2022"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Herramientas de código abierto como Apache Kafka son fundamentales para la ingesta eficiente de eventos a gran escala,
+ mientras que Apache Spark y Apache Flink posibilitan el procesamiento distribuido de datos tanto en modo de lotes (batch) como en flujo continuo (streaming) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "K2017"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Adicionalmente,
+ los servicios de integración de datos gestionados en la nube,
+ tales como AWS Glue,
+ Azure Data Factory y Google Cloud Dataflow,
+ proporcionan entornos que optimizan la orquestación de flujos de datos complejos,
+ minimizando la sobrecarga operativa 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gartner2021"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Las tendencias actuales en el campo apuntan hacia la automatización impulsada por metadatos,
+ la adopción de arquitecturas Zero-ETL con almacenes de datos modernos como 
+\shape italic
+Snowflake
+\shape default
+ y 
+\shape italic
+BigQuery
+\shape default
+,
+ y la implementación del paradigma 
+\shape italic
+Data
+\begin_inset space ~
+\end_inset
+
+Mesh
+\shape default
+,
+ que fomenta la descentralización de la propiedad y gestión de los datos.
+ En conjunto,
+ estas plataformas priorizan la calidad,
+ la observabilidad y la eficiencia en el uso de recursos,
+ habilitando un amplio espectro de casos de uso,
+ desde el análisis de negocio hasta la operación de sistemas.
+\end_layout
+
+\begin_layout Subsubsection*
+Relaciones y Ecosistema
+\end_layout
+
+\begin_layout Standard
+Analizando el mercado actual,
+ obsérvese las relaciones existentes entre los ecosistemas de integración,
+ sean éstos de código abierto (open source) o privativo-empresarial,
+ o nativo en la nube (cloud-native):
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Open Source → Cloud-Native
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kafka → Base para servicios gestionados (Confluent Cloud,
+ MSK)
+\end_layout
+
+\begin_layout Itemize
+Spark → Fundamenta servicios como Databricks y Google Dataflow
+\end_layout
+
+\begin_layout Itemize
+Debezium → Usado en plataformas cloud para CDC
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Cloud-Native → Enterprise
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+AWS Glue vs Informatica:
+ Competencia cloud vs on-premise
+\end_layout
+
+\begin_layout Itemize
+Azure Data Factory vs Talend:
+ Soluciones cloud vs híbridas
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Enterprise → Emergentes
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Oracle GoldenGate evoluciona hacia arquitecturas Data Mesh
+\end_layout
+
+\begin_layout Itemize
+Informatica incorpora capacidades de Data Fabric
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Open Source → Emergentes
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Apache Kafka habilita implementaciones de Data Mesh
+\end_layout
+
+\begin_layout Itemize
+Apache Spark fundamenta arquitecturas Lakehouse
+\end_layout
+
+\begin_layout Itemize
+dbt se integra con todas las plataformas para transformaciones
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename __images/plataformas-actuales-intdata-interact.png
+	lyxscale 25
+	height 22cm
+	rotateAngle 90
+	rotateOrigin center
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relaciones entre distintas plataformas de integración actuales.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Tendencias de Integración
+\end_layout
+
+\begin_layout Standard
+Gartner (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gartner2021"
+literal "false"
+
+\end_inset
+
+) menciona que las tendencias actuales en arquitecturas y paradigmas de integración se pueden clasificar en los siguientes atributos de calidad:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Convergencia
+\series default
+:
+ Plataformas cloud incorporan capacidades open source
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Simplificación
+\series default
+:
+ Movimiento hacia Zero-ETL y procesamiento automático
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Descentralización
+\series default
+:
+ Data Mesh como paradigma organizacional
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Unificación
+\series default
+:
+ Data Fabric como capa de abstracción unificada
+\end_layout
+
 \begin_layout Section
 Herramientas de procesamiento analítico
 \end_layout
 
+\begin_layout Standard
+Las herramientas analíticas contemporáneas han evolucionado hacia arquitecturas distribuidas y nativas en la nube (cloud-native),
+ soportando procesamiento tanto en lotes (batch) como por flujo continuo de datos (streaming).
+ 
+\shape italic
+Apache Spark
+\shape default
+ se consolida como el motor estándar para procesamiento a gran escala,
+ permitiendo análisis complejos mediante operaciones en memoria 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KarauHWarrenR2017"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Plataformas como 
+\shape italic
+Snowflake
+\shape default
+ y 
+\shape italic
+Google BigQuery
+\shape default
+ lideran el segmento de 
+\shape italic
+data warehousing
+\shape default
+ en la nube con capacidades Zero-ETL,
+ reduciendo la complejidad de integración 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DagevilleB2016"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En el ámbito de 
+\shape italic
+streaming
+\shape default
+,
+ 
+\series bold
+\shape italic
+Apache Kafka
+\series default
+\shape default
+ facilita la ingesta de eventos a gran escala,
+ mientras que 
+\series bold
+\shape italic
+Apache Flink
+\series default
+\shape default
+ ofrece procesamiento con garantías de exactitud 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "K2017"
+literal "false"
+
+\end_inset
+
+.
+ Las herramientas de orquestación como 
+\series bold
+\shape italic
+Apache Airflow
+\series default
+\shape default
+ permiten gestionar canales de integración (pipelines) complejos mediante programación basada en grafos acíclicos dirigidos (DAGs) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BasHJongeM2021"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Las soluciones 
+\series bold
+\shape italic
+AWS Glue
+\series default
+\shape default
+,
+ 
+\series bold
+\shape italic
+Azure Data Factory
+\series default
+\shape default
+,
+ proporcionan entornos en la nube que simplifican la implementación de arquitecturas ETL/ELT,
+ mientras frameworks emergentes como 
+\series bold
+\shape italic
+dbt
+\series default
+\shape default
+ transforman el paradigma de transformación mediante código versionado (Microsoft,
+ 2023).
+ Las arquitecturas 
+\shape italic
+Data
+\begin_inset space ~
+\end_inset
+
+Mesh
+\shape default
+ promueven un modelo descentralizado donde los datos se tratan como productos,
+ facilitando el gobierno distribuido 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DehghaniZ2022"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+La tendencia actual converge hacia la unificación de almacenamiento (Lakehouse) y el procesamiento automatizado mediante metadata,
+ donde herramientas como 
+\shape italic
+Delta
+\begin_inset space ~
+\end_inset
+
+Lake
+\shape default
+ y 
+\shape italic
+Iceberg
+\shape default
+ proporcionan transaccionalidad 
+\shape italic
+ACID
+\shape default
+.
+ Estas plataformas priorizan la escalabilidad elástica,
+ la interoperabilidad multi-nube,
+ y la observabilidad integrada,
+ representando el estado del arte en integración analítica.
+\end_layout
+
 \begin_layout Section
 Sistemas de recomendaciones
+\end_layout
+
+\begin_layout Standard
+Ya en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ripoll2025"
+literal "false"
+
+\end_inset
+
+ se hizo una evaluación profunda de los distintos tipos de sistemas de recomendaciones,
+ su forma de evaluación y en qué tipos de escenarios se aplican.
+ Retomando las definiciones hechas,
+ se puede decir que los modelos de recomendación constituyen sistemas algorítmicos diseñados para predecir las preferencias de usuarios sobre objetos basándose en información histórica y patrones de comportamiento.
+\end_layout
+
+\begin_layout Standard
+Su utilidad principal radica en la capacidad de filtrar información relevante en entornos de sobrecarga de datos,
+ optimizando la habilidad de descubrir productos,
+ contenidos o servicios en plataformas digitales 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "K2017,Ripoll2025"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Existen dos paradigmas principales:
+ 1)
+\begin_inset space ~
+\end_inset
+
+los sistemas basados en contenido,
+ que analizan similitudes entre atributos de ítems y perfiles de usuarios,
+ y 2)
+\begin_inset space ~
+\end_inset
+
+los sistemas de filtrado colaborativo,
+ que identifican patrones a partir de interacciones colectivas 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ripoll2025,K2017,KarauHWarrenR2017"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Los sistemas de recomendación basados en contenido destacan por su transparencia y su aplicación en la solución del problema de arranque en frío (cold start),
+ aunque presentan limitaciones en la diversificación de recomendaciones.
+ El problema de arranque en frío hace relación al sistema en estado cero,
+ es decir,
+ cuando no hay suficientes interacciones para poder aplicar filtrado por colaboración,
+ dejando solo la alternativa de aparear objetos usando los contenidos de sus atributos característicos.
+ 
+\end_layout
+
+\begin_layout Standard
+Los sistemas de recomendación basados en filtrado colaborativo,
+ implementados frecuentemente mediante factorización de matrices,
+ permiten el descubrimiento de patrones a lo largo de conjuntos de atributos dispares,
+ pero sufren de escalabilidad en entornos donde hay gran dispersión de interacciones entre datos,
+ y abren la posibilidad de ser vulnerables ante ataques de engaño (shilling).
+ Un ataque de engaño (shilling) en sistemas de recomendaciones es un intento deliberado de manipular el mecanismo que genera sugerencias,
+ generalmente para beneficiar o perjudicar ciertos productos.
+ Esto se consigue mediante la creación de perfiles o valoraciones falsas,
+ que buscan modificar el comportamiento del algoritmo y alterar la calidad o la dirección de las recomendaciones presentadas a los usuarios reales 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GéronA2019"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Actualmente emergen arquitecturas híbridas como enfoque integrador,
+ combinando ambas metodologías mediante técnicas y modelos de aprendizaje profundo (deep learning),
+ factorización matricial,
+ que incrementan la complejidad computacional y los requerimientos de infraestructura 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DehghaniZ2022"
+literal "false"
+
+\end_inset
+
+.
+ Por ejemplo,
+ implementaciones nativas en la nube,
+ tales como 
+\shape italic
+
+\begin_inset CommandInset href
+LatexCommand href
+name "AWS Personalize"
+target "https://docs.aws.amazon.com/personalize/latest/dg/what-is-personalize.html"
+literal "false"
+
+\end_inset
+
+
+\shape default
+,
+ 
+\shape italic
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Google Vertex AI Search"
+target "cloud.google.com/use-cases/recommendations"
+literal "false"
+
+\end_inset
+
+,
+ 
+\shape default
+aprovechan la escalabilidad elástica y capacidades de procesamiento en flujo de datos (streaming) para actualizaciones en tiempo real,
+ mientras que otras implementaciones y frameworks,
+ como 
+\begin_inset CommandInset href
+LatexCommand href
+name "Apache Mahout Recommender"
+target "https://mahout.apache.org/documentation/users/algorithms/recommender-overview.html"
+literal "false"
+
+\end_inset
+
+ o 
+\begin_inset CommandInset href
+LatexCommand href
+name "Apache Spark (CF)"
+target "https://spark.apache.org/docs/latest/ml-collaborative-filtering.html"
+literal "false"
+
+\end_inset
+
+,
+ facilitan implementaciones distribuidas 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MSFTAzure2023"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="4">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="left" valignment="top" varwidth="true">
+<column alignment="left" valignment="top" varwidth="true">
+<column alignment="left" valignment="top" varwidth="true">
+<column alignment="left" valignment="top" varwidth="true">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Tipo de Algoritmo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Ventajas
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Desventajas
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Cuándo Usar
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Filtrado Colaborativo (CF)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+– Descubre patrones transversales.
+\begin_inset Newline newline
+\end_inset
+
+– No requiere metadatos de ítems.
+\begin_inset Newline newline
+\end_inset
+
+– Funciona bien con suficientes interacciones.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+– Problema de arranque en frío.
+ 
+\begin_inset Newline newline
+\end_inset
+
+– Escalabilidad con datos dispersos.
+\begin_inset Newline newline
+\end_inset
+
+– Vulnerable a ataques de engaño.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+– Comunidades con amplio historial.
+\begin_inset Newline newline
+\end_inset
+
+– Plataformas con muchos usuarios/ítems.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Basado en Contenido
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+– Evita cold start para nuevos ítems.
+\begin_inset Newline newline
+\end_inset
+
+– Recomendaciones explicables.
+\begin_inset Newline newline
+\end_inset
+
+– Resiliente a ataques.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+– Poca variabilidad en resultados.
+\begin_inset Newline newline
+\end_inset
+
+– Requiere metadatos ricos.
+\begin_inset Newline newline
+\end_inset
+
+– Sobre-especialización.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+– Dominios con metadatos robustos.
+\begin_inset Newline newline
+\end_inset
+
+– Recomendaciones transparentes.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Modelos Híbridos
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+– Mitiga limitaciones individuales.
+\begin_inset Newline newline
+\end_inset
+
+– Mayor precisión y cobertura.
+\begin_inset Newline newline
+\end_inset
+
+– Robustez frente a problemas específicos.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+– Complejidad implementación.
+\begin_inset Newline newline
+\end_inset
+
+– Mayor costo computacional.
+\begin_inset Newline newline
+\end_inset
+
+– Mantenimiento complejo.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+– Sistemas críticos de alto rendimiento.
+\begin_inset Newline newline
+\end_inset
+
+– Entornos con datos diversos.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Factorización Matricial Compleja
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+– Maneja alta dimensionalidad.
+\begin_inset Newline newline
+\end_inset
+
+– Eficiente con datos dispersos.
+\begin_inset Newline newline
+\end_inset
+
+– Captura relaciones latentes.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+– Interpretabilidad limitada.
+\begin_inset Newline newline
+\end_inset
+
+– Hiperparámetros sensibles.
+\begin_inset Newline newline
+\end_inset
+
+– Requiere ajustes extensos.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+– Sistemas de gran escala.
+\begin_inset Newline newline
+\end_inset
+
+– Cuando la precisión es primordial.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Aprendizaje profundo (Deep Learning)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+– Captura no-linealidades complejas.
+\begin_inset Newline newline
+\end_inset
+
+– Integración multimodal.
+\begin_inset Newline newline
+\end_inset
+
+– Alto rendimiento predictivo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+– Requiere grandes volúmenes de datos.
+\begin_inset Newline newline
+\end_inset
+
+– Costo computacional elevado.
+\begin_inset Newline newline
+\end_inset
+
+– Modelo de caja negra interpretativo.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+– Plataformas con big
+\begin_inset space ~
+\end_inset
+
+data.
+\begin_inset Newline newline
+\end_inset
+
+– Cuando existen datos multimodales
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tabla comparativa entre algoritmos de recomendación
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Criterios de Selección Basados en Escenarios
+\end_layout
+
+\begin_layout Standard
+Agrupando los métodos de recomendaciones por escenarios de calidad,
+ podríamos hacerlo de la siguiente manera.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Cold Start Severo.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Recomendado:
+ Basado en contenido (ítems nuevos),
+ híbridos (usuarios nuevos)
+\end_layout
+
+\begin_layout Itemize
+Evitar:
+ Filtrado colaborativo puro
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Interpretabilidad Requerida.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Recomendado:
+ Basado en contenido,
+ modelos simples
+\end_layout
+
+\begin_layout Itemize
+Evitar:
+ Deep learning,
+ factorización matricial compleja
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Escalabilidad Extrema.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Recomendado:
+ Factorización de matrices,
+ CF distribuido
+\end_layout
+
+\begin_layout Itemize
+Limitar:
+ Modelos complejos de deep learning
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Datos Multimodales.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Recomendado:
+ Deep learning,
+ híbridos avanzados
+\end_layout
+
+\begin_layout Itemize
+Limitar:
+ Métodos tradicionales simples
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement th
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/recomendaciones-escenarios.png
+	lyxscale 40
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Selección del tipo de algoritmo según escenario
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
@@ -6778,7 +7912,7 @@ Introduction to Apache Flink
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-label "Dageville, B., et al., 2016"
+label "Dageville et al, 2016"
 key "DagevilleB2016"
 literal "false"
 
@@ -7114,7 +8248,7 @@ literal "false"
 
 \end_inset
 
- AWS.
+ Amazon Web Services.
  (2023).
  
 \shape italic
@@ -7124,6 +8258,144 @@ Zero-ETL:
 .
  URL:
  https://aws.amazon.com/blogs/aws/zero-etl-the-future-of-data-integration/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "AWS DMS., 2023"
+key "AWSDMS2023"
+literal "false"
+
+\end_inset
+
+ Amazon Web Services.
+ (2023).
+ AWS database migration service user guide.
+ AWS Documentation.
+ URL:
+ https://docs.aws.amazon.com/dms/latest/userguide/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Microsoft Corp., 2023"
+key "MicrosoftCorp2023"
+literal "false"
+
+\end_inset
+
+ Microsoft Corporation.
+ (2023).
+ Change data capture (CDC) in SQL Server.
+ Microsoft Docs.
+ URL:
+ https://learn.microsoft.com/en-us/sql/relational-databases/track-changes/about-change-data-capture-sql-server
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "MSFT Azure DF., 2023"
+key "MSFTAzure2023"
+literal "false"
+
+\end_inset
+
+ Microsoft Azure.
+ (2023).
+ Azure data factory documentation.
+ Microsoft Learn.
+ URL:
+ https://learn.microsoft.com/en-us/azure/data-factory/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Oracle Corp., 2023"
+key "OracleCorp2023"
+literal "false"
+
+\end_inset
+
+ Oracle Corporation.
+ (2023).
+ Oracle GoldenGate concepts and administration guide,
+ Release 21c.
+ Oracle Documentation.
+ URL:
+ https://docs.oracle.com/en/middleware/goldengate/core/21.3/admin/using-oracle-goldengate-real-time-data-distribution.html
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "MongoDB Inc., 2023"
+key "MongoDBInc2023"
+literal "false"
+
+\end_inset
+
+ MongoDB,
+ Inc.
+ (2023).
+ Change streams documentation.
+ MongoDB Manual.
+ URL:
+ https://www.mongodb.com/docs/manual/changeStreams
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Salesforce, Inc., 2023"
+key "SalesforceInc2023"
+literal "false"
+
+\end_inset
+
+ Salesforce,
+ Inc.
+ (2023).
+ Change Data Capture developer guide.
+ Salesforce Developer Documentation.
+ URL:
+ https://developer.salesforce.com/docs/atlas.en-us.change_data_capture.meta/change_data_capture
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "SAP SE., 2023"
+key "SAPSE2023"
+literal "false"
+
+\end_inset
+
+ SAP SE.
+ (2023).
+ SAP LT replication server technical documentation.
+ SAP Help Portal.
+ URL: https://help.sap.com/docs/SAP_LANDSCAPE_TRANSFORMATION_REPLICATION_SERVER
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Google Cloud, 2023"
+key "GoogleCP2023"
+literal "false"
+
+\end_inset
+
+ Google Cloud Platform.
+ (2023).
+ Cloud SQL documentation.
+ Google Cloud Documentation.
+ URL:
+ https://cloud.google.com/sql/docs
 \end_layout
 
 \begin_layout Bibliography

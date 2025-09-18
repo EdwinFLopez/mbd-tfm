@@ -69,15 +69,14 @@
 (AWS, 2023):
     AWS. (2023). Zero-ETL: The Future of Data Integration. https://aws.amazon.com/blogs/aws/zero-etl-the-future-of-data-integration/
 
-(Ripoll, A.,2025):
-    Ripoll, Albert. (2025). Desarrollo de Sistemas de Recomendación en Big Data: Aplicaciones en E-Commerce y Finanzas Personales. Tesis Master. Universidad Ramón Llull - La Salle. Barcelona.
-
-
-(Oracle Corp., 2023):
-    Oracle Corporation. (2023). Oracle GoldenGate concepts and administration guide, Release 21c. Oracle Documentation. URL: https://docs.oracle.com/en/middleware/goldengate/core/21.3/admin/using-oracle-goldengate-real-time-data-distribution.html
+(AWS, DMS., 2023):
+    Amazon Web Services. (2023). AWS database migration service user guide. AWS Documentation. URL: https://docs.aws.amazon.com/dms/latest/userguide/
 
 (Microsoft Corp., 2023):
     Microsoft Corporation. (2023). Change data capture (CDC) in SQL Server. Microsoft Docs. URL: https://learn.microsoft.com/en-us/sql/relational-databases/track-changes/about-change-data-capture-sql-server
+
+(Oracle Corp., 2023):
+    Oracle Corporation. (2023). Oracle GoldenGate concepts and administration guide, Release 21c. Oracle Documentation. URL: https://docs.oracle.com/en/middleware/goldengate/core/21.3/admin/using-oracle-goldengate-real-time-data-distribution.html
 
 (MongoDB Inc., 2023):
     MongoDB, Inc. (2023). Change streams documentation. MongoDB Manual. URL: https://www.mongodb.com/docs/manual/changeStreams/
@@ -88,12 +87,11 @@
 (SAP SE., 2023):
     SAP SE. (2023). SAP LT replication server technical documentation. SAP Help Portal. URL: https://help.sap.com/docs/SAP_LANDSCAPE_TRANSFORMATION_REPLICATION_SERVER
 
-(AWS, DMS., 2023):
-    Amazon Web Services. (2023). AWS database migration service user guide. AWS Documentation. URL: https://docs.aws.amazon.com/dms/latest/userguide/
-
 (Google Cloud, 2023):
     Google Cloud. (2023). Cloud SQL documentation. Google Cloud Documentation. URL: https://cloud.google.com/sql/docs
 
 (MSFT Azure DF., 2023):
     Microsoft Azure. (2023). Azure data factory documentation. Microsoft Learn. URL: https://learn.microsoft.com/en-us/azure/data-factory/
 
+(Ripoll, A.,2025):
+    Ripoll, Albert. (2025). Desarrollo de Sistemas de Recomendación en Big Data: Aplicaciones en E-Commerce y Finanzas Personales. Tesis Master. Universidad Ramón Llull - La Salle. Barcelona.
