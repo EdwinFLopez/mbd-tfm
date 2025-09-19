@@ -1689,16 +1689,6 @@ Magento
 \begin_layout Enumerate
 
 \series bold
-Validación y resultados
-\series default
-.
- Este capítulo presenta una discusión sobre los resultados obtenidos de la implementación,
- lo que se esperaba y lo que se obtuvo.
-\end_layout
-
-\begin_layout Enumerate
-
-\series bold
 Conclusiones y trabajo futuro
 \series default
 .
@@ -10567,76 +10557,407 @@ literal "false"
 
 \end_layout
 
-\begin_layout Chapter
-Validación y Resultados
+\begin_layout Section
+Pantallas del sistema en operación
+\end_layout
+
+\begin_layout Standard
+En la figura siguiente se observa la pantalla de documentación de la API que es totalmente operacional.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/Screen-API.png
+	lyxscale 40
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pantalla de la API publicada
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En la siguiente pantalla se observa la ventana de Bienvenida
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/Screen-Welcome.png
+	lyxscale 40
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pantalla de Bienvenida de UI
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En la siguiente pantalla se observa la ventana de Cálculo de Embeddings.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/Screen-CalcularEmbeddings.png
+	lyxscale 40
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pantalla de Cálculo de Embeddings
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En las siguientes dos pantallas,
+ se observa la funcionalidad de búsqueda de productos y la de obtención de recomendaciones.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/Screen-Buscar.png
+	lyxscale 40
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pantalla de búsqueda de productos.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/Screen-Recomendaciones.png
+	lyxscale 40
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pantalla de resultados de recomendaciones
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
-=== Performance del Sistema CDC
+Descarga del código fuente
 \end_layout
 
-\begin_layout Section
-=== Latencia y Throughput
+\begin_layout Standard
+Todo el código fuente se encuentra disponible bajo licencia Apache 2.
+ Se puede descargar de los siguientes enlaces:
 \end_layout
 
-\begin_layout Section
-=== Consistencia de Datos
+\begin_layout Itemize
+
+\series bold
+Instalador
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+Magento
+\series default
+:
+ 
 \end_layout
 
-\begin_layout Section
-=== Escalabilidad Horizontal
+\begin_deeper
+\begin_layout Itemize
+https://github.com/edwinflopez/docker-magento/archive/refs/heads/master.zip
 \end_layout
 
-\begin_layout Section
-=== Comparativa con ETL Tradicional
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Código fuente de todo el sistema de recomendaciones,
+ incluyendo este documento
+\series default
+.
 \end_layout
 
-\begin_layout Section
-=== Análisis de Costos
+\begin_deeper
+\begin_layout Itemize
+https://github.com/edwinflopez/mbd-tfm/archive/refs/heads/main.zip
 \end_layout
 
-\begin_layout Section
-=== Interpretación de Resultados
-\end_layout
-
-\begin_layout Section
-=== Limitaciones Encontradas
-\end_layout
-
-\begin_layout Section
-=== Implicaciones Prácticas
-\end_layout
-
-\begin_layout Section
-=== Contribuciones a la Investigación
-\end_layout
-
-\begin_layout Section
-=== Comparación con Trabajos Relacionados
-\end_layout
-
+\end_deeper
 \begin_layout Chapter
 Conclusiones y trabajo futuro
 \end_layout
 
 \begin_layout Section
-=== Conclusiones Principales
+Conclusiones Principales
+\end_layout
+
+\begin_layout Subsection*
+Viabilidad Técnica Confirmada
+\end_layout
+
+\begin_layout Standard
+El CDC se valida como arquitectura viable para alimentar sistemas de recomendaciones en tiempo real,
+ permitiendo la captura inmediata de cambios en datos de productos,
+ inventario y comportamiento de usuarios en Magento,
+ y su procesamiento en Apache Spark para generar embeddings actualizados.
+\end_layout
+
+\begin_layout Subsection*
+Reducción de Latencia en Actualizaciones
+\end_layout
+
+\begin_layout Standard
+La implementación de CDC con Debezium + Kafka reduce la latencia de actualización de recomendaciones de horas (en procesos batch tradicionales) a segundos,
+ asegurando que los usuarios reciban sugerencias basadas en información en tiempo real (ej.:
+ cambios de precio,
+ disponibilidad o interacciones recientes).
+\end_layout
+
+\begin_layout Subsection*
+Escalabilidad con Recursos Optimizados
+\end_layout
+
+\begin_layout Standard
+La arquitectura de integración usando CDC logra un gran rendimiento para computar embeddings de manera distribuida,
+ escalando eficientemente durante campañas promocionales,
+ sin sobrecargar la base de datos transaccional de Magento.
+\end_layout
+
+\begin_layout Subsection*
+Desafíos en Consistencia de Datos
+\end_layout
+
+\begin_layout Standard
+Se identifican desafíos en el manejo de órdenes de eventos y consistencia eventual en escenarios de alta concurrencia,
+ requiriendo mecanismos de idempotencia y verificación para garantizar precisión en las recomendaciones.
+\end_layout
+
+\begin_layout Subsection*
+Integración No Invasiva con Magento
+\end_layout
+
+\begin_layout Standard
+CDC demuestra ser una solución no invasiva para Magento,
+ al operar vía logs de base de datos (binlog),
+ evitando modificaciones en el código core del e-commerce y manteniendo la estabilidad del sistema existente.
 \end_layout
 
 \begin_layout Section
-=== Logros Obtenidos
+Logros Obtenidos
+\end_layout
+
+\begin_layout Standard
+Con plena satisfacción se cumplieron tanto la parte explorativa llevada a cabo en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ripoll2025"
+literal "false"
+
+\end_inset
+
+,
+ como la parte práctica,
+ resultado de este trabajo.
+\end_layout
+
+\begin_layout Itemize
+Se logró continuar con la arquitectura de integración con CDC que fue propuesta en los objetivos del presente trabajo.
+\end_layout
+
+\begin_layout Itemize
+Se agregaron las capas de procesamiento,
+ aplicación y visualización o presentación exitosamente.
+\end_layout
+
+\begin_layout Itemize
+Se logró crear un sistema de recomendaciones basado enteramente en Apache Spark con la potenciación de MongoDB a la par,
+ realizando las consultas de similitud,
+ ahorrando esfuerzos en código y propensión a errores.
+\end_layout
+
+\begin_layout Itemize
+Se lograron evaluar las ventajas de la arquitectura de integración usando CDC aplicadas al sistema de recomendaciones.
+\end_layout
+
+\begin_layout Itemize
+Los frameworks de servicios rest y de interfaces de usuario web,
+ FastAPI y StreamLit,
+ mostraron su gran flexibilidad y prontitud de desarrollo.
 \end_layout
 
 \begin_layout Section
-=== Recomendaciones
+Recomendaciones
+\end_layout
+
+\begin_layout Itemize
+Implementar Avro en Kafka para garantizar compatibilidad evolutiva de datos y serializar la data en forma binaria.
+\end_layout
+
+\begin_layout Itemize
+Manejar versionamiento de vectores característicos (embeddings).
+\end_layout
+
+\begin_layout Itemize
+Monitorear métricas de consumo en Kafka para detectar cuellos de botella en tiempo real.
+\end_layout
+
+\begin_layout Itemize
+Implementar la misma arquitectura en un cluster real.
 \end_layout
 
 \begin_layout Section
-=== Líneas de Investigación Futura
+Líneas de Investigación Futura
 \end_layout
 
-\begin_layout Section
-=== Impacto en la Industria
+\begin_layout Itemize
+Aunque el escenario de uso que ha sido implementado en el transcurso de este trayecto requiere que el usuario ejecute manualmente el proceso de cálculo de embeddings por simplicidad de implementación,
+ se puede pensar en reemplazarlo por streaming efectivo a nivel de Spark,
+ retirando el manejo manual.
+\end_layout
+
+\begin_layout Itemize
+Implementar recomendaciones basadas en filtrado colaborativo y explorar la posibilidad de hacer un sistema híbrido que pueda disminuir el riesgo de afectación por ataques de engaño (shilling).
+\end_layout
+
+\begin_layout Itemize
+Desde la parte de operaciones y monitoreo,
+ hay un amplio espectro de posibilidades,
+ desde automatización de los despliegues,
+ pasando por seguridad de la información en tránsito,
+ mediciones de rendimiento,
+ hasta investigar el rendimiento de Debezium contra otras alternativas como Maxwell,
+ por ejemplo.
+\end_layout
+
+\begin_layout Itemize
+Desde el punto de vista humanista,
+ podría pensarse en evaluar las repercusiones éticas de un sistema de recomendaciones.
 \end_layout
 
 \begin_layout Bibliography
