@@ -3,6 +3,7 @@
       "./analytics/compose.json",
       "./storage/compose.json",
       "./ingestion/compose.json",
+      "./api/compose.json",
       "./utils/compose.json"
   ]
 }

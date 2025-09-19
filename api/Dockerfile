@@ -1,5 +1,5 @@
 # Use a specific base image for build stage
-FROM python:3.12-slim AS base
+FROM python:3.10-slim AS base
 
 # Builder image
 FROM base AS build
@@ -52,7 +52,3 @@ USER mbdtfm
 
 # Update PATH to include virtual environment references
 ENV PATH=$VIRTUAL_ENV_DIR/bin:$PATH
-
-# Command to run the application
-# Directly use Python to run the app when ready
-CMD ["./main.py"]

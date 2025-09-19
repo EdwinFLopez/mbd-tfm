@@ -15,7 +15,28 @@
       ],
       "volumes": [
         "./src:/app:rw"
-      ]
+      ],
+      "command": ["sh", "-c", "fastapi run main_webapi.py"]
+    },
+
+    "webapp": {
+      "build": {
+        "context": ".",
+        "dockerfile": "Dockerfile"
+      },
+      "container_name": "webapp",
+      "hostname": "webapp",
+      "env_file": [
+        "./env/api.env"
+      ],
+      "ports": [
+        "8501:8501"
+      ],
+      "volumes": [
+        "./src:/app:rw"
+      ],
+      "command": ["sh", "-c", "streamlit run main_webapp.py"],
+      "depends_on": ["webapi"]
     }
   }
 }
