@@ -204,7 +204,7 @@ Supervisor
 \end_inset
 
 Dr.
- Joan Navarro
+ Joan Navarro Martín
 \end_layout
 
 \begin_layout Date
@@ -1547,6 +1547,16 @@ Apéndices y Anexos
 
 \begin_layout Chapter
 Marco teórico y estado del arte
+\end_layout
+
+\begin_layout Standard
+En el presente capítulo se presentan los conceptos base para comprender la magnitud del proyecto,
+ elementos clave para continuar con la realización y materialización de los objetivos mencionados anteriormente.
+ Se hablará sobre los fundamentos de big data,
+ se dará un breve recorrido por la definición de lo que es una arquitectura de integración,
+ pasando por los tipos actuales y las plataformas disponibles en el mercado,
+ se continuará con un breve resumen de las herramientas de procesamiento analítico,
+ y se finalizará con la revisión de lo que son los algoritmos de recomendación.
 \end_layout
 
 \begin_layout Section
@@ -7608,20 +7618,1027 @@ Selección del tipo de algoritmo según escenario
 Diseño
 \end_layout
 
+\begin_layout Standard
+En el capítulo anterior se revisaron los conceptos teóricos necesarios para diseñar la solución del caso de aplicación.
+ En el presente capítulo se presentan los diseños requeridos para implementar la solución.
+ Se inicia con una descripción del caso de aplicación;
+ se listan los componentes de software requeridos,
+ ellos a la luz de las restricciones impuestas en el alcance del proyecto;
+ se presentan los diagramas y sus descripciones,
+ y finalmente,
+ se presentan alternativas al diseño para los casos donde se requiera escalabilidad.
+\end_layout
+
 \begin_layout Section
 Caso de aplicación
+\end_layout
+
+\begin_layout Standard
+Magento,
+ la versión open source del sistema de e-Commerce 
+\begin_inset Quotes eld
+\end_inset
+
+Adobe Commerce
+\begin_inset Quotes erd
+\end_inset
+
+,
+ es uno de los sistemas de comercio electrónico más usado en el mundo,
+ y más flexible,
+ como lo dice en su sitio:
+ 
+\end_layout
+
+\begin_layout Quotation
+
+\shape italic
+Magento Open Source es una plataforma de comercio electrónico potente y flexible que permite a empresas de todos los tamaños crear y gestionar tiendas en línea.
+ Desarrollada inicialmente por Varien Inc.,
+ Magento se ha convertido en una de las soluciones de comercio electrónico más populares del mundo,
+ actualmente propiedad y mantenida por Adobe Inc.
+ Con sus robustas funciones y escalabilidad,
+ Magento Open-Source atiende una amplia gama de necesidades empresariales,
+ desde pequeñas tiendas boutique hasta grandes empresas multinacionales.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/Magento-GoogleTrends.png
+	lyxscale 25
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Google Trends acerca de Magento en los últimos 5 años
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Magento incluye un sistema de recomendaciones básico que funciona principalmente a través de extensiones de terceros (extensiones) e integraciones con servicios externos.
+ A diferencia de Adobe Commerce (versión premium),
+ que incluye Adobe Sensei (con tecnología de IA) para recomendaciones avanzadas,
+ la versión Open Source depende de módulos externos para esta funcionalidad.
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Funcionalidad Nativa Básica:
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Productos Relacionados
+\shape default
+:
+ Reglas simples basadas en categorías o atributos.
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Productos Vistos Recientemente
+\shape default
+:
+ Historial básico de usuarios.
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Productos de Comparación
+\shape default
+:
+ Sugerencias basadas en acciones de comparación.
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Limitaciones en Magento Open Source:
+\end_layout
+
+\begin_layout Itemize
+No incluye motores de IA nativos (ej.:
+ Adobe Sensei).
+\end_layout
+
+\begin_layout Itemize
+Las recomendaciones avanzadas requieren extensiones de pago.
+\end_layout
+
+\begin_layout Itemize
+Escalabilidad limitada para grandes volúmenes de datos en tiempo real.
+\end_layout
+
+\begin_layout Standard
+Esta limitación,
+ la falta de un sistema nativo de recomendaciones,
+ se convierte en un buen ejercicio para aplicar la integración de datos usando CDC como base y construir las capas adicionales,
+ la analítica y la de presentación/visualización,
+ sobre ella.
 \end_layout
 
 \begin_layout Section
 Componentes y Tecnologías
 \end_layout
 
+\begin_layout Standard
+Ya en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ripoll2025"
+literal "false"
+
+\end_inset
+
+ se mencionaron los componentes base para implementar un proceso de integración de datos usando CDC,
+ y como lo mencionamos en el alcance,
+ debemos implementarlo bajo la restricción de ejecución contenida en una sola máquina física:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Docker
+\series default
+:
+ Tecnología de contenedores con la cual se aísla cada aplicativo en un ambiente operativo privado,
+ lo que protege y evita problemas de incompatibilidades y colisiones con otras aplicaciones,
+ aprovechando la infraestructura física de la máquina.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Base de datos origen
+\series default
+:
+ Para nuestro caso de aplicación,
+ debemos usar la base de datos requerida por Magento,
+ la cual es 
+\series bold
+MySQL
+\series default
+ en su versión 8.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Base de datos destino
+\series default
+:
+ Para nuestro ejercicio,
+ la base de datos de almacenamiento intermedio / final escogida es 
+\series bold
+MongoDb Atlas
+\series default
+.
+ Esta decisión se basó en los siguientes criterios:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Puede usarse en docker,
+ lo que facilita la construcción del escenario de pruebas.
+\end_layout
+
+\begin_layout Enumerate
+Soporta búsquedas vectoriales,
+ lo que facilitará el desarrollo de la capa de presentación y visualización.
+\end_layout
+
+\begin_layout Enumerate
+En escenarios de alta disponibilidad puede escalar horizontalmente,
+ agregando nodos de replicación según se requiera.
+ En la versión para la nube,
+ se escala de forma automática.
+\end_layout
+
+\begin_layout Enumerate
+Es una base de datos de uso relativamente popular,
+ lo que hace que se encuentre bastante documentación sobre ella.
+ La documentación oficial es extensa y se mantiene actualizada.
+\end_layout
+
+\begin_layout Enumerate
+Soporta documentos JSON nativamente,
+ lo cual es bastante útil para el manejo de consultas y el almacenamiento de datos no estructurados.
+\end_layout
+
+\begin_layout Enumerate
+Es compatible con Debezium,
+ con Python,
+ y con Apache Spark de forma nativa.
+\end_layout
+
+\begin_layout Enumerate
+Es muy estable.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Debezium
+\series default
+:
+ Es una herramienta open source para captura de cambios en los datos (CDC).
+ Permite detectar modificaciones en bases de datos y transmitir esos eventos en tiempo real a una serie de otros destinos,
+ facilitando la integración y sincronización entre sistemas sin impactar el rendimiento de la base de datos original,
+ lográndolo debido a que utiliza Apache Kafka como distribuidor de mensajes de cambio.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Apache Kafka
+\series default
+:
+ Sistema distribuidor de mensajes.
+ Se encarga que capturar todos los eventos de cambio generados por Debezium y almacenarlos de forma confiable y sin pérdida.
+ 
+\series bold
+Debezium
+\series default
+ se convierte tanto en consumidor como productor.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement th
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/arq-integracion-cdc-tfm.png
+	lyxscale 60
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Arquitectura de integración usando CDC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ahora bien,
+ agregamos los componentes faltantes de acuerdo con la imagen 
+\shape italic
+2.7:
+ Integración de datos usando CDC:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Apache Spark Connect
+\series default
+:
+ API cliente de 
+\series bold
+Apache Spark
+\series default
+,
+ que permite abstraer el mecanismo de envío de trabajos al nodo maestro,
+ facilitando su uso desde aplicativos clientes,
+ reduciendo la complejidad de la arquitectura.
+ Básicamente,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+Spark Connect
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+ se encarga de serializar el código y enviarlo al master para su inmediata ejecución,
+ realizando validaciones adecuadas,
+ y una vez ejecutado,
+ se encarga de presentar los resultados a través de su API de dataframes.
+ Estaría desplegado en un contenedor individual.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Cluster Apache Spark
+\series default
+:
+ El propósito del cluster es el de calcular los vectores característicos de los productos migrados desde Magento hacia Mongodb,
+ tomándolo de la tabla intermedia y transformando los registros para que se pueda aplicar el modelo de Word2Vect.
+ El cluster está construido en un solo contenedor,
+ ejecutando 3 procesos simultáneamente:
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Spark Master
+\series default
+:
+ El coordinador de trabajos.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Spark Workers
+\series default
+:
+ Proceso de ejecución de trabajos.
+ Se pueden crear más procesos adicionales según lo decida el coordinador (master).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Spark History
+\series default
+:
+ Registra el historial de trabajos ejecutados en el cluster de spark.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+API
+\series default
+:
+ FastAPI,
+ framework Python para crear servicios REST.
+ Este componente se encarga de disparar el proceso de generación de vectores característicos (Feature Embeddings) en Apache Spark.
+ Adicionalmente,
+ realiza las consultas a la base de datos destino (MongoDB-Atlas) para encontrar los productos similares,
+ utilizando la búsqueda vectorial por similitud del coseno.
+ Las operaciones principales expuestas a través de este componente son las siguientes:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Calcular vectores característicos para los productos obtenidos desde Magento.
+\end_layout
+
+\begin_layout Itemize
+Ver el estado del proceso de cálculo de vectores característico
+\end_layout
+
+\begin_layout Itemize
+Recuperar la lista de todos los productos que cumplen con una característica dada por una consulta libre.
+\end_layout
+
+\begin_layout Itemize
+Recuperar los productos que por similitud del coseno son similares a un producto dado.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Aplicación Web
+\series default
+:
+ Este componente es la capa de visualización final,
+ encargada de la interacción entre el todo el sistema de recomendaciones a través de la API en FastAPI,
+ y el usuario final.
+ Permite las funcionalidades de la API a través de delegación:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Calcular vectores característicos para los productos integrados.
+\end_layout
+
+\begin_layout Itemize
+Buscar productos utilizando un índice de texto pleno (fulltext search)
+\end_layout
+
+\begin_layout Itemize
+Obtener las recomendaciones a un producto seleccionado
+\end_layout
+
+\end_deeper
 \begin_layout Section
 Diseño de la Arquitectura
 \end_layout
 
+\begin_layout Standard
+Obsérvese en la figura 3.3 como se separan los componentes según la función.
+ En la figura 3.4 obsérvese el flujo de información a través de todo el sistema.
+ El proceso lo inicia el usuario final interactuando con Magento y con la UI.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Origen de datos.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\shape italic
+Instalación completa de Magento
+\shape default
+:
+ soportando un solo comercio,
+ lo cual es la configuración por defecto que usa su módulo de datos de ejemplo.
+ Sólo interesa la configuración de la base de datos ya que será la fuente que alimentará a debezium.
+ Cada uno de los componentes que requiere Magento para su correcto funcionamiento están desplegados en su propio contenedor.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Ingestión.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\shape italic
+Debezium Connect
+\shape default
+:
+ registra el origen de datos y el destino de datos.
+ Escribe en un tópico por cada tabla que se monitorea;
+ y para cada tópico,
+ se crea una tabla en la base de datos destino con los mensajes almacenados en los tópicos de Kafka.
+ Instalado en un contenedor individual.
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Apache Kafka Standalone
+\shape default
+:
+ distribuidor de mensajes en modo individual sin cluster.
+ Debezium es tanto un productor como un consumidor de mensajes.
+ Instalado en un solo contenedor.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Almacenamiento
+\series default
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\shape italic
+MongoDB Atlas
+\shape default
+:
+ Base de datos de almacenamiento intermedio y final.
+ Recibe los registros de magento a través de Debezium.
+ Almacena los registros de vectores característicos de la lista de productos migrados.
+ Instalado en un solo contenedor.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Análisis de Datos / ML.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\shape italic
+Apache Spark Connect
+\shape default
+:
+ Se encarga de establecer sesiones con el nodo maestro del cluster Spark,
+ serializar el código para ser ejecutado por el cluster en un job,
+ y serializar las respuestas que serán enviadas al cliente que creó la sesión.
+ En el diseño,
+ este componente será instalado en un contenedor independiente.
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+Apache Spark Cluster
+\shape default
+:
+ Aunque Spark es una arquitectura distribuida,
+ en el diseño hemos creado un solo contenedor con 3 procesos spark que se ejecutan concurrentemente:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Spark Master:
+ Coordina los trabajos de cómputo para el cluster y lo reparte en entre los nodos operativos (workers).
+\end_layout
+
+\begin_layout Enumerate
+Spark Worker:
+ Se encarga de realizar las tareas de cómputo definidas por el coordinador (master).
+\end_layout
+
+\begin_layout Enumerate
+Spark History:
+ Monitoriza la ejecución y programación de tareas.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+API.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\shape italic
+FastAPI
+\shape default
+:
+ Esta será nuestra capa de aplicación.
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "FastAPI"
+target "https://fastapi.tiangolo.com"
+literal "false"
+
+\end_inset
+
+ es un framework que permite crear microservicios en Python.
+ Nuestro servicio publicará 6 operaciones:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+embeddings/start
+\begin_inset Quotes erd
+\end_inset
+
+:
+ inicia un job de cálculo de vectores característicos (embeddings).
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+embeddings/reindex
+\begin_inset Quotes erd
+\end_inset
+
+:
+ re-indexa la tabla donde se almacenan los vectores característicos.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+embeddings/status/{job}
+\begin_inset Quotes erd
+\end_inset
+
+:
+ retorna el estado del job de cálculo de vectores.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+embeddings/status/jobs
+\begin_inset Quotes erd
+\end_inset
+
+:
+ retorna el historial de jobs de cálculo de vectores característicos.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+data/search/{query}
+\begin_inset Quotes erd
+\end_inset
+
+:
+ retorna los productos que concuerdan con la búsqueda especificada.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+data/recommendations/{sku}
+\begin_inset Quotes erd
+\end_inset
+
+:
+ retorna la lista de productos recomendados dado el código de un producto dado.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Visualización / UI.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\shape italic
+StreamLit
+\shape default
+:
+ Esta será nuestra capa de presentación o visualización.
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "Streamlit"
+target "https://fastapi.tiangolo.com"
+literal "false"
+
+\end_inset
+
+ es un framework de desarrollo web en Python.
+ Permite el prototipado rápido de aplicaciones debido a su cantidad de componentes ya existentes.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement th
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/arq-cdc-single-tenant.png
+	lyxscale 50
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Diseño arquitectura para un solo eCommerce
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename __images/arq-cdc-interacciones.png
+	lyxscale 50
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Interacción entre componentes y flujo de datos 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Consideraciones de Escalabilidad
+\end_layout
+
+\begin_layout Standard
+A medida que un sitio de comercio electrónico aumenta su éxito,
+ los requisitos de infraestructura comienzan a crecer para poder mantener todo el servicio con calidad suficiente.
+ Por ejemplo,
+ el éxito de campañas promocionales,
+ como por ejemplo 
+\begin_inset Quotes eld
+\end_inset
+
+
+\shape italic
+Black
+\begin_inset space ~
+\end_inset
+
+Friday
+\shape default
+
+\begin_inset Quotes erd
+\end_inset
+
+ o 
+\begin_inset Quotes eld
+\end_inset
+
+
+\shape italic
+Cyber
+\begin_inset space ~
+\end_inset
+
+Monday
+\shape default
+
+\begin_inset Quotes erd
+\end_inset
+
+,
+ catalizan un incremento sustancial en la demanda de recursos computacionales,
+ impactando de manera significativa diversas capas de la infraestructura tecnológica subyacente.
+ Veamos:
+\end_layout
+
+\begin_layout Itemize
+Inicialmente,
+ el aumento del tráfico concurrente tiende a saturar los recursos de PHP-FPM,
+ lo que exige un escalamiento vertical de los workers y la asignación de mayor memoria para el procesamiento eficiente de solicitudes de catálogo y carrito de compra.
+\end_layout
+
+\begin_layout Itemize
+Paralelamente,
+ los sistemas de gestión de bases de datos experimentan picos agudos en el número de conexiones simultáneas y en las operaciones de entrada/salida (I/O).
+ Esto demanda una optimización rigurosa de los índices,
+ la configuración de los espacios de almacenamiento intermedio en memoria y,
+ potencialmente,
+ un escalamiento horizontal mediante la implementación de réplicas de lectura.
+\end_layout
+
+\begin_layout Itemize
+En lo que respecta a la búsqueda de productos en tiempo real,
+ la integración con 
+\shape italic
+Opensearch
+\shape default
+ requiere una ampliación del número de nodos y una mayor dotación de memoria para las operaciones de indexación y consulta.
+\end_layout
+
+\begin_layout Itemize
+Las capas de caché,
+ como Redis o Varnish,
+ necesitan incrementar su capacidad de almacenamiento para gestionar eficientemente las sesiones de usuario y las páginas cacheadas,
+ con el objetivo de minimizar la latencia.
+\end_layout
+
+\begin_layout Itemize
+Asimismo,
+ los sistemas de colas de mensajes,
+ tales como RabbitMQ,
+ enfrentan una multiplicación de tareas asíncronas (envío de correos electrónicos,
+ notificaciones) durante los periodos promocionales.
+\end_layout
+
+\begin_layout Itemize
+Finalmente,
+ los recursos de red y almacenamiento se ven sometidos a una presión considerable debido a la descarga masiva de activos multimedia y la gestión de conexiones SSL.
+ y sin mecanismos de autoescalamiento en la infraestructura,
+ se conduce a una degradación severa del rendimiento e incluso al colapso del servicio.
+\end_layout
+
+\begin_layout Standard
+Por consiguiente,
+ se subraya la necesidad de adoptar arquitecturas cloud-elásticas (ej.
+ AWS,
+ Google Cloud) que incorporen balanceadores de carga y redes de distribución de contenido (CDN) para garantizar la resiliencia y el éxito de campañas promocionales de alta demanda en Magento.
+\end_layout
+
+\begin_layout Standard
+Ahora bien,
+ habiendo dicho lo anterior con relación al impacto en la plataforma operativa de Magento,
+ la afectación de nuestra arquitectura de recomendaciones también se verá afectada cuando se requieran grandes consumos:
+\end_layout
+
+\begin_layout Itemize
+El cluster de Spark se verá afectado a medida que los catálogos de productos crezcan continuamente,
+ ya que el cálculo de los vectores característicos requerirá muchos más workers.
+\end_layout
+
+\begin_layout Itemize
+Debido al alto número de consumos de consultas por parte de Magento,
+ MongoDB requerirá nodos adicionales de replicación para servir el creciente número de sesiones.
+\end_layout
+
+\begin_layout Itemize
+Es posible que nuestras capas de aplicación y de presentación,
+ la API y la aplicación,
+ requieran más nodos para servir el consumo creciente,
+ lo que implicará también la necesidad de configurar más nodos y agregar balanceadores de carga.
+\end_layout
+
+\begin_layout Standard
+Las mismas consideraciones son válidas para un entorno de software como servicio (SaaS),
+ donde se quiera prestar el servicio de montaje de sitio de comercio electrónico a distintos clientes,
+ y ese sería el escenario de la solución comercial 
+\begin_inset Quotes eld
+\end_inset
+
+Adobe Commerce
+\begin_inset Quotes erd
+\end_inset
+
+.
+ A este escenario se le conoce como 
+\begin_inset Quotes eld
+\end_inset
+
+Multi Arrendador
+\begin_inset Quotes erd
+\end_inset
+
+.
+ En este escenario no tenemos control sobre el éxito que cada comercio electrónico configurado pueda llegar a tener,
+ así que planear de antemano una arquitectura escalable,
+ que pueda ajustarse automáticamente con cada nuevo 
+\begin_inset Quotes eld
+\end_inset
+
+arrendador
+\begin_inset Quotes erd
+\end_inset
+
+ (tenant),
+ es una necesidad.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement tbh
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/arq-cdc-multitenant.png
+	lyxscale 40
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Arquitectura Multi-Arrendador (multitenant)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement tbh
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/arq-cdc-multitenant-ha.png
+	lyxscale 40
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Arquitectura Multi-Arrendador (multitenant) en alta disponibilidad
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
@@ -7633,7 +8650,7 @@ Metodología
 \end_layout
 
 \begin_layout Section
-Configuración de Magento
+Preparación de orígenes de datos (Magento)
 \end_layout
 
 \begin_layout Section
@@ -7641,11 +8658,11 @@ Entorno experimental (Docker)
 \end_layout
 
 \begin_layout Section
-Configuración de Debezium
+Configuración de Debezium Connect
 \end_layout
 
 \begin_layout Section
-Configuración de Kafka Connect
+Configuración de Kafka 
 \end_layout
 
 \begin_layout Section
