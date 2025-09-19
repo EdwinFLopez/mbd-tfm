@@ -5,6 +5,7 @@
 # Ignore python virtual environments files
 **/.venv
 **/pyvenv.cfg
+**/__pycache__
 
 # Ignore containers configuration files
 **/*.env
