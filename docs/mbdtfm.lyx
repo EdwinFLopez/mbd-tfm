@@ -32,7 +32,7 @@ fix-cm
 \font_sans_osf false
 \font_typewriter_osf false
 \font_sf_scale 100 100
-\font_tt_scale 100 100
+\font_tt_scale 80 100
 \use_microtype true
 \use_dash_ligatures false
 \graphics pdftex
@@ -302,6 +302,24 @@ LatexCommand tableofcontents
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset FloatList algorithm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomencl_print
+LatexCommand printnomenclature
+set_width "auto"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter*
 Resumen
 \end_layout
@@ -333,7 +351,16 @@ La
 
 
 \shape italic
-captura de eventos de cambios de datos (Change Data Capture - CDC)
+captura de eventos de cambios de datos (Change Data Capture - CDC
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "CDC"
+description "Change Data Capture. Técnica de integración que permite propagar modificaciones incrementales desde una fuente de datos a un destino de datos."
+literal "false"
+
+\end_inset
+
+)
 \shape default
 
 \begin_inset Quotes erd
@@ -342,39 +369,129 @@ captura de eventos de cambios de datos (Change Data Capture - CDC)
  es una técnica en integración de información en casi tiempo real,
  que permite propagar modificaciones incrementales desde bases de datos fuente hacia sistemas destino,
  minimizando latencia y carga computacional.
- Este proyecto propone el diseño de una arquitectura centrada en CDC como base para aplicaciones de datos masivos (Big Data) que requieran una alternativa a los enfoques tradicionales de procesamiento de archivos en lotes y complejos procesos ETL/ELT.
+ Este proyecto propone el diseño de una arquitectura centrada en CDC como base para aplicaciones de datos masivos (
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Big Data"
+description "Datos Masivos. Paradigma de procesamiento de datos en alta cantidad con herramientas sofisticadas."
+literal "false"
+
+\end_inset
+
+Big Data) que requieran una alternativa a los enfoques tradicionales de procesamiento de archivos en lotes y complejos procesos ETL
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "ETL"
+description "Extract - Transform - Load. Proceso de carga de datos."
+literal "false"
+
+\end_inset
+
+/ELT
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "ELT"
+description "Extract - Load - Transform. Proceso de carga de datos."
+literal "false"
+
+\end_inset
+
+.
  Se presenta,
  como una aplicación,
  un sistema de recomendaciones para la plataforma de comercio electrónico “
 \shape italic
 Magento
 \shape default
+
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Magento"
+description "Sistema de software para gestionar almacenes virtuales."
+literal "false"
+
+\end_inset
+
 ”,
  que utiliza 
 \shape italic
 Debezium
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Debezium"
+description "Herramienta que permite el CDC para integración de datos."
+literal "false"
+
+\end_inset
+
+
 \shape default
  y 
 \shape italic
 Kafka
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Kafka"
+description "Herramienta que la comunicación asíncrona entre distintos sistemas."
+literal "false"
+
+\end_inset
+
+
 \shape default
  como capa de ingestión y 
 \shape italic
 Apache Spark
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Apache Spark"
+description "Herramienta que permite computación distribuida."
+literal "false"
+
+\end_inset
+
+
 \shape default
  como capa analítica,
  con una 
 \shape italic
 api
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "API"
+description "Application Programming Interface"
+literal "false"
+
+\end_inset
+
+
 \shape default
  y una aplicación web en 
 \shape italic
 python
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "python"
+description "Lenguage de programación multiparadigma"
+literal "false"
+
+\end_inset
+
+
 \shape default
  como capa de presentación,
  y 
 \shape italic
 Mongo
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Mongo"
+description "Motor No Relacional de Base de Datos, escalable."
+literal "false"
+
+\end_inset
+
+
 \shape default
  como base de datos central en la capa de almacenamiento.
  La metodología incluye:
@@ -387,7 +504,16 @@ selección de tecnología de CDC a usar,
 \begin_inset space ~
 \end_inset
 
-diseño de un canal de datos (pipeline) de ingesta para datos de productos del e-commerce,
+diseño de un canal de datos (pipeline) de ingesta para datos de productos del e-commerce
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "e-Commerce"
+description "Comercio electrónico."
+literal "false"
+
+\end_inset
+
+,
  y (3)
 \begin_inset space ~
 \end_inset
@@ -422,7 +548,16 @@ Palabras clave
  “Kafka”;
  “Debezium”;
  “Mongo”;
- “MySQL”;
+ “MySQL
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "MySQL"
+description "Motor de bases de datos relacional."
+literal "false"
+
+\end_inset
+
+”;
  “API”;
  “Apache Spark”;
  
@@ -783,6 +918,15 @@ Los mecanismos comúnmente empleados para la implementación del CDC incluyen la
 \shape italic
 triggers
 \shape default
+
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Triggers"
+description "Mecanismo de gestión de eventos de datos en bases de datos relacionales."
+literal "false"
+
+\end_inset
+
 ”,
  procedimientos almacenados,
  o una combinación estratégica de estas metodologías.
@@ -813,6 +957,15 @@ Magento
 \shape italic
 SaaS
 \shape default
+
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "SaaS"
+description "Software as a Service, o Software como Servicio. Paradigma de prestación de servicios donde es el software el producto que se alquila."
+literal "false"
+
+\end_inset
+
 ),
  llamada “
 \shape italic
@@ -1296,7 +1449,7 @@ Magento
  sobre la implementación anterior,
  expandiendo la arquitectura a una capa analítica y una capa de presentación.
  Se adjuntará el código fuente y así mismo,
- un apartado en la presente monografía donde se especifica y documenta.
+ un apartado en la presente monografía donde se especifica.
 \end_layout
 
 \begin_layout Section
@@ -1370,12 +1523,39 @@ Justificación
 \end_layout
 
 \begin_layout Standard
-Implementar un canal de integración de datos (pipeline) utilizando CDC y envío en flujo de datos (streaming),
+Implementar un canal de integración de datos (pipeline
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Pipeline"
+description "Canal de distribución o procesamiento de datos. Tubería de datos."
+literal "false"
+
+\end_inset
+
+) utilizando CDC y envío en flujo de datos (streaming
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Streaming"
+description "Procesamiento de flujo de datos en movimiento para realizar operaciones con ellos en tiempo real en vez de esperar por la transferencia de grandes lotes de información."
+literal "false"
+
+\end_inset
+
+),
  es una estrategia para dotar a sistemas con grandes volúmenes de datos de capacidades de procesamiento en tiempo real o cercano a éste.
  CDC permite la captura eficiente de cambios directamente desde la base de datos origen,
  registrando cada modificación relevante (creación,
  actualización y eliminación de datos,
- así como de metadata).
+ así como de metadata
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Metadata"
+description "Datos que definen las propiedades de otros datos."
+literal "false"
+
+\end_inset
+
+).
  Estas transformaciones se transmiten en tiempo real a través del canal de datos programado,
  desacoplando el flujo de información entre el origen y los posibles destinos.
  Un sistema de colas actúa como canal de distribución y protección,
@@ -1552,7 +1732,7 @@ Marco teórico y estado del arte
 \begin_layout Standard
 En el presente capítulo se presentan los conceptos base para comprender la magnitud del proyecto,
  elementos clave para continuar con la realización y materialización de los objetivos mencionados anteriormente.
- Se hablará sobre los fundamentos de big data,
+ Se hablará sobre los fundamentos de Big Data;
  se dará un breve recorrido por la definición de lo que es una arquitectura de integración,
  pasando por los tipos actuales y las plataformas disponibles en el mercado,
  se continuará con un breve resumen de las herramientas de procesamiento analítico,
@@ -2272,7 +2452,16 @@ Pipeline básico de Big Data en Google Cloud Platform
 \begin_layout Standard
 
 \series bold
-Amazon Web Services (AWS)
+Amazon Web Services (AWS
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "AWS"
+description "Amazon Web Services. Plataforma de computación en la nube."
+literal "false"
+
+\end_inset
+
+)
 \series default
 ,
  también ofrece componentes para crear un canal de datos,
@@ -2794,8 +2983,8 @@ Pipeline básico de Big Data en AWS
 \end_layout
 
 \begin_layout Standard
-Microsoft también ofrece un ecosistema completo de procesamiento de big data,
- un plan básico de componentes que permite crear un pipeline se puede resumir en la tabla 2.3,
+Microsoft también ofrece un ecosistema completo de procesamiento de Big Data,
+ un plan básico de componentes que permite crear un canal de datos se puede resumir en la tabla 2.3,
  y uno de sus flujos de datos está resumido en la imagen 2.4.
 \end_layout
 
@@ -3303,7 +3492,7 @@ Tecnologías utilizadas en gestión de datos masivos
 \end_layout
 
 \begin_layout Standard
-Cuando se habla de big data,
+Cuando se habla de Big Data,
  no es extraño encontrar mención de sistemas de gestión de flujos de datos,
  almacenamiento distribuido y columnar,
  orquestadores de procesos.
@@ -4413,7 +4602,7 @@ Ahora bien,
  tales como:
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 Según el volumen de datos requerido:
 \end_layout
 
@@ -4448,7 +4637,7 @@ Extremo
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 Según la latencia requerida:
 \end_layout
 
@@ -4484,7 +4673,7 @@ Real-time (segundos)
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 Complejidad Organizacional:
 \end_layout
 
@@ -4520,7 +4709,7 @@ Híbrida
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 Madurez Tecnológica:
 \end_layout
 
@@ -4557,7 +4746,7 @@ Vanguardia
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 Requerimientos de Gobierno:
 \end_layout
 
@@ -4598,7 +4787,16 @@ Procesos por lotes (Batch)
 \end_layout
 
 \begin_layout Standard
-La integración de datos mediante procesos por lotes (batch) representa un paradigma tradicional en la gestión de información,
+La integración de datos mediante procesos por lotes (batch
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Batch"
+description "Procesamiento de datos por lotes."
+literal "false"
+
+\end_inset
+
+) representa un paradigma tradicional en la gestión de información,
  caracterizado por la recopilación,
  transformación y carga periódica de datos en unidades discretas.
  El objetivo primordial de este enfoque es asegurar que volúmenes sustanciales de datos sean transferidos de manera precisa y consistente a sus destinos correspondientes,
@@ -4618,7 +4816,25 @@ Este proceso involucra la ingesta de datos provenientes de diversas fuentes,
  la aplicación de transformaciones de datos —
 tales como limpieza,
  uniones y agregaciones—
- y la posterior carga de los resultados en repositorios analíticos como data warehouses o data lakes para facilitar el análisis 
+ y la posterior carga de los resultados en repositorios analíticos como 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Data Warehouse"
+description "Almacenes de datos analíticos."
+literal "false"
+
+\end_inset
+
+data warehouses o data lakes
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Data Lake"
+description "Almacenes de datos de información estructurada como no estructurada."
+literal "false"
+
+\end_inset
+
+ para facilitar el análisis 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "InmonWH2005"
@@ -4689,7 +4905,7 @@ Proceso típico de integración por lotes
 Nótense en la figura 2.5 las fases del proceso de integración por lotes y sus características:
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 Fase:
  Extracción
 \end_layout
@@ -4715,7 +4931,7 @@ Frecuencia:
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 Fase:
  Área de almacenamiento intermedio
 \end_layout
@@ -4737,7 +4953,7 @@ Formato:
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 Fase:
  Transformación (ETL/ELT)
 \end_layout
@@ -4762,7 +4978,7 @@ Agregación:
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 Fase:
  Carga final
 \end_layout
@@ -4779,12 +4995,20 @@ Data Lake:
 \end_layout
 
 \begin_layout Itemize
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Data Mart"
+description "Almacenes de datos de información usada principalmente para reportes predefinidos."
+literal "false"
+
+\end_inset
+
 Data Marts:
  Vistas especializadas por área de negocio
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 Fase:
  Orquestación
 \end_layout
@@ -4914,7 +5138,7 @@ Obsérvese cada una de las fases en la imagen 2.6,
  y sus características:
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 Fase:
  Generación de Eventos
 \end_layout
@@ -4922,7 +5146,16 @@ Fase:
 \begin_deeper
 \begin_layout Itemize
 Fuentes:
- IoT,
+ IoT
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "IoT"
+description "Internet of Things (Internet de las Cosas)."
+literal "false"
+
+\end_inset
+
+,
  aplicaciones,
  sistemas transaccionales
 \end_layout
@@ -4933,7 +5166,7 @@ Salida:
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 Fase:
  Ingesta de Streams
 \end_layout
@@ -4953,7 +5186,7 @@ Objetivo:
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 Fase:
  Procesamiento Tiempo Real
 \end_layout
@@ -4968,14 +5201,23 @@ Procesamiento:
 
 \begin_layout Itemize
 Tecnologías:
- Apache Flink,
+ 
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Apache Flink"
+description "Herramienta para el procesamiento distribuido de grandes volumenes de datos."
+literal "false"
+
+\end_inset
+
+Apache Flink,
  Apache Spark (Streaming),
  Kafka Streams,
  etc.
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 Fase:
  Almacenamiento y Consumo
 \end_layout
@@ -4994,7 +5236,7 @@ Objetivo:
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 Fase:
  Gobierno y Control
 \end_layout
@@ -5194,6 +5436,15 @@ Herramientas Comunes
 
 \begin_layout Plain Layout
 Oracle Database
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Oracle Database"
+description "Base de datos relacional."
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5224,6 +5475,14 @@ Oracle GoldenGate,
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Microsoft SQL Server"
+description "Base de datos relacional."
+literal "false"
+
+\end_inset
+
 Microsoft SQL Server
 \end_layout
 
@@ -5255,6 +5514,14 @@ SQL Server CDC,
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "PostgreSQL"
+description "Base de datos relacional."
+literal "false"
+
+\end_inset
+
 PostgreSQL
 \end_layout
 
@@ -5315,6 +5582,14 @@ Debezium,
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "IBM Db2"
+description "Base de datos relacional."
+literal "false"
+
+\end_inset
+
 IBM Db2
 \end_layout
 
@@ -5345,6 +5620,14 @@ IBM InfoSphere CDC,
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "MariaDB"
+description "Base de datos relacional."
+literal "false"
+
+\end_inset
+
 MariaDB
 \end_layout
 
@@ -5568,6 +5851,14 @@ Debezium,
 \uwave off
 \noun off
 \color none
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Amazon RDS"
+description "Bases de datos relacionales de AWS en la nube."
+literal "false"
+
+\end_inset
+
 Amazon RDS
 \end_layout
 
@@ -5642,6 +5933,14 @@ AWS DMS,
 \uwave off
 \noun off
 \color none
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Google Cloud SQL"
+description "Bases de datos relacionales de Google Cloud Platform en la nube."
+literal "false"
+
+\end_inset
+
 Google Cloud SQL
 \end_layout
 
@@ -5715,6 +6014,15 @@ Dataflow,
 \noun off
 \color none
 Azure SQL Database
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Azure SQL Database"
+description "Bases de datos relacionales de Microsoft Azure en la nube."
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6478,7 +6786,16 @@ Plataformas de integración de datos
 \end_layout
 
 \begin_layout Standard
-Las arquitecturas de integración de datos contemporáneas han migrado hacia modelos nativos en la nube (cloud-native),
+Las arquitecturas de integración de datos contemporáneas han migrado hacia modelos nativos en la nube (
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Cloud Native"
+description "Nativo para la Nube. Paradigma de programación donde se despliegan los aplicativos en la nube, haciendo uso de API's específicas para la nube que se quiere acceder."
+literal "false"
+
+\end_inset
+
+cloud-native),
  integrando de manera nativa patrones de procesamiento de datos como ETL,
  ELT y Flujo de datos (streaming),
  todos en tiempo real.
@@ -6564,7 +6881,7 @@ Analizando el mercado actual,
  o nativo en la nube (cloud-native):
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 
 \series bold
 Open Source → Cloud-Native
@@ -6585,7 +6902,7 @@ Debezium → Usado en plataformas cloud para CDC
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 
 \series bold
 Cloud-Native → Enterprise
@@ -6603,7 +6920,7 @@ Azure Data Factory vs Talend:
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 
 \series bold
 Enterprise → Emergentes
@@ -6619,7 +6936,7 @@ Informatica incorpora capacidades de Data Fabric
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 
 \series bold
 Open Source → Emergentes
@@ -6640,12 +6957,17 @@ dbt se integra con todas las plataformas para transformaciones
 
 \end_deeper
 \begin_layout Standard
+Estas relaciones se pueden visibilizar mejor con un diagrama de relación,
+ tal como lo muestra la figura 2.8.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement h
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -7501,7 +7823,7 @@ Agrupando los métodos de recomendaciones por escenarios de calidad,
  podríamos hacerlo de la siguiente manera.
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 
 \series bold
 Cold Start Severo.
@@ -7520,7 +7842,7 @@ Evitar:
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 
 \series bold
 Interpretabilidad Requerida.
@@ -7540,7 +7862,7 @@ Evitar:
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 
 \series bold
 Escalabilidad Extrema.
@@ -7559,7 +7881,7 @@ Limitar:
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 
 \series bold
 Datos Multimodales.
@@ -7578,6 +7900,11 @@ Limitar:
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+Esto se puede ver representado en la figura 2.9,
+ donde se mapean los escenarios contra los tipos de algoritmos de recomendaciones.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 placement th
@@ -8118,7 +8445,6 @@ Debezium Connect
  Escribe en un tópico por cada tabla que se monitorea;
  y para cada tópico,
  se crea una tabla en la base de datos destino con los mensajes almacenados en los tópicos de Kafka.
- Instalado en un contenedor individual.
 \end_layout
 
 \begin_layout Itemize
@@ -8129,7 +8455,6 @@ Apache Kafka Standalone
 :
  distribuidor de mensajes en modo individual sin cluster.
  Debezium es tanto un productor como un consumidor de mensajes.
- Instalado en un solo contenedor.
 \end_layout
 
 \end_deeper
@@ -8152,7 +8477,6 @@ MongoDB Atlas
  Base de datos de almacenamiento intermedio y final.
  Recibe los registros de magento a través de Debezium.
  Almacena los registros de vectores característicos de la lista de productos migrados.
- Instalado en un solo contenedor.
 \end_layout
 
 \end_deeper
@@ -8172,8 +8496,6 @@ Apache Spark Connect
  Se encarga de establecer sesiones con el nodo maestro del cluster Spark,
  serializar el código para ser ejecutado por el cluster en un job,
  y serializar las respuestas que serán enviadas al cliente que creó la sesión.
- En el diseño,
- este componente será instalado en un contenedor independiente.
 \end_layout
 
 \begin_layout Itemize
@@ -8183,7 +8505,7 @@ Apache Spark Cluster
 \shape default
 :
  Aunque Spark es una arquitectura distribuida,
- en el diseño hemos creado un solo contenedor con 3 procesos spark que se ejecutan concurrentemente:
+ en el diseño hemos creado 3 procesos spark que se ejecutan concurrentemente:
 \end_layout
 
 \begin_deeper
@@ -8376,7 +8698,7 @@ placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -8510,7 +8832,7 @@ Por consiguiente,
 \begin_layout Standard
 Ahora bien,
  habiendo dicho lo anterior con relación al impacto en la plataforma operativa de Magento,
- la afectación de nuestra arquitectura de recomendaciones también se verá afectada cuando se requieran grandes consumos:
+ la afectación de la arquitectura de recomendaciones también se verá afectada cuando se requieran grandes consumos:
 \end_layout
 
 \begin_layout Itemize
@@ -8561,8 +8883,19 @@ arrendador
 \begin_inset Quotes erd
 \end_inset
 
- (tenant),
+ (tenant
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Multi-Tenant"
+description "Multi-Arrendador. Tipo de arquitectura de sistemas informáticos donde se separan características específicas, como almacenamiento, configuración, recursos, etc., para cada usuario o groupo de usuarios del sistema, con el propósito de separar responsabilidades, costos, operaciones."
+literal "false"
+
+\end_inset
+
+),
  es una necesidad.
+ Obsérvese el diagrama 3.5,
+ que representa este tipo de arquitectura multi-arrendador.
 \end_layout
 
 \begin_layout Standard
@@ -8571,7 +8904,7 @@ placement tbh
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -8599,6 +8932,14 @@ Arquitectura Multi-Arrendador (multitenant)
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+En el siguiente diagrama 3.6,
+ vemos cómo la arquitectura puede ser ampliada,
+ o escalada verticalmente,
+ agregando más nodos nuevos a la red,
+ para soportar cargas altas en ambientes multitenant.
 \end_layout
 
 \begin_layout Standard
@@ -8632,10 +8973,6 @@ Arquitectura Multi-Arrendador (multitenant) en alta disponibilidad
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -8649,28 +8986,1585 @@ Implementación
 Metodología
 \end_layout
 
-\begin_layout Section
-Preparación de orígenes de datos (Magento)
+\begin_layout Standard
+Ya en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ripoll2025"
+literal "false"
+
+\end_inset
+
+ se definió que para implementar la solución propuesta,
+ se seguirá una metodología basada en el uso de contenedores 
+\series bold
+docker
+\series default
+ como medida de aislamiento de componentes de software.
+\end_layout
+
+\begin_layout Standard
+Similarmente,
+ también en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ripoll2025"
+literal "false"
+
+\end_inset
+
+,
+ se encontró que el modelo de bases de datos implementado por Magento utiliza un patrón de diseño conocido como Entity-Attribute-Value (EAV) con el objetivo de explotar de forma efectiva modelos de atributos cambiantes;
+ aunque este modelo puede funcionar muy bien para el manejo de metadata,
+ infortunadamente no escala muy bien si se tienen grandes volúmenes de datos y se usa para almacenarlos.
+ Conocer muy bien como está implementado este patrón en la base de datos es crucial para poder extraer la información requerida para moverla a través de Debezium hacia MongoDB.
+\end_layout
+
+\begin_layout Standard
+Una vez tengamos listos los ambientes en su correspondiente contenedor,
+ se procederá a la preparación de los orígenes de datos.
+ Debido a restricciones técnicas del motor de base de datos MySQL,
+ no podremos usar Vistas Materializadas,
+ las cuales son vistas que almacenan la data de una consulta dada y automáticamente la actualiza si se detectan cambios en las tablas subyacentes.
+ Para lograr una funcionalidad similar,
+ se realizarán los siguientes procedimientos:
+\end_layout
+
+\begin_layout Itemize
+Creación de una vista que empaquete la data de cada producto y todos sus atributos y valores en un registro en forma de documento JSON,
+ lo que facilitará la transmisión.
+\end_layout
+
+\begin_layout Itemize
+Creación de una tabla para almacenar los resultados de la vista definida.
+\end_layout
+
+\begin_layout Itemize
+Creación de un procedimiento almacenado que se encargue de refrescar los datos.
+\end_layout
+
+\begin_layout Itemize
+Creación de un evento programado de bases de datos que se ejecute en intervalos de tiempo,
+ y cuyo propósito sea ejecutar el procedimiento almacenado que refresca los datos a transmitir.
+\end_layout
+
+\begin_layout Standard
+Contando ya con una vista materializada de actualización manual,
+ tendremos la base de nuestro sistema de recomendaciones.
+\end_layout
+
+\begin_layout Standard
+El siguiente paso para construir nuestro sistema de recomendaciones es configurar MongoDB.
+ MongoDB se integrará como sistema de almacenamiento flexible y escalable para los datos procesados.
+\end_layout
+
+\begin_layout Standard
+Para permitir que la transferencia de datos desde Magento se complete,
+ realizamos las siguientes tareas:
+\end_layout
+
+\begin_layout Itemize
+Creación de un esquema de validación del documento que va a ser almacenado con el propósito de que la data incorrecta sea filtrada y no comprometa la estabilidad del sistema de recomendaciones.
+\end_layout
+
+\begin_layout Itemize
+Creación de colección destino donde se crearán los productos con sus atributos y sus vectores característicos.
+\end_layout
+
+\begin_layout Itemize
+Creación de un índice de búsqueda de texto pleno (fulltext search),
+ para realizar filtrado sobre los registros una vez estén alimentados en la colección.
+\end_layout
+
+\begin_layout Itemize
+Creación de un índice de búsqueda vectorial (vector search) el cuál será el corazón del sistema de recomendaciones,
+ ya que MongoDB Atlas soporta búsqueda vectorial utilizando 3 tipos de cálculo de similitud:
+ 1)
+\begin_inset space ~
+\end_inset
+
+del coseno,
+ 2)
+\begin_inset space ~
+\end_inset
+
+distancia euclidiana,
+ 3)
+\begin_inset space ~
+\end_inset
+
+producto punto.
+ Se utilizará el método de similitud del coseno en el sistema de recomendaciones.
+\end_layout
+
+\begin_layout Itemize
+Insertar un registro vacío con la estructura esperada.
+ Este registro tiene la función de permitir la lectura de la metadata esperada por el sistema de cálculo de vectores característicos (embeddings
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Embeddings"
+description "Vectores característicos que sintetizan información de forma numérica."
+literal "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+En este punto,
+ solo resta configurar los conectores de Debezium para que se produzca la integración de datos.
+ Queda el sistema a punto para seguir con el análisis con Spark y construir las capas de aplicación y visualización.
+ Puntos importantes de la configuración de los conectores de Debezium:
+\end_layout
+
+\begin_layout Itemize
+Conector para MySQL:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Las credenciales y la ruta de acceso a la base de datos mysql.
+ 
+\end_layout
+
+\begin_layout Itemize
+El nombre del host y el puerto de Apache Kafka.
+\end_layout
+
+\begin_layout Itemize
+Los objetos de serialización.
+\end_layout
+
+\begin_layout Itemize
+El prefijo que llevarán los tópicos que serán creados por cada tabla que se migre.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Conector para MongoDB
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Similarmente,
+ las credenciales y la ruta de acceso a la base de datos mongodb.
+\end_layout
+
+\begin_layout Itemize
+El prefijo que tendrán los tópicos de Kafka desde donde leerá la data para migrar.
+\end_layout
+
+\begin_layout Itemize
+Los objetos de serialización.
+\end_layout
+
+\begin_layout Itemize
+Y los objetos de estrategia de actualización de data,
+ de creación de identificadores y de transformación desde MySQL a MongoDB.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Cada tipo de conector tiene su propia configuración adicional,
+ sin embargo esta configuración mínima permite realizar la transferencia de datos desde MySQL hacia MongoDB.
+\end_layout
+
+\begin_layout Standard
+Una vez configurada la migración de datos,
+ el siguiente paso es construir el sistema de cálculo de vectores característicos (embeddings) para los productos ya migrados.
+ Spark se empleará para el procesamiento distribuido de datos,
+ usando Python como lenguaje principal para desarrollar la lógica y control.
+ El proceso para calcular los embeddings es el siguiente:
+\end_layout
+
+\begin_layout Enumerate
+Cargar productos y embeddings existentes desde MongoDB.
+\end_layout
+
+\begin_layout Enumerate
+Seleccionar los productos que necesitan actualizaciones comparando la fecha de última actualización del producto (product_updated_at) con la marca de tiempo existente de la última ejecución del proceso de cálculo de embeddings (embeddings_updated_at).
+\end_layout
+
+\begin_layout Enumerate
+Aplanar el JSON (product_properties) en pares de clave="valor_escapado" separados por ';;;;;'.
+ El resultado se almacena en una nueva columna (product_flat_props).
+\end_layout
+
+\begin_layout Enumerate
+Dividir el texto aplanado en palabras usando ';;;;;' como separador para utilizarlas como entrada de palabras para el modelo word2vec.
+ Se utiliza 
+\begin_inset Quotes eld
+\end_inset
+
+spark.ml.work2vec
+\begin_inset Quotes erd
+\end_inset
+
+ por su característica de reconocer relaciones jerárquicas entre los datos.
+\end_layout
+
+\begin_layout Enumerate
+Usar Word2Vec para calcular embeddings de 128 dimensiones a partir de la entrada de palabras.
+\end_layout
+
+\begin_layout Enumerate
+Normalizar los embeddings para que tengan magnitudes consistentes entre -1 y 1.
+\end_layout
+
+\begin_layout Enumerate
+Almacenar los embeddings resultantes en la columna product_embeddings y la marca de tiempo actual en embeddings_updated_at.
+\end_layout
+
+\begin_layout Enumerate
+Combinar los nuevos embeddings con los productos existentes en el DataFrame de embeddings,
+ actualizando solo aquellos que hayan cambiado.
+\end_layout
+
+\begin_layout Enumerate
+Escribir el DataFrame final de vuelta a MongoDB,
+ sobrescribiendo los datos existentes en la colección de embeddings 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+mbdtfm_magento_catalog_products_embeddings
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Liberar los DataFrames almacenados en caché para liberar memoria.
+\end_layout
+
+\begin_layout Standard
+Teniendo el procedimiento de cálculo de vectores característicos ya claro,
+ se procede a codificarlo en Python y pyspark.
+ Hechas las pruebas correspondientes,
+ procedemos a construir la capa de aplicación.
+ Para ello se instalan las dependencias requeridas,
+ principalmente FastAPI y uvicorn para la exposición del servicio,
+ y pandas,
+ pyspark (connect,
+ sql) para integrar los algoritmos de cálculo de vectores característicos.
+\end_layout
+
+\begin_layout Standard
+Se construyen los puntos de servicio rest (endpoints) especificados en el capítulo anterior y se exponen al público (sin autenticación ni autorización).
+ Se empaqueta en su propio contenedor para su posterior ejecución.
+\end_layout
+
+\begin_layout Standard
+Por último,
+ se construye la aplicación web de presentación de recomendaciones.
+ Para ello,
+ sobre la misma base de código,
+ agregamos más dependencias funcionales,
+ pymongo y streamlit,
+ para comunicarnos con la base de datos mongo y para construir la interfaz de usuario respectivamente.
+\end_layout
+
+\begin_layout Standard
+Esta metodología contempla la construcción progresiva de imágenes Docker,
+ la orquestación mediante 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+Docker
+\begin_inset space ~
+\end_inset
+
+Compose
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+,
+ y la ejecución de pruebas integradas para validar cada etapa,
+ asegurando así eficiencia y reproducibilidad en el desarrollo y despliegue del software.
 \end_layout
 
 \begin_layout Section
 Entorno experimental (Docker)
 \end_layout
 
-\begin_layout Section
-Configuración de Debezium Connect
+\begin_layout Standard
+Primero,
+ se simulará un entorno computacional multinodo con Docker
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Docker"
+description "Tecnología de contención computacional usando contenedores a nivel de sistema operativo."
+literal "false"
+
+\end_inset
+
+ para aislar y gestionar cada componente de la solución,
+ facilitando su despliegue y escalabilidad.
+ Se agrupan por capa funcional:
+\end_layout
+
+\begin_layout Subsection
+
+\series bold
+Capa
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+origen
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+datos
+\end_layout
+
+\begin_layout Standard
+En esta capa recogemos todos los componentes necesarios para desplegar Magento como solución unificada.
+ Hay muchos recursos en internet que describen cómo instalar exitosamente Magento.
+ Se ha seleccionado la guía de 
+\series bold
+Mark
+\begin_inset space ~
+\end_inset
+
+Shust
+\series default
+ para instalar usando contenedores,
+ disponible en 
+\series bold
+https://m.academy/courses/magento-2-development-environment-docker/
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+El código de la guía original se encuentra en 
+\series bold
+https://github.com/markshust/docker-magento
+\series default
+.
+ Se ha hecho una bifurcación del proyecto ya que su licencia lo permite,
+ y se modificaron un par de archivos para adaptarlo mejor a nuestra arquitectura.
+ La bifurcación de código de instalación de Magento modificada se puede descargar desde 
+\series bold
+https://github.com/edwinflopez/docker-magento
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Esta capa crea los siguiente contenedores docker:
+\end_layout
+
+\begin_layout Itemize
+db (mysqldb):
+ Almacenamiento para Magento.
+\end_layout
+
+\begin_layout Itemize
+redis (redisdb):
+ Cache y almacen Key-Value para Magento.
+\end_layout
+
+\begin_layout Itemize
+opensearch (searchdb):
+ Sistema de búsqueda especializada para Magento.
+\end_layout
+
+\begin_layout Itemize
+rabbitmq (rabbitmqdb):
+ Sistema de mensajería (colas y tópicos) para Magento.
+ Maneja procesos masivos.
+\end_layout
+
+\begin_layout Itemize
+mailcatcher (mailcatcher):
+ Sistema de envío de correos masivos.
+\end_layout
+
+\begin_layout Itemize
+phpserver (phpserver):
+ Instalación de NginX + Php 8.
+ Base sobre la que se instalará Magento
+\end_layout
+
+\begin_layout Itemize
+app (app):
+ Instalación de Magento propiamente dicho.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features tabularvalignment="middle" tabularwidth="16cm">
+<column alignment="center" valignment="top" varwidth="true">
+<row>
+<cell alignment="center" valignment="top" toplineltrim="true" toplinertrim="true" bottomlineltrim="true" bottomlinertrim="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/__code/Magento-Docker.png
+	lyxscale 40
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Configuración para docker compose de Magento
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Capa
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+ingestión:
+\end_layout
+
+\begin_layout Standard
+Esta capa se encarga de gestionar el proceso de ingestión de datos,
+ es decir,
+ la captura desde la base de datos origen (MySQL) y la escritura en la base de datos destino (MongoDB).
+ Los contenedores docker creados para esta configuración son los siguientes:
+\end_layout
+
+\begin_layout Itemize
+kafka-standalone:
+ Configuración de un solo nodo de kafka.
+\end_layout
+
+\begin_layout Itemize
+debezium-connect:
+ Configuración de debezium de un solo nodo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename __images/__code/Ingestion-Docker.png
+	lyxscale 40
+	width 10cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Configuración para docker compose de la capa de ingestión
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Capa
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+almacenamiento:
+\end_layout
+
+\begin_layout Standard
+Esta capa provee con la habilidad de almacenar los datos obtenidos de Magento (MySQL).
+ Se crea un solo contenedor para almacenar la base de datos principal:
+ mbdtfmdb.
+\end_layout
+
+\begin_layout Standard
+Adicionalmente,
+ MongoDB realiza las búsquedas de similitud por diferencia de ángulos del coseno,
+ lo que ahorra procesamiento en el cluster
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "Cluster"
+description "Agrupamiento de nodos de cómputo con un propósito específico."
+literal "false"
+
+\end_inset
+
+ Spark y el código que hace las comparaciones.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/__code/Storage-Docker.png
+	lyxscale 40
+	width 11cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Configuración para docker compose de la capa de almacenamiento
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Capa
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+procesamiento
+\begin_inset space ~
+\end_inset
+
+analítico:
+\end_layout
+
+\begin_layout Standard
+Esta capa se encarga del procesamiento con Apache Spark.
+ Está separado en dos contenedores:
+\end_layout
+
+\begin_layout Itemize
+spark-connect:
+ Configuración del cliente spark-connect.
+ Abstrae a los clientes de la necesidad de enviar jobs al master.
+\end_layout
+
+\begin_layout Itemize
+spark-cluster:
+ Este contenedor levanta 3 procesos Apache Spark:
+ 1)
+\begin_inset space ~
+\end_inset
+
+Master,
+ 2)
+\begin_inset space ~
+\end_inset
+
+Worker,
+ 3)
+\begin_inset space ~
+\end_inset
+
+History.
+\end_layout
+
+\begin_layout Standard
+El resultado de tener este conjunto de contenedores funcionando será que los cálculos de vectores característicos pueden hacerse y estén disponibles para que la capa de almacenamiento pueda buscar similitudes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename __images/__code/Analytical-Docker.png
+	lyxscale 40
+	width 16cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Configuración para docker compose de la capa analítica
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Capas de aplicación y presentación:
+ 
+\end_layout
+
+\begin_layout Standard
+En estas capa se construyen la API de interacción entre el usuario final y el sistema,
+ y la interfaz de usuario.
+ Están en su propio contenedor docker cada una.
+\end_layout
+
+\begin_layout Itemize
+webapi:
+ API de servicios REST
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "REST"
+description "REpresentational State Transfer. Paradigma de programación para internet."
+literal "false"
+
+\end_inset
+
+ (FastAPI
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "FastAPI"
+description "Marco de desarrollo de microservicios en Python."
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+webapp:
+ Aplicativo Web (StreamLit
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "StreamLit"
+description "Marco de desarrollo de aplicaciones web hecho en Python."
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/__code/API-UI-Docker.png
+	lyxscale 50
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Configuración para docker compose de las capas de aplicación y presentación
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/__code/API-UI-Dockerfile.png
+	lyxscale 40
+	width 16cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Configuración base de docker para las capas de aplicación y presentación
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Integrador de todos los contenedores
+\end_layout
+
+\begin_layout Standard
+Finalmente,
+ cada archivo de configuración docker debe ser ejecutado conjuntamente con los otros,
+ para eso tenemos el archivo compose.json maestro.
+ En la figura 4.1 se observan todos los contenedores en ejecución.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/__code/All-Docker.png
+	lyxscale 50
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Docker compose integrador de todas las capas.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/AllDockers-Run.png
+	lyxscale 40
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Contenedores Docker ejecutándose
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
-Configuración de Kafka 
+Preparación de orígenes de datos (Magento)
+\end_layout
+
+\begin_layout Subsection
+Instalación de Magento y el sitio de ejemplo
+\end_layout
+
+\begin_layout Standard
+En el siguiente script se muestran los comandos para instalar magento.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/__code/InstallMagento.png
+	lyxscale 40
+	width 16cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Script de instalación de Magento
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el siguiente script se muestran los comandos para instalar el sitio de prueba 
+\begin_inset Quotes eld
+\end_inset
+
+LUMA
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename __images/__code/MagentoSampleData.png
+	lyxscale 40
+	width 16cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Script de instalación del sitio de ejemplo 
+\begin_inset Quotes eld
+\end_inset
+
+LUMA
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Instalación de objetos requeridos en MySQL
+\end_layout
+
+\begin_layout Standard
+En el siguiente listado de código se muestran los comandos para asignar los permisos necesarios en la base de datos para poder trabajar con Debezium.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ecommerce/setup-db-permissions.sh"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Permisos requeridos para la integración de datos.}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el siguiente listado de código se muestran los comandos requeridos para construir la vista.
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ecommerce/setup-db-product-json-view.sh"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Creación de vista JSON.}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el siguiente listado se muestran los comandos requeridos para crear la tabla que almacenará la vista materializada.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ecommerce/setup-db-mview-table.sh"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Creación de Tabla Para la Vista Materializada}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el siguiente listado se muestran los comandos requeridos para crear el procedimiento almacenado que refrescará la tabla de la vista materializada.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ecommerce/setup-db-mview-sp.sh"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Creación de procedimiento almacenado para refrescar vista materializada.}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finalmente,
+ el siguiente listado crea el evento de refresco para que se ejecute cada 5 minutos,
+ ejecute el procedimiento almacenado anterior y refresque la vista.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ecommerce/setup-db-mview-event.sh"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Creación de evento programado de ejecución del procedimiento de refresco.}"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
-Procesamiento con Apache Spark
+Configuración de MongoDB
+\end_layout
+
+\begin_layout Standard
+En el siguiente listado se encuentra la configuración requerida en MongoDB para poder crear la colección donde almacenaremos los vectores característicos por cada producto.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/storage/scripts/create-embeddings-collection.sh"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=sh,fontadjust=true,caption={Script de creación de colección e índices requeridos en MongoDB.}"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
-Presentación con FastAPI y StreamLit
+Configuración de Debezium Connect y Kafka
+\end_layout
+
+\begin_layout Standard
+A continuación se presentan los comandos requeridos para configurar los conectores de debezium para obtener la data desde MySQL y escribirla en Mongo DB.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ingestion/register-source.sh"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Configuración de Debezium Connect para MySQL (source)}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ingestion/register-sink.sh"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Configuración de Debezium Connect para MongoDB (sink)}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esta configuración requiere unos parámetros de ambiente para que el contenedor de docker pueda trabajar sin problemas.
+ A continuación veremos los listados de las configuraciones de ambiente requeridos.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ingestion/env/dbz-connect.env"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Variables de ambiente requeridas por el contenedor debezium-connect.}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ingestion/env/kafka.env"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Variables de ambiente requeridas por el contenedor de Kafka}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Configuración de Apache Spark y Spark Connect.
+\end_layout
+
+\begin_layout Standard
+A continuación de muestran los scripts necesarios para iniciar tanto Apache Spark-Connect,
+ como el cluster Apache Spark (master,
+ worker,
+ history).
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/analytics/bin/launch-spark-connect.sh"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Scripts de inicio del cliente Spark Connect.}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/analytics/bin/launch-spark-cluster.sh"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Script de inicio del cluster Apache Spark}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Estos contenedores requieren las siguientes variables de ambiente.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/analytics/env/spark-connect.env"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Variables de ambiente requeridas por Spark Connect}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/analytics/env/spark-cluster.env"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Variables de ambiente requeridas por el cluster de Apache Spark.}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Capas de Aplicación y Presentación con FastAPI y StreamLit
+\end_layout
+
+\begin_layout Standard
+Las capas de aplicación y presentación están hechas en Python.
+ Ambas capas comparten código en común en algunas partes,
+ pero están separadas funcionalmente por sus respectivos paquetes.
+ A continuación se presentan los componentes compartidos.
+\end_layout
+
+\begin_layout Subsection
+Funciones y clases compartidas
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/requirements.txt"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Lista de dependencias de la API como de la UI}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/main_smoke_tests.py"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Script de smoke test que verifica la funcionalidad del sistema}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/commons/check_ip_port.py"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Script que verifica que los puertos y hosts estén abiertos.}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/commons/constants.py"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Constantes Globales Requeridas por la API como por la UI}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Scripts de Inicio
+\end_layout
+
+\begin_layout Standard
+Los siguientes scripts inician tanto la API como la UI.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/main_webapi.py"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Script de inicio de la API}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/main_webapp.py"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Script de inicialización de la Web UI}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Scripts de Spark Connect.
+\end_layout
+
+\begin_layout Standard
+Los scripts relacionados con Spark Connect se dividen en:
+\end_layout
+
+\begin_layout Itemize
+Scripts de inicio de sesión
+\end_layout
+
+\begin_layout Itemize
+Scripts de gestión de carga y almacenado de datos
+\end_layout
+
+\begin_layout Itemize
+Script de cálculo de vectores característicos.
+\end_layout
+
+\begin_layout Standard
+Los siguientes listados los muestran:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/analytics/sc_session.py"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Script de creación de sesión de Spark Connect}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/analytics/sc_data.py"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Scripts de carga y guardado de datos con Spark Connect}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/analytics/sc_embeddings.py"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Script de cálculo de vectores característicos con Spark}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Scripts de la API con FastAPI
+\end_layout
+
+\begin_layout Standard
+Los siguientes scripts controlan los puntos de servicio web (endpoints) encargados de las consultas y la generación de los vectores característicos.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/webapi/embeddings_processing.py"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Scripts para controlar el cálculo de los vectores característicos.}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/webapi/data_management.py"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Scripts para el control de los servicios de consulta de datos.}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Scripts de la UI con Streamlit
+\end_layout
+
+\begin_layout Standard
+Los scripts para la construcción de la UI se presentan a continuación.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/webapp/webui.py"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Script para la construcción de la UI con StreamLit}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Instalación del sistema
+\end_layout
+
+\begin_layout Standard
+El sistema base su instalación en un archivo Makefile,
+ el cual enlaza cada uno de los códigos vistos anteriormente y los ejecuta en la secuencia programada por la tarea 
+\begin_inset Quotes eld
+\end_inset
+
+all
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Observe el siguiente listado:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\size scriptsize
+\nospellcheck on
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/Makefile"
+lstparams "breaklines=true,captionpos=b,frame=tblr,language=make,fontadjust=true,caption={Script de instalación de todo el sistema.}"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
