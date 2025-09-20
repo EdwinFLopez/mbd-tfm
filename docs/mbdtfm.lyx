@@ -9,6 +9,9 @@
 \usepackage{tocbibind}
 \usepackage{hyperref}
 \usepackage{lastpage}
+\usepackage{listings}
+
+\definecolor{aliceblue}{rgb}{0.98, 0.98, 1.0}
 \end_preamble
 \use_default_options true
 \begin_modules
@@ -39,9 +42,9 @@ fix-cm
 \default_output_format default
 \output_sync 0
 \bibtex_command default
-\index_command makeindex
-\float_placement class
-\float_alignment class
+\index_command texindy
+\float_placement tbph
+\float_alignment center
 \paperfontsize 11
 \spacing onehalf
 \use_hyperref true
@@ -87,11 +90,11 @@ fix-cm
 \color #008000
 \end_index
 \spellchecker_ignore spanish minimización
-\leftmargin 3cm
+\leftmargin 3.5cm
 \topmargin 4cm
-\rightmargin 3cm
-\bottommargin 2.5cm
-\headheight 2cm
+\rightmargin 3.5cm
+\bottommargin 3cm
+\headheight 2.5cm
 \headsep 1.5cm
 \footskip 1cm
 \secnumdepth 3
@@ -105,7 +108,8 @@ fix-cm
 \papercolumns 1
 \papersides 1
 \paperpagestyle fancy
-\tablestyle default
+\tablestyle Formal_with_Footline
+\listings_params "breaklines=true,captionpos=b,frame=shadowbox,framextopmargin=3pt,fontadjust=true,numbers=left,showstringspaces=false,showspaces=false,showtabs=false,basicstyle={\tiny},stringstyle={\ttfamily},backgroundcolor={\color{aliceblue}}"
 \bullet 1 0 9 -1
 \bullet 2 0 15 -1
 \tracking_changes false
@@ -278,6 +282,132 @@ status open
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+contentsname}{Contenido}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+lstlistlistingname}{Lista de Códigos}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+listfigurename}{Lista de Imágenes}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+listtablename}{Lista de Tablas}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+tablename}{Tabla}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+figurename}{Imagen}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+lstlistingname}{Listado}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
@@ -303,7 +433,8 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Standard
-\begin_inset FloatList algorithm
+\begin_inset CommandInset toc
+LatexCommand lstlistoflistings
 
 \end_inset
 
@@ -1195,11 +1326,12 @@ literal "false"
  y a alta velocidad,
  es de vital importancia en el contexto actual de datos masivos (Big Data),
  donde estos atributos son determinantes del valor empresarial y la ventaja competitiva.
+ La imagen 1.1 representa de forma simple las diferencias entre estos dos enfoques.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
+placement document
 alignment center
 wide false
 sideways false
@@ -1828,12 +1960,13 @@ En este ecosistema,
  los canales de procesamiento y/o migración de datos (pipelines) actúan como el conducto técnico esencial para el traslado de información desde sistemas de origen a destinos específicos.
  Su diseño garantiza que las operaciones de transformación,
  normalización y validación se ejecuten de manera automatizada y reproducible.
+ La imagen 2.1 representa a grandes rasgos los elementos presentes en un canal de procesamiento de datos.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
-placement th
-alignment document
+placement class
+alignment center
 wide false
 sideways false
 status open
@@ -1929,22 +2062,22 @@ Cloud
 Platform
 \series default
  ofrece una serie de componentes que permiten crear un canal de datos (pipeline) de big data desde el inicio hasta el final.
- Veamos en la tabla a continuación:
+ Veamos en la tabla 2.1.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
-placement H
+placement class
 alignment center
-wide false
+wide true
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="3">
 <features booktabs="true" tabularvalignment="middle">
-<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" varwidth="true">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <row>
@@ -2378,9 +2511,6 @@ Automatización y scheduling del pipeline
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -2399,12 +2529,12 @@ Componentes básicos de un pipeline de Big Data en Google Cloud Platform
 
 \begin_layout Standard
 Ahora bien,
- el flujo genérico del pipeline está representado por la figura 2.2.
+ el flujo genérico del pipeline está representado por la imagen 2.2.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
+placement class
 alignment center
 wide false
 sideways false
@@ -2458,16 +2588,16 @@ literal "false"
  o pipeline,
  de big data.
  Unos componentes básicos de AWS para construir un canal de datos pueden ser los listados en la tabla 2.2.
- La figura 2.3 nos muestra un flujo básico usando componentes de AWS.
+ La imagen 2.3 nos muestra un flujo básico usando componentes de AWS.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
-placement H
+placement class
 alignment center
-wide false
+wide true
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -2938,11 +3068,11 @@ Componentes básicos de un pipeline de Big Data en AWS
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
+placement class
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -2980,11 +3110,11 @@ Microsoft también ofrece un ecosistema completo de procesamiento de Big Data,
 
 \begin_layout Standard
 \begin_inset Float table
-placement H
+placement class
 alignment center
-wide false
+wide true
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -3443,11 +3573,11 @@ Componentes básicos de un pipeline de Big Data en Microsoft Azure
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
+placement class
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -3498,11 +3628,11 @@ Cuando se habla de Big Data,
 
 \begin_layout Standard
 \begin_inset Float table
-placement H
+placement class
 alignment center
-wide false
+wide true
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -3992,11 +4122,11 @@ Se pueden sintetizar las actuales arquitecturas de integración en la siguiente 
 
 \begin_layout Standard
 \begin_inset Float table
-placement H
+placement class
 alignment center
-wide false
+wide true
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -4856,7 +4986,7 @@ literal "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
+placement class
 alignment center
 wide false
 sideways false
@@ -4892,7 +5022,7 @@ Proceso típico de integración por lotes
 \end_layout
 
 \begin_layout Standard
-Nótense en la figura 2.5 las fases del proceso de integración por lotes y sus características:
+Nótense en la imagen 2.5 las fases del proceso de integración por lotes y sus características:
 \end_layout
 
 \begin_layout Itemize
@@ -5088,7 +5218,7 @@ literal "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
+placement class
 alignment center
 wide false
 sideways false
@@ -5364,8 +5494,9 @@ Sistemas Transaccionales con Soporte CDC
 \end_layout
 
 \begin_layout Standard
-Algunos ejemplos de sistemas transaccionales que ya incluyen soporte nativo para CDC.
- 
+Algunos ejemplos de sistemas transaccionales que ya incluyen soporte nativo para CDC en los tablas 2.6,
+ 2.7,
+ y 2.8 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "AWS2023,DBZ2023,LinkedInEng2022,SalesforceInc2023,AWSDMS2023,MicrosoftCorp2023,MongoDBInc2023,MSFTAzure2023,OracleCorp2023,KarauHWarrenR2017"
@@ -5378,9 +5509,9 @@ literal "false"
 
 \begin_layout Standard
 \begin_inset Float table
-placement H
+placement class
 alignment center
-wide false
+wide true
 sideways false
 status open
 
@@ -5666,9 +5797,9 @@ Bases de datos relacionales con soporte CDC
 
 \begin_layout Standard
 \begin_inset Float table
-placement H
+placement class
 alignment center
-wide false
+wide true
 sideways false
 status open
 
@@ -6088,9 +6219,9 @@ Sistemas NoSQL con soporte CDC
 
 \begin_layout Standard
 \begin_inset Float table
-placement H
+placement class
 alignment center
-wide false
+wide true
 sideways false
 status open
 
@@ -6629,7 +6760,7 @@ Manejo de errores:
 \end_deeper
 \begin_layout Standard
 \begin_inset Float figure
-placement H
+placement class
 alignment center
 wide false
 sideways false
@@ -6948,12 +7079,12 @@ dbt se integra con todas las plataformas para transformaciones
 \end_deeper
 \begin_layout Standard
 Estas relaciones se pueden visibilizar mejor con un diagrama de relación,
- tal como lo muestra la figura 2.8.
+ tal como lo muestra la imagen 2.8.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
+placement class
 alignment center
 wide false
 sideways false
@@ -7362,13 +7493,14 @@ literal "false"
 \end_inset
 
 .
+ Obsérvese una comparativa entre ellas en el tabla 2.9.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
-placement H
+placement class
 alignment center
-wide false
+wide true
 sideways false
 status open
 
@@ -7891,13 +8023,13 @@ Limitar:
 
 \end_deeper
 \begin_layout Standard
-Esto se puede ver representado en la figura 2.9,
+Esto se puede ver representado en la imagen 2.9,
  donde se mapean los escenarios contra los tipos de algoritmos de recomendaciones.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
-placement th
+placement class
 alignment center
 wide false
 sideways false
@@ -7980,12 +8112,19 @@ Magento Open Source es una plataforma de comercio electrónico potente y flexibl
 \end_layout
 
 \begin_layout Standard
+Google Trends muestra que ha habido una cierta estabilidad,
+ por los últimos cinco años,
+ en el interés por este sistema de comercio electrónico,
+ como lo muestra la imagen 3.1.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement h
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -8095,8 +8234,13 @@ literal "false"
 
 \end_inset
 
- se mencionaron los componentes base para implementar un proceso de integración de datos usando CDC,
- y como lo mencionamos en el alcance,
+ se mencionaron los componentes base para implementar un proceso de integración de datos usando CDC.
+ Obsérvese en la imagen 3.2 la interacción entre los componentes en dicho tipo de integración.
+ 
+\end_layout
+
+\begin_layout Standard
+Como lo mencionamos en el alcance,
  debemos implementarlo bajo la restricción de ejecución contenida en una sola máquina física:
 \end_layout
 
@@ -8210,7 +8354,7 @@ Debezium
 
 \begin_layout Standard
 \begin_inset Float figure
-placement th
+placement class
 alignment center
 wide false
 sideways false
@@ -8393,8 +8537,8 @@ Diseño de la Arquitectura
 \end_layout
 
 \begin_layout Standard
-Obsérvese en la figura 3.3 como se separan los componentes según la función.
- En la figura 3.4 obsérvese el flujo de información a través de todo el sistema.
+Obsérvese en la imagen 3.3 como se separan los componentes según la función.
+ En la imagen 3.4 obsérvese el flujo de información a través de todo el sistema.
  El proceso lo inicia el usuario final interactuando con Magento y con la UI.
 \end_layout
 
@@ -8648,7 +8792,7 @@ literal "false"
 \end_deeper
 \begin_layout Standard
 \begin_inset Float figure
-placement th
+placement class
 alignment center
 wide false
 sideways false
@@ -8684,7 +8828,7 @@ Diseño arquitectura para un solo eCommerce
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
+placement class
 alignment center
 wide false
 sideways false
@@ -8890,7 +9034,7 @@ literal "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement tbh
+placement class
 alignment center
 wide false
 sideways false
@@ -8934,7 +9078,7 @@ En el siguiente diagrama 3.6,
 
 \begin_layout Standard
 \begin_inset Float figure
-placement tbh
+placement class
 alignment center
 wide false
 sideways false
@@ -9351,17 +9495,13 @@ https://github.com/markshust/docker-magento
 .
  Se ha hecho una bifurcación del proyecto ya que su licencia lo permite,
  y se modificaron un par de archivos para adaptarlo mejor a nuestra arquitectura.
- La bifurcación de código de instalación de Magento modificada se puede descargar desde 
-\series bold
-https://github.com/edwinflopez/docker-magento
-\series default
-.
 \end_layout
 
-\begin_layout Standard
-Esta capa crea los siguiente contenedores docker:
+\begin_layout Itemize
+Contenedores docker de esta capa:
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 db (mysqldb):
  Almacenamiento para Magento.
@@ -9399,55 +9539,13 @@ app (app):
  Instalación de Magento propiamente dicho.
 \end_layout
 
+\end_deeper
 \begin_layout Standard
-\begin_inset Float algorithm
-placement H
-alignment center
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="1" columns="1">
-<features tabularvalignment="middle" tabularwidth="16cm">
-<column alignment="center" valignment="top" varwidth="true">
-<row>
-<cell alignment="center" valignment="top" toplineltrim="true" toplinertrim="true" bottomlineltrim="true" bottomlinertrim="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename __images/__code/Magento-Docker.png
-	lyxscale 40
-	width 15cm
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Configuración para docker compose de Magento
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ecommerce/compose.yaml"
+lstparams "language=bash,caption={Docker compose Magento}"
+literal "false"
 
 \end_inset
 
@@ -9463,7 +9561,7 @@ de
 \begin_inset space ~
 \end_inset
 
-ingestión:
+ingestión
 \end_layout
 
 \begin_layout Standard
@@ -9484,36 +9582,11 @@ debezium-connect:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float algorithm
-placement H
-alignment center
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename __images/__code/Ingestion-Docker.png
-	lyxscale 40
-	width 10cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Configuración para docker compose de la capa de ingestión
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ingestion/compose.json"
+lstparams "caption={Docker compose de la capa de ingestión.}"
+literal "false"
 
 \end_inset
 
@@ -9529,7 +9602,7 @@ de
 \begin_inset space ~
 \end_inset
 
-almacenamiento:
+almacenamiento
 \end_layout
 
 \begin_layout Standard
@@ -9554,35 +9627,11 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float algorithm
-placement H
-alignment center
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename __images/__code/Storage-Docker.png
-	lyxscale 40
-	width 11cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Configuración para docker compose de la capa de almacenamiento
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/storage/compose.json"
+lstparams "caption={Docker compose de la capa de almacenamiento.}"
+literal "false"
 
 \end_inset
 
@@ -9602,7 +9651,7 @@ procesamiento
 \begin_inset space ~
 \end_inset
 
-analítico:
+analítico
 \end_layout
 
 \begin_layout Standard
@@ -9641,40 +9690,11 @@ El resultado de tener este conjunto de contenedores funcionando será que los c�
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float algorithm
-placement H
-alignment center
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename __images/__code/Analytical-Docker.png
-	lyxscale 40
-	width 16cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Configuración para docker compose de la capa analítica
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/analytics/compose.json"
+lstparams "caption={Docker compose de la capa analítica.}"
+literal "false"
 
 \end_inset
 
@@ -9682,8 +9702,7 @@ Configuración para docker compose de la capa analítica
 \end_layout
 
 \begin_layout Subsection
-Capas de aplicación y presentación:
- 
+Capas de aplicación y presentación
 \end_layout
 
 \begin_layout Standard
@@ -9730,35 +9749,11 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float algorithm
-placement H
-alignment center
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename __images/__code/API-UI-Docker.png
-	lyxscale 50
-	width 15cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Configuración para docker compose de las capas de aplicación y presentación
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/compose.json"
+lstparams "caption={Docker compose de las capas de aplicación y presentación}"
+literal "false"
 
 \end_inset
 
@@ -9766,35 +9761,11 @@ Configuración para docker compose de las capas de aplicación y presentación
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float algorithm
-placement H
-alignment center
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename __images/__code/API-UI-Dockerfile.png
-	lyxscale 40
-	width 16cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Configuración base de docker para las capas de aplicación y presentación
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/Dockerfile"
+lstparams "caption={Dockerfile para las capas de aplicación y presentación}"
+literal "false"
 
 \end_inset
 
@@ -9809,43 +9780,7 @@ Integrador de todos los contenedores
 Finalmente,
  cada archivo de configuración docker debe ser ejecutado conjuntamente con los otros,
  para eso tenemos el archivo compose.json maestro.
- En la figura 4.1 se observan todos los contenedores en ejecución.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-placement H
-alignment center
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename __images/__code/All-Docker.png
-	lyxscale 50
-	width 8cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Docker compose integrador de todas las capas.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+ En la imagen 4.1 se observan todos los contenedores en ejecución.
 \end_layout
 
 \begin_layout Standard
@@ -9854,7 +9789,7 @@ placement H
 alignment center
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -9884,6 +9819,18 @@ Contenedores Docker ejecutándose
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/compose.json"
+lstparams "caption={Docker compose integrador de todas las capas.}"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Preparación de orígenes de datos (Magento)
 \end_layout
@@ -9897,35 +9844,11 @@ En el siguiente script se muestran los comandos para instalar magento.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float algorithm
-placement H
-alignment center
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename __images/__code/InstallMagento.png
-	lyxscale 40
-	width 16cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Script de instalación de Magento
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ecommerce/setup-magento-ecommerce.sh"
+lstparams "language=bash,caption={Script de instalación de Magento}"
+literal "false"
 
 \end_inset
 
@@ -9945,43 +9868,11 @@ LUMA
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float algorithm
-placement H
-alignment center
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename __images/__code/MagentoSampleData.png
-	lyxscale 40
-	width 16cm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Script de instalación del sitio de ejemplo 
-\begin_inset Quotes eld
-\end_inset
-
-LUMA
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ecommerce/setup-magento-sample-data.sh"
+lstparams "language=bash,caption={Script de instalación del sitio de ejemplo “LUMA”}"
+literal "false"
 
 \end_inset
 
@@ -9998,13 +9889,11 @@ En el siguiente listado de código se muestran los comandos para asignar los per
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ecommerce/setup-db-permissions.sh"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Permisos requeridos para la integración de datos.}"
+lstparams "language=bash,caption={Permisos requeridos para la integración de datos.}"
 literal "false"
 
 \end_inset
@@ -10019,13 +9908,11 @@ En el siguiente listado de código se muestran los comandos requeridos para cons
 \begin_layout Standard
 \align center
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ecommerce/setup-db-product-json-view.sh"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Creación de vista JSON.}"
+lstparams "language=bash,caption={Creación de vista SQL JSON.}"
 literal "false"
 
 \end_inset
@@ -10039,13 +9926,11 @@ En el siguiente listado se muestran los comandos requeridos para crear la tabla 
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ecommerce/setup-db-mview-table.sh"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Creación de Tabla Para la Vista Materializada}"
+lstparams "language=bash,caption={Creación de Tabla Para la Vista Materializada}"
 literal "false"
 
 \end_inset
@@ -10059,13 +9944,11 @@ En el siguiente listado se muestran los comandos requeridos para crear el proced
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ecommerce/setup-db-mview-sp.sh"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Creación de procedimiento almacenado para refrescar vista materializada.}"
+lstparams "language=bash,caption={Creación de procedimiento almacenado para refrescar vista materializada.}"
 literal "false"
 
 \end_inset
@@ -10081,13 +9964,11 @@ Finalmente,
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ecommerce/setup-db-mview-event.sh"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Creación de evento programado de ejecución del procedimiento de refresco.}"
+lstparams "language=bash,caption={Creación de evento programado de ejecución del procedimiento de refresco.}"
 literal "false"
 
 \end_inset
@@ -10105,13 +9986,11 @@ En el siguiente listado se encuentra la configuración requerida en MongoDB para
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/storage/scripts/create-embeddings-collection.sh"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=sh,fontadjust=true,caption={Script de creación de colección e índices requeridos en MongoDB.}"
+lstparams "language=bash,caption={Script de creación de colección e índices requeridos en MongoDB.}"
 literal "false"
 
 \end_inset
@@ -10129,13 +10008,11 @@ A continuación se presentan los comandos requeridos para configurar los conecto
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ingestion/register-source.sh"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Configuración de Debezium Connect para MySQL (source)}"
+lstparams "language=bash,caption={Configuración de Debezium Connect para MySQL (source)}"
 literal "false"
 
 \end_inset
@@ -10145,13 +10022,11 @@ literal "false"
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ingestion/register-sink.sh"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Configuración de Debezium Connect para MongoDB (sink)}"
+lstparams "language=bash,caption={Configuración de Debezium Connect para MongoDB (sink)}"
 literal "false"
 
 \end_inset
@@ -10166,13 +10041,11 @@ Esta configuración requiere unos parámetros de ambiente para que el contenedor
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ingestion/env/dbz-connect.env"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Variables de ambiente requeridas por el contenedor debezium-connect.}"
+lstparams "language=bash,caption={Variables de ambiente requeridas por el contenedor debezium-connect.}"
 literal "false"
 
 \end_inset
@@ -10182,13 +10055,11 @@ literal "false"
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ingestion/env/kafka.env"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Variables de ambiente requeridas por el contenedor de Kafka}"
+lstparams "language=bash,caption={Variables de ambiente requeridas por el contenedor de Kafka}"
 literal "false"
 
 \end_inset
@@ -10209,13 +10080,11 @@ A continuación de muestran los scripts necesarios para iniciar tanto Apache Spa
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/analytics/bin/launch-spark-connect.sh"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Scripts de inicio del cliente Spark Connect.}"
+lstparams "language=bash,caption={Scripts de inicio del cliente Spark Connect.}"
 literal "false"
 
 \end_inset
@@ -10225,13 +10094,11 @@ literal "false"
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/analytics/bin/launch-spark-cluster.sh"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Script de inicio del cluster Apache Spark}"
+lstparams "language=bash,caption={Script de inicio del cluster Apache Spark}"
 literal "false"
 
 \end_inset
@@ -10245,13 +10112,11 @@ Estos contenedores requieren las siguientes variables de ambiente.
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/analytics/env/spark-connect.env"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Variables de ambiente requeridas por Spark Connect}"
+lstparams "language=bash,caption={Variables de ambiente requeridas por Spark Connect}"
 literal "false"
 
 \end_inset
@@ -10261,13 +10126,11 @@ literal "false"
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/analytics/env/spark-cluster.env"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=bash,fontadjust=true,caption={Variables de ambiente requeridas por el cluster de Apache Spark.}"
+lstparams "language=bash,caption={Variables de ambiente requeridas por el cluster de Apache Spark.}"
 literal "false"
 
 \end_inset
@@ -10292,12 +10155,11 @@ Funciones y clases compartidas
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
+\nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/requirements.txt"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Lista de dependencias de la API como de la UI}"
+lstparams "language=Python,caption={Lista de dependencias de la API como de la UI}"
 literal "false"
 
 \end_inset
@@ -10307,12 +10169,11 @@ literal "false"
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
+\nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/main_smoke_tests.py"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Script de smoke test que verifica la funcionalidad del sistema}"
+lstparams "language=Python,caption={Script de smoke test que verifica la funcionalidad del sistema}"
 literal "false"
 
 \end_inset
@@ -10322,12 +10183,11 @@ literal "false"
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
+\nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/commons/check_ip_port.py"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Script que verifica que los puertos y hosts estén abiertos.}"
+lstparams "language=Python,caption={Script que verifica que los puertos y hosts estén abiertos.}"
 literal "false"
 
 \end_inset
@@ -10337,12 +10197,11 @@ literal "false"
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
+\nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/commons/constants.py"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Constantes Globales Requeridas por la API como por la UI}"
+lstparams "language=Python,caption={Constantes Globales Requeridas por la API como por la UI}"
 literal "false"
 
 \end_inset
@@ -10360,12 +10219,11 @@ Los siguientes scripts inician tanto la API como la UI.
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
+\nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/main_webapi.py"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Script de inicio de la API}"
+lstparams "language=Python,caption={Script de inicio de la API}"
 literal "false"
 
 \end_inset
@@ -10375,12 +10233,11 @@ literal "false"
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
+\nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/main_webapp.py"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Script de inicialización de la Web UI}"
+lstparams "language=Python,caption={Script de inicialización de la Web UI}"
 literal "false"
 
 \end_inset
@@ -10414,13 +10271,11 @@ Los siguientes listados los muestran:
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/analytics/sc_session.py"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Script de creación de sesión de Spark Connect}"
+lstparams "language=Python,caption={Script de creación de sesión de Spark Connect}"
 literal "false"
 
 \end_inset
@@ -10430,13 +10285,11 @@ literal "false"
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/analytics/sc_data.py"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Scripts de carga y guardado de datos con Spark Connect}"
+lstparams "language=Python,caption={Scripts de carga y guardado de datos con Spark Connect}"
 literal "false"
 
 \end_inset
@@ -10446,13 +10299,11 @@ literal "false"
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/analytics/sc_embeddings.py"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Script de cálculo de vectores característicos con Spark}"
+lstparams "language=Python,caption={Script de cálculo de vectores característicos con Spark}"
 literal "false"
 
 \end_inset
@@ -10470,13 +10321,11 @@ Los siguientes scripts controlan los puntos de servicio web (endpoints) encargad
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/webapi/embeddings_processing.py"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Scripts para controlar el cálculo de los vectores característicos.}"
+lstparams "language=Python,caption={Scripts para controlar el cálculo de los vectores característicos.}"
 literal "false"
 
 \end_inset
@@ -10486,13 +10335,11 @@ literal "false"
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/webapi/data_management.py"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Scripts para el control de los servicios de consulta de datos.}"
+lstparams "language=Python,caption={Scripts para el control de los servicios de consulta de datos.}"
 literal "false"
 
 \end_inset
@@ -10510,12 +10357,11 @@ Los scripts para la construcción de la UI se presentan a continuación.
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
+\nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/src/webapp/webui.py"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=Python,fontadjust=true,caption={Script para la construcción de la UI con StreamLit}"
+lstparams "language=Python,caption={Script para la construcción de la UI con StreamLit}"
 literal "false"
 
 \end_inset
@@ -10528,7 +10374,11 @@ Instalación del sistema
 \end_layout
 
 \begin_layout Standard
-El sistema base su instalación en un archivo Makefile,
+El sistema base su instalación en un archivo 
+\series bold
+Makefile
+\series default
+,
  el cual enlaza cada uno de los códigos vistos anteriormente y los ejecuta en la secuencia programada por la tarea 
 \begin_inset Quotes eld
 \end_inset
@@ -10543,13 +10393,11 @@ all
 
 \begin_layout Standard
 
-\family typewriter
-\size scriptsize
 \nospellcheck on
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/Makefile"
-lstparams "breaklines=true,captionpos=b,frame=tblr,language=make,fontadjust=true,caption={Script de instalación de todo el sistema.}"
+lstparams "language=make,caption={Script de instalación de todo el sistema.}"
 literal "false"
 
 \end_inset
@@ -10562,7 +10410,7 @@ Pantallas del sistema en operación
 \end_layout
 
 \begin_layout Standard
-En la figura siguiente se observa la pantalla de documentación de la API que es totalmente operacional.
+En la imagen siguiente se observa la pantalla de documentación de la API que es totalmente operacional.
 \end_layout
 
 \begin_layout Standard
