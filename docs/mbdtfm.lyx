@@ -43,7 +43,7 @@ fix-cm
 \output_sync 0
 \bibtex_command default
 \index_command texindy
-\float_placement tbph
+\float_placement H
 \float_alignment center
 \paperfontsize 11
 \spacing onehalf
@@ -1965,7 +1965,7 @@ En este ecosistema,
 
 \begin_layout Standard
 \begin_inset Float figure
-placement class
+placement document
 alignment center
 wide false
 sideways false
@@ -2067,7 +2067,7 @@ Platform
 
 \begin_layout Standard
 \begin_inset Float table
-placement class
+placement p
 alignment center
 wide true
 sideways false
@@ -2534,7 +2534,7 @@ Ahora bien,
 
 \begin_layout Standard
 \begin_inset Float figure
-placement class
+placement document
 alignment center
 wide false
 sideways false
@@ -2593,11 +2593,11 @@ literal "false"
 
 \begin_layout Standard
 \begin_inset Float table
-placement class
+placement p
 alignment center
 wide true
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -3068,7 +3068,7 @@ Componentes básicos de un pipeline de Big Data en AWS
 
 \begin_layout Standard
 \begin_inset Float figure
-placement class
+placement document
 alignment center
 wide false
 sideways false
@@ -3110,7 +3110,7 @@ Microsoft también ofrece un ecosistema completo de procesamiento de Big Data,
 
 \begin_layout Standard
 \begin_inset Float table
-placement class
+placement p
 alignment center
 wide true
 sideways false
@@ -3573,7 +3573,7 @@ Componentes básicos de un pipeline de Big Data en Microsoft Azure
 
 \begin_layout Standard
 \begin_inset Float figure
-placement class
+placement document
 alignment center
 wide false
 sideways false
@@ -3628,7 +3628,7 @@ Cuando se habla de Big Data,
 
 \begin_layout Standard
 \begin_inset Float table
-placement class
+placement p
 alignment center
 wide true
 sideways false
@@ -4122,7 +4122,7 @@ Se pueden sintetizar las actuales arquitecturas de integración en la siguiente 
 
 \begin_layout Standard
 \begin_inset Float table
-placement class
+placement p
 alignment center
 wide true
 sideways false
@@ -4986,7 +4986,7 @@ literal "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement class
+placement document
 alignment center
 wide false
 sideways false
@@ -5218,7 +5218,7 @@ literal "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement class
+placement document
 alignment center
 wide false
 sideways false
@@ -5509,11 +5509,11 @@ literal "false"
 
 \begin_layout Standard
 \begin_inset Float table
-placement class
+placement p
 alignment center
 wide true
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -5797,11 +5797,11 @@ Bases de datos relacionales con soporte CDC
 
 \begin_layout Standard
 \begin_inset Float table
-placement class
+placement p
 alignment center
 wide true
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -6219,11 +6219,11 @@ Sistemas NoSQL con soporte CDC
 
 \begin_layout Standard
 \begin_inset Float table
-placement class
+placement p
 alignment center
 wide true
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -6760,7 +6760,7 @@ Manejo de errores:
 \end_deeper
 \begin_layout Standard
 \begin_inset Float figure
-placement class
+placement document
 alignment center
 wide false
 sideways false
@@ -7084,7 +7084,7 @@ Estas relaciones se pueden visibilizar mejor con un diagrama de relación,
 
 \begin_layout Standard
 \begin_inset Float figure
-placement class
+placement document
 alignment center
 wide false
 sideways false
@@ -7498,11 +7498,11 @@ literal "false"
 
 \begin_layout Standard
 \begin_inset Float table
-placement class
+placement p
 alignment center
 wide true
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -8029,7 +8029,7 @@ Esto se puede ver representado en la imagen 2.9,
 
 \begin_layout Standard
 \begin_inset Float figure
-placement class
+placement document
 alignment center
 wide false
 sideways false
@@ -8120,7 +8120,7 @@ Google Trends muestra que ha habido una cierta estabilidad,
 
 \begin_layout Standard
 \begin_inset Float figure
-placement h
+placement document
 alignment center
 wide false
 sideways false
@@ -8354,7 +8354,7 @@ Debezium
 
 \begin_layout Standard
 \begin_inset Float figure
-placement class
+placement document
 alignment center
 wide false
 sideways false
@@ -8792,7 +8792,7 @@ literal "false"
 \end_deeper
 \begin_layout Standard
 \begin_inset Float figure
-placement class
+placement document
 alignment center
 wide false
 sideways false
@@ -8828,7 +8828,7 @@ Diseño arquitectura para un solo eCommerce
 
 \begin_layout Standard
 \begin_inset Float figure
-placement class
+placement document
 alignment center
 wide false
 sideways false
@@ -9034,7 +9034,7 @@ literal "false"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement class
+placement document
 alignment center
 wide false
 sideways false
@@ -9078,7 +9078,7 @@ En el siguiente diagrama 3.6,
 
 \begin_layout Standard
 \begin_inset Float figure
-placement class
+placement document
 alignment center
 wide false
 sideways false
@@ -9541,6 +9541,12 @@ app (app):
 
 \end_deeper
 \begin_layout Standard
+\align center
+\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ecommerce/compose.yaml"
@@ -9579,6 +9585,12 @@ kafka-standalone:
 \begin_layout Itemize
 debezium-connect:
  Configuración de debezium de un solo nodo.
+\end_layout
+
+\begin_layout Standard
+\align center
+\SpecialChar ldots
+
 \end_layout
 
 \begin_layout Standard
@@ -9624,6 +9636,12 @@ literal "false"
 \end_inset
 
  Spark y el código que hace las comparaciones.
+\end_layout
+
+\begin_layout Standard
+\align center
+\SpecialChar ldots
+
 \end_layout
 
 \begin_layout Standard
@@ -9690,6 +9708,12 @@ El resultado de tener este conjunto de contenedores funcionando será que los c�
 \end_layout
 
 \begin_layout Standard
+\align center
+\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/analytics/compose.json"
@@ -9749,6 +9773,12 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
+\align center
+\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/api/compose.json"
@@ -9757,6 +9787,12 @@ literal "false"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\SpecialChar ldots
 
 \end_layout
 
@@ -9785,7 +9821,7 @@ Finalmente,
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
+placement document
 alignment center
 wide false
 sideways false
@@ -9820,6 +9856,12 @@ Contenedores Docker ejecutándose
 \end_layout
 
 \begin_layout Standard
+\align center
+\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/compose.json"
@@ -9841,6 +9883,12 @@ Instalación de Magento y el sitio de ejemplo
 
 \begin_layout Standard
 En el siguiente script se muestran los comandos para instalar magento.
+\end_layout
+
+\begin_layout Standard
+\align center
+\SpecialChar ldots
+
 \end_layout
 
 \begin_layout Standard
@@ -9868,6 +9916,12 @@ LUMA
 \end_layout
 
 \begin_layout Standard
+\align center
+\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Users/edwinl/UNI/TFM/code/mbd-tfm/ecommerce/setup-magento-sample-data.sh"
@@ -9885,6 +9939,12 @@ Instalación de objetos requeridos en MySQL
 
 \begin_layout Standard
 En el siguiente listado de código se muestran los comandos para asignar los permisos necesarios en la base de datos para poder trabajar con Debezium.
+\end_layout
+
+\begin_layout Standard
+\align center
+\SpecialChar ldots
+
 \end_layout
 
 \begin_layout Standard
@@ -9907,6 +9967,12 @@ En el siguiente listado de código se muestran los comandos requeridos para cons
 
 \begin_layout Standard
 \align center
+\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
+\align center
 
 \nospellcheck on
 \begin_inset CommandInset include
@@ -9922,6 +9988,12 @@ literal "false"
 
 \begin_layout Standard
 En el siguiente listado se muestran los comandos requeridos para crear la tabla que almacenará la vista materializada.
+\end_layout
+
+\begin_layout Standard
+\align center
+\SpecialChar ldots
+
 \end_layout
 
 \begin_layout Standard
@@ -9943,6 +10015,12 @@ En el siguiente listado se muestran los comandos requeridos para crear el proced
 \end_layout
 
 \begin_layout Standard
+\align center
+\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
 
 \nospellcheck on
 \begin_inset CommandInset include
@@ -9960,6 +10038,12 @@ literal "false"
 Finalmente,
  el siguiente listado crea el evento de refresco para que se ejecute cada 5 minutos,
  ejecute el procedimiento almacenado anterior y refresque la vista.
+\end_layout
+
+\begin_layout Standard
+\align center
+\SpecialChar ldots
+
 \end_layout
 
 \begin_layout Standard
@@ -9985,6 +10069,12 @@ En el siguiente listado se encuentra la configuración requerida en MongoDB para
 \end_layout
 
 \begin_layout Standard
+\align center
+\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
 
 \nospellcheck on
 \begin_inset CommandInset include
@@ -10007,6 +10097,12 @@ A continuación se presentan los comandos requeridos para configurar los conecto
 \end_layout
 
 \begin_layout Standard
+\align center
+\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
 
 \nospellcheck on
 \begin_inset CommandInset include
@@ -10017,6 +10113,12 @@ literal "false"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\SpecialChar ldots
 
 \end_layout
 
@@ -10040,6 +10142,12 @@ Esta configuración requiere unos parámetros de ambiente para que el contenedor
 \end_layout
 
 \begin_layout Standard
+\align center
+\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
 
 \nospellcheck on
 \begin_inset CommandInset include
@@ -10050,6 +10158,12 @@ literal "false"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\SpecialChar ldots
 
 \end_layout
 
@@ -10079,6 +10193,12 @@ A continuación de muestran los scripts necesarios para iniciar tanto Apache Spa
 \end_layout
 
 \begin_layout Standard
+\align center
+\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
 
 \nospellcheck on
 \begin_inset CommandInset include
@@ -10089,6 +10209,12 @@ literal "false"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\SpecialChar ldots
 
 \end_layout
 
@@ -10111,6 +10237,12 @@ Estos contenedores requieren las siguientes variables de ambiente.
 \end_layout
 
 \begin_layout Standard
+\align center
+\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
 
 \nospellcheck on
 \begin_inset CommandInset include
@@ -10121,6 +10253,12 @@ literal "false"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\SpecialChar ldots
 
 \end_layout
 
@@ -10154,6 +10292,12 @@ Funciones y clases compartidas
 \end_layout
 
 \begin_layout Standard
+\align center
+\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
 
 \nospellcheck on
 \begin_inset CommandInset include
@@ -10164,6 +10308,12 @@ literal "false"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\SpecialChar ldots
 
 \end_layout
 
@@ -10182,6 +10332,12 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
+\align center
+\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
 
 \nospellcheck on
 \begin_inset CommandInset include
@@ -10192,6 +10348,12 @@ literal "false"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\SpecialChar ldots
 
 \end_layout
 
@@ -10218,6 +10380,12 @@ Los siguientes scripts inician tanto la API como la UI.
 \end_layout
 
 \begin_layout Standard
+\align center
+\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
 
 \nospellcheck on
 \begin_inset CommandInset include
@@ -10228,6 +10396,12 @@ literal "false"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\SpecialChar ldots
 
 \end_layout
 
@@ -10270,6 +10444,12 @@ Los siguientes listados los muestran:
 \end_layout
 
 \begin_layout Standard
+\align center
+\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
 
 \nospellcheck on
 \begin_inset CommandInset include
@@ -10284,6 +10464,12 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
+\align center
+\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
 
 \nospellcheck on
 \begin_inset CommandInset include
@@ -10294,6 +10480,12 @@ literal "false"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\SpecialChar ldots
 
 \end_layout
 
@@ -10320,6 +10512,12 @@ Los siguientes scripts controlan los puntos de servicio web (endpoints) encargad
 \end_layout
 
 \begin_layout Standard
+\align center
+\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
 
 \nospellcheck on
 \begin_inset CommandInset include
@@ -10330,6 +10528,12 @@ literal "false"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\SpecialChar ldots
 
 \end_layout
 
@@ -10353,6 +10557,12 @@ Scripts de la UI con Streamlit
 
 \begin_layout Standard
 Los scripts para la construcción de la UI se presentan a continuación.
+\end_layout
+
+\begin_layout Standard
+\align center
+\SpecialChar ldots
+
 \end_layout
 
 \begin_layout Standard
@@ -10389,6 +10599,12 @@ all
 
 .
  Observe el siguiente listado:
+\end_layout
+
+\begin_layout Standard
+\align center
+\SpecialChar ldots
+
 \end_layout
 
 \begin_layout Standard
