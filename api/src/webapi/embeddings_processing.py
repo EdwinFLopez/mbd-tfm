@@ -88,7 +88,7 @@ class EmbeddingsPipelineProcessor:
             }
 
     # ---------------- Reindex launcher ----------------- #
-    def reindex(self) -> List[Dict[str, Any]]:
+    def reindex(self):
         return reindex_search_indexes()
 
     # ---------------- Execution control ---------------- #
@@ -104,16 +104,14 @@ class EmbeddingsPipelineProcessor:
     def _run_embeddings_process(self) -> None:
         try:
             with self._lock:
-                # Only reuse job if it’s still in READY
+                # Only reuse job if still in READY
                 if not self.is_ready():
                     self._current_job = str(uuid.uuid4())
                 self._processes[self._current_job] = EmbeddingsPipelineStatus.RUNNING
                 self._errors[self._current_job] = None
 
             # ###############################################################
-            # Call the actual embeddings processing logic here.
-            # This is a placeholder for the real implementation.
-            # ###############################################################
+            # Calling the actual embeddings processing logic here.
             from analytics.sc_embeddings import create_product_embeddings_w2v
             from analytics.sc_session import get_session
             session = get_session()
